@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "search-input",
+  "title": "Search Input",
+  "description": "Enhanced search input with clear button, loading state, keyboard shortcut hint, and custom slots.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/form/search-input.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Search, X, Loader2 } from \"lucide-react\";\n\ninterface SearchInputProps extends React.InputHTMLAttributes<HTMLInputElement> {\n  value?: string;\n  onValueChange?: (value: string) => void;\n  loading?: boolean;\n  showClear?: boolean;\n  shortcut?: string;\n  onShortcut?: () => void;\n  leftSlot?: React.ReactNode;\n  rightSlot?: React.ReactNode;\n  variant?: \"default\" | \"ghost\" | \"pill\";\n}\n\nexport function SearchInput({\n  value,\n  onValueChange,\n  loading = false,\n  showClear = true,\n  shortcut,\n  onShortcut,\n  leftSlot,\n  rightSlot,\n  variant = \"default\",\n  className,\n  onChange,\n  ...props\n}: SearchInputProps) {\n  const inputRef = React.useRef<HTMLInputElement>(null);\n\n  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {\n    onValueChange?.(e.target.value);\n    onChange?.(e);\n  };\n\n  const handleClear = () => {\n    onValueChange?.(\"\");\n    inputRef.current?.focus();\n  };\n\n  React.useEffect(() => {\n    if (!shortcut || !onShortcut) return;\n    const handler = (e: KeyboardEvent) => {\n      if ((e.metaKey || e.ctrlKey) && e.key === \"k\") {\n        e.preventDefault();\n        onShortcut();\n        inputRef.current?.focus();\n      }\n    };\n    window.addEventListener(\"keydown\", handler);\n    return () => window.removeEventListener(\"keydown\", handler);\n  }, [shortcut, onShortcut]);\n\n  const variantStyles = {\n    default: \"border border-input rounded-xl bg-background\",\n    ghost: \"border-0 bg-transparent\",\n    pill: \"border border-input rounded-full bg-background\",\n  };\n\n  return (\n    <div\n      className={cn(\n        \"relative flex items-center w-full\",\n        variantStyles[variant],\n        \"focus-within:ring-2 focus-within:ring-ring focus-within:border-transparent transition-all\",\n        className\n      )}\n    >\n      {/* Left: search icon or custom slot */}\n      <div className=\"flex items-center pl-3 text-muted-foreground shrink-0\">\n        {leftSlot ?? <Search className=\"size-4\" />}\n      </div>\n\n      <input\n        ref={inputRef}\n        type=\"search\"\n        value={value}\n        onChange={handleChange}\n        className=\"flex-1 py-2.5 px-2 text-sm bg-transparent text-foreground placeholder:text-muted-foreground outline-none [appearance:textfield] [&::-webkit-search-cancel-button]:hidden\"\n        {...props}\n      />\n\n      {/* Right: loading, clear, shortcut, or custom slot */}\n      <div className=\"flex items-center gap-1 pr-3 shrink-0\">\n        {loading && <Loader2 className=\"size-4 text-muted-foreground animate-spin\" />}\n        {showClear && value && !loading && (\n          <button\n            type=\"button\"\n            onClick={handleClear}\n            className=\"text-muted-foreground hover:text-foreground transition-colors\"\n          >\n            <X className=\"size-4\" />\n          </button>\n        )}\n        {shortcut && !value && !loading && (\n          <kbd className=\"hidden sm:inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded border border-border bg-muted text-xs text-muted-foreground font-mono\">\n            {shortcut}\n          </kbd>\n        )}\n        {rightSlot}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/form/search-input.tsx"
+    }
+  ],
+  "categories": [
+    "form"
+  ],
+  "type": "registry:component"
+}

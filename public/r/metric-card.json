@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "metric-card",
+  "title": "Metric Card",
+  "description": "KPI metric card with value, trend indicator, percentage change, and icon slot.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/dashboard/metric-card.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { TrendingUp, TrendingDown, Minus } from \"lucide-react\";\n\nexport type MetricTrend = \"up\" | \"down\" | \"neutral\";\n\ninterface MetricCardProps extends React.HTMLAttributes<HTMLDivElement> {\n  title: string;\n  value: string | number;\n  trend?: MetricTrend;\n  trendValue?: string;\n  trendLabel?: string;\n  icon?: React.ReactNode;\n  description?: string;\n  loading?: boolean;\n}\n\nexport function MetricCard({\n  title,\n  value,\n  trend = \"neutral\",\n  trendValue,\n  trendLabel,\n  icon,\n  description,\n  loading = false,\n  className,\n  ...props\n}: MetricCardProps) {\n  const trendConfig = {\n    up: {\n      icon: <TrendingUp className=\"size-3.5\" />,\n      textClass: \"text-emerald-600 dark:text-emerald-400\",\n      bgClass: \"bg-emerald-50 dark:bg-emerald-950/30\",\n    },\n    down: {\n      icon: <TrendingDown className=\"size-3.5\" />,\n      textClass: \"text-red-600 dark:text-red-400\",\n      bgClass: \"bg-red-50 dark:bg-red-950/30\",\n    },\n    neutral: {\n      icon: <Minus className=\"size-3.5\" />,\n      textClass: \"text-muted-foreground\",\n      bgClass: \"bg-muted\",\n    },\n  };\n\n  const config = trendConfig[trend];\n\n  if (loading) {\n    return (\n      <div\n        className={cn(\n          \"rounded-xl border border-border bg-card p-5\",\n          className\n        )}\n        {...props}\n      >\n        <div className=\"flex items-start justify-between\">\n          <div className=\"space-y-2 flex-1\">\n            <div className=\"h-4 w-24 bg-muted animate-pulse rounded\" />\n            <div className=\"h-8 w-32 bg-muted animate-pulse rounded\" />\n            <div className=\"h-3 w-20 bg-muted animate-pulse rounded\" />\n          </div>\n          <div className=\"h-10 w-10 bg-muted animate-pulse rounded-lg\" />\n        </div>\n      </div>\n    );\n  }\n\n  return (\n    <div\n      className={cn(\n        \"rounded-xl border border-border bg-card p-5\",\n        \"transition-shadow duration-200 hover:shadow-md\",\n        className\n      )}\n      {...props}\n    >\n      <div className=\"flex items-start justify-between gap-3\">\n        <div className=\"flex-1 min-w-0\">\n          <p className=\"text-sm font-medium text-muted-foreground truncate\">{title}</p>\n          <p className=\"mt-1 text-2xl font-bold text-card-foreground tracking-tight\">\n            {value}\n          </p>\n          {(trendValue || trendLabel) && (\n            <div className=\"mt-2 flex items-center gap-1.5\">\n              {trendValue && (\n                <span\n                  className={cn(\n                    \"inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-md text-xs font-medium\",\n                    config.bgClass,\n                    config.textClass\n                  )}\n                >\n                  {config.icon}\n                  {trendValue}\n                </span>\n              )}\n              {trendLabel && (\n                <span className=\"text-xs text-muted-foreground\">{trendLabel}</span>\n              )}\n            </div>\n          )}\n          {description && (\n            <p className=\"mt-1.5 text-xs text-muted-foreground\">{description}</p>\n          )}\n        </div>\n        {icon && (\n          <div className=\"flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 text-primary shrink-0\">\n            {icon}\n          </div>\n        )}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/dashboard/metric-card.tsx"
+    }
+  ],
+  "categories": [
+    "dashboard"
+  ],
+  "type": "registry:component"
+}

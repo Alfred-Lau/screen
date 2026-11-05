@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stats-badge",
+  "title": "Stats Badge",
+  "description": "Inline statistics badge with up/down/neutral trend variants and colored dot indicator.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/dashboard/stats-badge.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { TrendingUp, TrendingDown, Minus } from \"lucide-react\";\n\nexport type StatsTrend = \"up\" | \"down\" | \"neutral\";\n\ninterface StatsBadgeProps extends React.HTMLAttributes<HTMLSpanElement> {\n  value: string | number;\n  trend?: StatsTrend;\n  showIcon?: boolean;\n  showDot?: boolean;\n  size?: \"sm\" | \"md\";\n}\n\nexport function StatsBadge({\n  value,\n  trend = \"neutral\",\n  showIcon = true,\n  showDot = true,\n  size = \"md\",\n  className,\n  ...props\n}: StatsBadgeProps) {\n  const trendConfig = {\n    up: {\n      icon: <TrendingUp className={cn(size === \"sm\" ? \"size-3\" : \"size-3.5\")} />,\n      textClass: \"text-emerald-700 dark:text-emerald-300\",\n      bgClass: \"bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800\",\n      dotClass: \"bg-emerald-500\",\n    },\n    down: {\n      icon: <TrendingDown className={cn(size === \"sm\" ? \"size-3\" : \"size-3.5\")} />,\n      textClass: \"text-red-700 dark:text-red-300\",\n      bgClass: \"bg-red-50 dark:bg-red-950/40 border-red-200 dark:border-red-800\",\n      dotClass: \"bg-red-500\",\n    },\n    neutral: {\n      icon: <Minus className={cn(size === \"sm\" ? \"size-3\" : \"size-3.5\")} />,\n      textClass: \"text-muted-foreground\",\n      bgClass: \"bg-muted border-border\",\n      dotClass: \"bg-muted-foreground\",\n    },\n  };\n\n  const config = trendConfig[trend];\n\n  return (\n    <span\n      className={cn(\n        \"inline-flex items-center gap-1 rounded-full border font-medium\",\n        size === \"sm\" ? \"px-1.5 py-0.5 text-xs\" : \"px-2 py-0.5 text-xs\",\n        config.bgClass,\n        config.textClass,\n        className\n      )}\n      {...props}\n    >\n      {showDot && (\n        <span className={cn(\"rounded-full shrink-0\", size === \"sm\" ? \"w-1.5 h-1.5\" : \"w-2 h-2\", config.dotClass)} />\n      )}\n      {showIcon && config.icon}\n      {value}\n    </span>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/dashboard/stats-badge.tsx"
+    }
+  ],
+  "categories": [
+    "dashboard"
+  ],
+  "type": "registry:component"
+}

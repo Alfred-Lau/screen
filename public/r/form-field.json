@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-field",
+  "title": "Form Field",
+  "description": "Form field wrapper with label, required indicator, helper text, and error message display.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/form/form-field.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface FormFieldProps {\n  label?: string;\n  htmlFor?: string;\n  required?: boolean;\n  optional?: boolean;\n  helperText?: string;\n  error?: string;\n  children: React.ReactNode;\n  className?: string;\n  labelClassName?: string;\n  hint?: string;\n}\n\nexport function FormField({\n  label,\n  htmlFor,\n  required = false,\n  optional = false,\n  helperText,\n  error,\n  children,\n  className,\n  labelClassName,\n  hint,\n}: FormFieldProps) {\n  return (\n    <div className={cn(\"flex flex-col gap-1.5\", className)}>\n      {label && (\n        <div className=\"flex items-center justify-between\">\n          <label\n            htmlFor={htmlFor}\n            className={cn(\n              \"text-sm font-medium text-foreground\",\n              labelClassName\n            )}\n          >\n            {label}\n            {required && (\n              <span className=\"ml-1 text-red-500 dark:text-red-400\" aria-hidden=\"true\">*</span>\n            )}\n          </label>\n          {optional && (\n            <span className=\"text-xs text-muted-foreground\">Optional</span>\n          )}\n          {hint && (\n            <span className=\"text-xs text-muted-foreground\">{hint}</span>\n          )}\n        </div>\n      )}\n\n      {children}\n\n      {error ? (\n        <p className=\"text-xs text-red-600 dark:text-red-400 flex items-center gap-1\">\n          <svg className=\"size-3 shrink-0\" fill=\"currentColor\" viewBox=\"0 0 20 20\">\n            <path fillRule=\"evenodd\" d=\"M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z\" clipRule=\"evenodd\" />\n          </svg>\n          {error}\n        </p>\n      ) : helperText ? (\n        <p className=\"text-xs text-muted-foreground\">{helperText}</p>\n      ) : null}\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/form/form-field.tsx"
+    }
+  ],
+  "categories": [
+    "form"
+  ],
+  "type": "registry:component"
+}

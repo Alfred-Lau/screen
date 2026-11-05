@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "doc-reading-progress",
+  "title": "Doc Reading Progress",
+  "description": "Animated progress bar fixed at the top showing scroll position.",
+  "files": [
+    {
+      "path": "lib/docs/components/reading-progress.tsx",
+      "content": "\"use client\";\n\nimport { useEffect, useState } from \"react\";\nimport type { DocReadingProgressProps } from \"../types\";\n\nexport function DocReadingProgress({\n  className = \"\",\n}: DocReadingProgressProps) {\n  const [progress, setProgress] = useState(0);\n\n  useEffect(() => {\n    const updateProgress = () => {\n      const scrollTop = window.scrollY;\n      const docHeight =\n        document.documentElement.scrollHeight - window.innerHeight;\n      const scrollPercent = (scrollTop / docHeight) * 100;\n      setProgress(Math.min(100, Math.max(0, scrollPercent)));\n    };\n\n    window.addEventListener(\"scroll\", updateProgress);\n    updateProgress();\n\n    return () => window.removeEventListener(\"scroll\", updateProgress);\n  }, []);\n\n  return (\n    <div\n      className={`fixed top-0 left-0 w-full h-1 bg-gray-200 dark:bg-gray-700 z-50 ${className}`}\n    >\n      <div\n        className=\"h-full bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-300 ease-out\"\n        style={{ width: `${progress}%` }}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/docs/components/reading-progress.tsx"
+    }
+  ],
+  "categories": [
+    "docs"
+  ],
+  "type": "registry:component"
+}

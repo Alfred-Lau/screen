@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "doc-breadcrumb",
+  "title": "Doc Breadcrumb",
+  "description": "Path-based breadcrumb navigation with customizable segment names.",
+  "dependencies": [
+    "next",
+    "next-intl",
+    "@heroicons/react"
+  ],
+  "registryDependencies": [
+    "https://screen.solokit.run/r/docs-base.json"
+  ],
+  "files": [
+    {
+      "path": "lib/docs/components/breadcrumb.tsx",
+      "content": "\"use client\";\n\nimport Link from \"next/link\";\nimport { useLocale } from \"next-intl\";\nimport { ChevronRightIcon, HomeIcon } from \"@heroicons/react/24/outline\";\nimport type { DocBreadcrumbProps } from \"../types\";\nimport { DEFAULT_DOCS_BASE_PATH } from \"../constants\";\n\nfunction formatSegmentName(slug: string): string {\n  return slug\n    .replace(/[-_]/g, \" \")\n    .replace(/\\b\\w/g, (l) => l.toUpperCase())\n    .trim();\n}\n\nexport function DocBreadcrumb({\n  slug,\n  title,\n  className = \"\",\n  basePath,\n  getSegmentName,\n  labels,\n}: DocBreadcrumbProps) {\n  const locale = useLocale();\n  const resolvedBasePath = basePath || `/${locale}${DEFAULT_DOCS_BASE_PATH}`;\n\n  const resolveSegmentName = (segment: string) => {\n    if (getSegmentName) return getSegmentName(segment);\n    return formatSegmentName(segment);\n  };\n\n  const pathSegments = slug.split(\"/\");\n\n  return (\n    <nav className={`flex mb-6 ${className}`} aria-label=\"Breadcrumb\">\n      <ol className=\"inline-flex items-center space-x-1 md:space-x-3\">\n        <li className=\"inline-flex items-center\">\n          <Link\n            href={`/${locale}`}\n            className=\"inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-500\"\n          >\n            <HomeIcon className=\"w-4 h-4 mr-2\" />\n            {labels?.home || \"Home\"}\n          </Link>\n        </li>\n        <li>\n          <div className=\"flex items-center\">\n            <ChevronRightIcon className=\"w-4 h-4 text-gray-400\" />\n            <Link\n              href={resolvedBasePath}\n              className=\"ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-blue-500\"\n            >\n              {labels?.docs || \"Docs\"}\n            </Link>\n          </div>\n        </li>\n\n        {pathSegments.map((segment, index) => {\n          const isLast = index === pathSegments.length - 1;\n          const pathToSegment = pathSegments.slice(0, index + 1).join(\"/\");\n\n          return (\n            <li key={segment} aria-current={isLast ? \"page\" : undefined}>\n              <div className=\"flex items-center\">\n                <ChevronRightIcon className=\"w-4 h-4 text-gray-400\" />\n                {isLast ? (\n                  <span className=\"ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400\">\n                    {title || resolveSegmentName(segment)}\n                  </span>\n                ) : (\n                  <Link\n                    href={`${resolvedBasePath}/${pathToSegment}`}\n                    className=\"ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-blue-500\"\n                  >\n                    {resolveSegmentName(segment)}\n                  </Link>\n                )}\n              </div>\n            </li>\n          );\n        })}\n      </ol>\n    </nav>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/docs/components/breadcrumb.tsx"
+    }
+  ],
+  "categories": [
+    "docs"
+  ],
+  "type": "registry:component"
+}

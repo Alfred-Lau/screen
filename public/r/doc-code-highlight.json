@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "doc-code-highlight",
+  "title": "Doc Code Highlight",
+  "description": "Prism.js syntax highlighting wrapper for code blocks.",
+  "dependencies": [
+    "prismjs"
+  ],
+  "devDependencies": [
+    "@types/prismjs"
+  ],
+  "files": [
+    {
+      "path": "lib/docs/components/code-highlight.tsx",
+      "content": "\"use client\";\n\nimport { useEffect } from \"react\";\nimport Prism from \"prismjs\";\nimport \"prismjs/themes/prism-tomorrow.css\";\nimport \"prismjs/components/prism-javascript\";\nimport \"prismjs/components/prism-typescript\";\nimport \"prismjs/components/prism-json\";\nimport \"prismjs/components/prism-bash\";\nimport \"prismjs/components/prism-css\";\nimport \"prismjs/components/prism-sql\";\nimport \"prismjs/components/prism-yaml\";\nimport type { DocCodeHighlightProps } from \"../types\";\n\nexport function DocCodeHighlight({\n  children,\n  className = \"\",\n}: DocCodeHighlightProps) {\n  useEffect(() => {\n    Prism.highlightAll();\n  }, [children]);\n\n  return <div className={className}>{children}</div>;\n}\n",
+      "type": "registry:file",
+      "target": "lib/docs/components/code-highlight.tsx"
+    }
+  ],
+  "categories": [
+    "docs"
+  ],
+  "type": "registry:component"
+}

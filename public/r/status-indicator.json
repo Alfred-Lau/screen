@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "status-indicator",
+  "title": "Status Indicator",
+  "description": "Service status indicator with online/offline/degraded/maintenance variants and pulse animation.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/dashboard/status-indicator.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport type StatusVariant = \"online\" | \"offline\" | \"degraded\" | \"maintenance\";\n\ninterface StatusIndicatorProps extends React.HTMLAttributes<HTMLDivElement> {\n  status: StatusVariant;\n  label?: string;\n  showLabel?: boolean;\n  showPulse?: boolean;\n  size?: \"sm\" | \"md\" | \"lg\";\n}\n\nexport function StatusIndicator({\n  status,\n  label,\n  showLabel = true,\n  showPulse = true,\n  size = \"md\",\n  className,\n  ...props\n}: StatusIndicatorProps) {\n  const statusConfig: Record<\n    StatusVariant,\n    { dotClass: string; pulseClass: string; textClass: string; defaultLabel: string }\n  > = {\n    online: {\n      dotClass: \"bg-emerald-500\",\n      pulseClass: \"bg-emerald-400\",\n      textClass: \"text-emerald-700 dark:text-emerald-400\",\n      defaultLabel: \"Online\",\n    },\n    offline: {\n      dotClass: \"bg-red-500\",\n      pulseClass: \"bg-red-400\",\n      textClass: \"text-red-700 dark:text-red-400\",\n      defaultLabel: \"Offline\",\n    },\n    degraded: {\n      dotClass: \"bg-yellow-500\",\n      pulseClass: \"bg-yellow-400\",\n      textClass: \"text-yellow-700 dark:text-yellow-400\",\n      defaultLabel: \"Degraded\",\n    },\n    maintenance: {\n      dotClass: \"bg-blue-500\",\n      pulseClass: \"bg-blue-400\",\n      textClass: \"text-blue-700 dark:text-blue-400\",\n      defaultLabel: \"Maintenance\",\n    },\n  };\n\n  const sizeConfig = {\n    sm: { dot: \"w-1.5 h-1.5\", pulse: \"w-1.5 h-1.5\", text: \"text-xs\" },\n    md: { dot: \"w-2 h-2\", pulse: \"w-2 h-2\", text: \"text-sm\" },\n    lg: { dot: \"w-3 h-3\", pulse: \"w-3 h-3\", text: \"text-base\" },\n  };\n\n  const config = statusConfig[status];\n  const sizes = sizeConfig[size];\n  const displayLabel = label ?? config.defaultLabel;\n\n  return (\n    <div className={cn(\"inline-flex items-center gap-2\", className)} {...props}>\n      <span className=\"relative flex shrink-0\">\n        {showPulse && status !== \"offline\" && (\n          <span\n            className={cn(\n              \"absolute inline-flex rounded-full opacity-75 animate-ping\",\n              sizes.pulse,\n              config.pulseClass\n            )}\n          />\n        )}\n        <span\n          className={cn(\"relative inline-flex rounded-full\", sizes.dot, config.dotClass)}\n        />\n      </span>\n      {showLabel && (\n        <span className={cn(\"font-medium\", sizes.text, config.textClass)}>\n          {displayLabel}\n        </span>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/dashboard/status-indicator.tsx"
+    }
+  ],
+  "categories": [
+    "dashboard"
+  ],
+  "type": "registry:component"
+}

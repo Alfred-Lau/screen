@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "doc-hooks",
+  "title": "Doc Hooks",
+  "description": "useDocsStructure and useTOC hooks for documentation pages.",
+  "dependencies": [
+    "next-intl"
+  ],
+  "registryDependencies": [
+    "https://screen.solokit.run/r/docs-base.json"
+  ],
+  "files": [
+    {
+      "path": "lib/docs/hooks/use-toc.ts",
+      "content": "\"use client\";\n\nimport { useState, useEffect, useCallback, useMemo } from \"react\";\nimport type { TOCItem } from \"../types\";\n\ninterface UseTOCOptions {\n  content: string;\n  scrollOffset?: number;\n}\n\ninterface UseTOCReturn {\n  items: TOCItem[];\n  activeId: string;\n  scrollToHeading: (id: string) => void;\n}\n\nfunction parseTocItems(content: string): TOCItem[] {\n  const headingRegex = /^(#{1,6})\\s+(.+)$/gm;\n  const tocItems: TOCItem[] = [];\n  const idCounts: Record<string, number> = {};\n  let match;\n\n  while ((match = headingRegex.exec(content)) !== null) {\n    const level = match[1].length;\n    const text = match[2].trim();\n    const baseId = text\n      .toLowerCase()\n      .replace(/[^a-z0-9\\u4e00-\\u9fa5]+/g, \"-\")\n      .replace(/^-+|-+$/g, \"\");\n\n    let id = baseId;\n    if (idCounts[baseId]) {\n      idCounts[baseId]++;\n      id = `${baseId}-${idCounts[baseId]}`;\n    } else {\n      idCounts[baseId] = 1;\n    }\n\n    tocItems.push({ id, text, level });\n  }\n\n  return tocItems;\n}\n\nexport function useTOC({ content, scrollOffset = 100 }: UseTOCOptions): UseTOCReturn {\n  const items = useMemo(() => parseTocItems(content), [content]);\n  const [activeId, setActiveId] = useState<string>(\"\");\n\n  useEffect(() => {\n    const handleScroll = () => {\n      const headings = items\n        .map((item) => ({\n          id: item.id,\n          element: document.getElementById(item.id),\n        }))\n        .filter((h) => h.element);\n\n      const scrollY = window.scrollY + scrollOffset;\n\n      for (let i = headings.length - 1; i >= 0; i--) {\n        const heading = headings[i];\n        if (heading.element && heading.element.offsetTop <= scrollY) {\n          setActiveId(heading.id);\n          break;\n        }\n      }\n    };\n\n    window.addEventListener(\"scroll\", handleScroll);\n    handleScroll();\n\n    return () => window.removeEventListener(\"scroll\", handleScroll);\n  }, [items, scrollOffset]);\n\n  const scrollToHeading = useCallback((id: string) => {\n    const element = document.getElementById(id);\n    if (element) {\n      element.scrollIntoView({\n        behavior: \"smooth\",\n        block: \"start\",\n      });\n    }\n  }, []);\n\n  return { items, activeId, scrollToHeading };\n}\n",
+      "type": "registry:file",
+      "target": "lib/docs/hooks/use-toc.ts"
+    },
+    {
+      "path": "lib/docs/hooks/use-docs-structure.ts",
+      "content": "\"use client\";\n\nimport { useState, useEffect } from \"react\";\nimport { useLocale } from \"next-intl\";\nimport type { DocItem } from \"../types\";\nimport { DEFAULT_DOCS_API_ENDPOINT, DEFAULT_NAV_ITEMS } from \"../constants\";\n\ninterface UseDocsStructureOptions {\n  apiEndpoint?: string;\n  fallbackItems?: DocItem[];\n}\n\ninterface UseDocsStructureReturn {\n  items: DocItem[];\n  isLoading: boolean;\n  error: Error | null;\n}\n\nexport function useDocsStructure(\n  options: UseDocsStructureOptions = {}\n): UseDocsStructureReturn {\n  const {\n    apiEndpoint = DEFAULT_DOCS_API_ENDPOINT,\n    fallbackItems = DEFAULT_NAV_ITEMS,\n  } = options;\n\n  const locale = useLocale();\n  const [items, setItems] = useState<DocItem[]>(fallbackItems);\n  const [isLoading, setIsLoading] = useState(true);\n  const [error, setError] = useState<Error | null>(null);\n\n  useEffect(() => {\n    async function loadDocsStructure() {\n      try {\n        const response = await fetch(`${apiEndpoint}?locale=${locale}`);\n        if (response.ok) {\n          const data = await response.json();\n          setItems(data.items || fallbackItems);\n        } else {\n          setItems(fallbackItems);\n        }\n      } catch (err) {\n        console.error(\"Failed to load docs structure:\", err);\n        setError(err instanceof Error ? err : new Error(String(err)));\n        setItems(fallbackItems);\n      } finally {\n        setIsLoading(false);\n      }\n    }\n\n    loadDocsStructure();\n  }, [locale, apiEndpoint, fallbackItems]);\n\n  return { items, isLoading, error };\n}\n",
+      "type": "registry:file",
+      "target": "lib/docs/hooks/use-docs-structure.ts"
+    }
+  ],
+  "categories": [
+    "docs"
+  ],
+  "type": "registry:hook"
+}

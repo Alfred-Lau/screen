@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "docs-base",
+  "title": "Docs Base Types",
+  "description": "Shared types and constants for documentation components.",
+  "files": [
+    {
+      "path": "lib/docs/types.ts",
+      "content": "import { ReactNode } from \"react\";\n\nexport interface DocItem {\n  title: string;\n  href: string;\n  icon?: string;\n  children?: DocItem[];\n  isDirectory?: boolean;\n  isFile?: boolean;\n}\n\nexport interface DocStructure {\n  items: DocItem[];\n  totalCount: number;\n}\n\nexport interface TOCItem {\n  id: string;\n  text: string;\n  level: number;\n}\n\nexport interface DocLayoutProps {\n  children: ReactNode;\n  navItems?: DocItem[];\n  className?: string;\n  /** Custom header component to replace the default */\n  header?: ReactNode;\n  /** Custom footer component to replace the default */\n  footer?: ReactNode;\n  /** Custom search component to replace the default */\n  searchComponent?: ReactNode;\n  /** API endpoint to fetch docs structure. Defaults to \"/api/docs/structure\" */\n  structureApiEndpoint?: string;\n  /** Labels for mobile sidebar */\n  mobileLabels?: {\n    title?: string;\n    toggle?: string;\n  };\n}\n\nexport interface DocSidebarNavigationProps {\n  items: DocItem[];\n  className?: string;\n  /** Base path prefix for doc links. Defaults to \"/{locale}/docs\" */\n  basePath?: string;\n}\n\nexport interface DocSearchProps {\n  className?: string;\n  /** API endpoint to fetch docs structure for search. Defaults to \"/api/docs/structure\" */\n  structureApiEndpoint?: string;\n  /** Base path prefix for doc links. Defaults to \"/{locale}/docs\" */\n  basePath?: string;\n  /** i18n labels for the search dialog */\n  labels?: {\n    buttonText?: string;\n    placeholder?: string;\n    dialogTitle?: string;\n    noResults?: string;\n    groupHeading?: string;\n  };\n}\n\nexport interface DocBreadcrumbProps {\n  slug: string;\n  title: string;\n  className?: string;\n  /** Base path prefix for doc links. Defaults to \"/{locale}/docs\" */\n  basePath?: string;\n  /** Custom slug-to-name mapper */\n  getSegmentName?: (slug: string) => string;\n  /** i18n labels */\n  labels?: {\n    home?: string;\n    docs?: string;\n  };\n}\n\nexport interface DocTableOfContentsProps {\n  content: string;\n  className?: string;\n  /** Label for the TOC heading. Defaults to \"On this page\" */\n  title?: string;\n}\n\nexport interface DocContentProps {\n  title: string;\n  description?: string;\n  children: ReactNode;\n  className?: string;\n}\n\nexport interface DocReadingProgressProps {\n  className?: string;\n}\n\nexport interface DocNavigationProps {\n  currentSlug: string;\n  className?: string;\n  /** Flat ordered list of all doc items for prev/next navigation */\n  items?: DocItem[];\n  /** Base path prefix for doc links. Defaults to \"/{locale}/docs\" */\n  basePath?: string;\n  /** i18n labels */\n  labels?: {\n    prev?: string;\n    next?: string;\n  };\n}\n\nexport interface DocCodeHighlightProps {\n  children: ReactNode;\n  className?: string;\n}\n\nexport interface DocsStructureConfig {\n  docsDir: string;\n  locale?: string;\n}\n\nexport interface MDXCardProps {\n  title: string;\n  description?: string;\n  href: string;\n  icon?: ReactNode;\n  image?: string;\n}\n",
+      "type": "registry:file",
+      "target": "lib/docs/types.ts"
+    },
+    {
+      "path": "lib/docs/constants.ts",
+      "content": "export const DEFAULT_DOCS_API_ENDPOINT = \"/api/docs/structure\";\nexport const DEFAULT_DOCS_BASE_PATH = \"/docs\";\n\nexport const DEFAULT_NAV_ITEMS = [\n  { title: \"Getting Started\", href: \"getting-started\", icon: \"🚀\", isFile: true },\n  { title: \"AI Crawler\", href: \"ai-crawler\", icon: \"🤖\", isFile: true },\n  { title: \"SEO\", href: \"seo\", icon: \"🔍\", isFile: true },\n  { title: \"Geo\", href: \"geo\", icon: \"🌍\", isFile: true },\n  { title: \"Agent Usage\", href: \"agent-usage\", icon: \"🛠️\", isFile: true },\n  { title: \"FAQ\", href: \"faq\", icon: \"❓\", isFile: true },\n];\n\nexport const DIRECTORY_ICON_MAP: Record<string, string> = {\n  zh: \"🇨🇳\",\n  en: \"🇺🇸\",\n  components: \"🧩\",\n  utils: \"🔧\",\n  examples: \"📝\",\n  guides: \"📚\",\n  api: \"🔌\",\n  tutorials: \"🎓\",\n  reference: \"📖\",\n};\n\nexport const FILE_ICON_MAP: Record<string, string> = {\n  \"getting-started\": \"🚀\",\n  \"ai-crawler\": \"🤖\",\n  seo: \"🔍\",\n  geo: \"🌍\",\n  \"agent-usage\": \"🛠️\",\n  faq: \"❓\",\n  readme: \"📖\",\n  index: \"🏠\",\n};\n",
+      "type": "registry:file",
+      "target": "lib/docs/constants.ts"
+    }
+  ],
+  "categories": [
+    "docs"
+  ],
+  "type": "registry:lib"
+}

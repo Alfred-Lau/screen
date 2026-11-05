@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "testimonial-grid",
+  "title": "Testimonial Grid",
+  "description": "Testimonial section with masonry or uniform grid layout and headline area.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "https://screen.solokit.run/r/testimonial-card.json"
+  ],
+  "files": [
+    {
+      "path": "lib/marketing/testimonial-grid.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { TestimonialCard } from \"./testimonial-card\";\n\ninterface Testimonial {\n  quote: string;\n  author: string;\n  role?: string;\n  company?: string;\n  avatar?: string;\n  rating?: number;\n  featured?: boolean;\n}\n\ninterface TestimonialGridProps extends React.HTMLAttributes<HTMLElement> {\n  headline?: string;\n  subheadline?: string;\n  description?: string;\n  testimonials: Testimonial[];\n  layout?: \"grid\" | \"masonry\";\n  columns?: 2 | 3;\n}\n\nexport function TestimonialGrid({\n  headline,\n  subheadline,\n  description,\n  testimonials,\n  layout = \"grid\",\n  columns = 3,\n  className,\n  ...props\n}: TestimonialGridProps) {\n  return (\n    <section className={cn(\"w-full py-16\", className)} {...props}>\n      <div className=\"mx-auto max-w-5xl px-6\">\n        {(headline || description) && (\n          <div className=\"text-center mb-12\">\n            {subheadline && (\n              <p className=\"text-sm font-semibold uppercase tracking-widest text-primary mb-3\">\n                {subheadline}\n              </p>\n            )}\n            {headline && (\n              <h2 className=\"text-3xl font-bold text-foreground md:text-4xl\">{headline}</h2>\n            )}\n            {description && (\n              <p className=\"mt-4 text-muted-foreground max-w-xl mx-auto\">{description}</p>\n            )}\n          </div>\n        )}\n\n        {layout === \"masonry\" ? (\n          <div className={cn(\n            \"columns-1 gap-6\",\n            columns === 2 ? \"sm:columns-2\" : \"sm:columns-2 lg:columns-3\"\n          )}>\n            {testimonials.map((t, i) => (\n              <div key={i} className=\"break-inside-avoid mb-6\">\n                <TestimonialCard\n                  quote={t.quote}\n                  author={t.author}\n                  role={t.role}\n                  company={t.company}\n                  avatar={t.avatar}\n                  rating={t.rating}\n                  featured={t.featured}\n                />\n              </div>\n            ))}\n          </div>\n        ) : (\n          <div className={cn(\n            \"grid grid-cols-1 gap-6\",\n            columns === 2 ? \"sm:grid-cols-2\" : \"sm:grid-cols-2 lg:grid-cols-3\"\n          )}>\n            {testimonials.map((t, i) => (\n              <TestimonialCard\n                key={i}\n                quote={t.quote}\n                author={t.author}\n                role={t.role}\n                company={t.company}\n                avatar={t.avatar}\n                rating={t.rating}\n                featured={t.featured}\n              />\n            ))}\n          </div>\n        )}\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/marketing/testimonial-grid.tsx"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "type": "registry:block"
+}

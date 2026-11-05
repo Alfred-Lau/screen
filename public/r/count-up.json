@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "count-up",
+  "title": "Count Up",
+  "description": "Animated number counter that counts from a start value to target on viewport entry.",
+  "dependencies": [
+    "framer-motion",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/animation/count-up.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { motion, useMotionValue, useTransform, animate } from \"framer-motion\";\nimport { cn } from \"@/lib/cn\";\n\nexport interface CountUpProps {\n  from?: number;\n  to: number;\n  duration?: number;\n  delay?: number;\n  prefix?: string;\n  suffix?: string;\n  decimals?: number;\n  separator?: string;\n  once?: boolean;\n  className?: string;\n  /** Increment this value to replay the count-up animation */\n  replayKey?: number;\n}\n\nfunction formatNumber(n: number, decimals: number, separator: string): string {\n  const fixed = n.toFixed(decimals);\n  const [int, dec] = fixed.split(\".\");\n  const formatted = int.replace(/\\B(?=(\\d{3})+(?!\\d))/g, separator);\n  return dec !== undefined ? `${formatted}.${dec}` : formatted;\n}\n\nexport function CountUp({\n  from = 0,\n  to,\n  duration = 2,\n  delay = 0,\n  prefix = \"\",\n  suffix = \"\",\n  decimals = 0,\n  separator = \",\",\n  once = true,\n  className,\n  replayKey,\n}: CountUpProps) {\n  const count = useMotionValue(from);\n  const [display, setDisplay] = React.useState(\n    formatNumber(from, decimals, separator)\n  );\n  const [hasStarted, setHasStarted] = React.useState(false);\n\n  React.useEffect(() => {\n    const unsub = count.on(\"change\", (latest) => {\n      setDisplay(formatNumber(latest, decimals, separator));\n    });\n    return unsub;\n  }, [count, decimals, separator]);\n\n  // When replayKey changes, reset and restart\n  React.useEffect(() => {\n    if (replayKey === undefined || replayKey === 0) return;\n    count.set(from);\n    setDisplay(formatNumber(from, decimals, separator));\n    setHasStarted(false);\n    const timer = setTimeout(() => {\n      setHasStarted(true);\n      setTimeout(() => {\n        animate(count, to, { duration, ease: [0.16, 1, 0.3, 1] });\n      }, delay * 1000);\n    }, 50);\n    return () => clearTimeout(timer);\n  }, [replayKey]);\n\n  function startAnimation() {\n    if (hasStarted) return;\n    setHasStarted(true);\n    setTimeout(() => {\n      animate(count, to, {\n        duration,\n        ease: [0.16, 1, 0.3, 1],\n      });\n    }, delay * 1000);\n  }\n\n  return (\n    <motion.span\n      className={cn(\"tabular-nums\", className)}\n      onViewportEnter={startAnimation}\n      viewport={{ once }}\n    >\n      {prefix}\n      {display}\n      {suffix}\n    </motion.span>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/animation/count-up.tsx"
+    }
+  ],
+  "categories": [
+    "animation"
+  ],
+  "type": "registry:component"
+}

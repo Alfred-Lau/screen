@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "newsletter-form",
+  "title": "Newsletter Form",
+  "description": "Email newsletter subscription form with horizontal/vertical layout and success/error states.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/marketing/newsletter-form.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Mail, CheckCircle, Loader2 } from \"lucide-react\";\n\nexport type NewsletterLayout = \"horizontal\" | \"vertical\";\nexport type NewsletterState = \"idle\" | \"loading\" | \"success\" | \"error\";\n\ninterface NewsletterFormProps extends Omit<React.HTMLAttributes<HTMLDivElement>, \"onSubmit\"> {\n  layout?: NewsletterLayout;\n  placeholder?: string;\n  ctaLabel?: string;\n  privacyNote?: React.ReactNode;\n  successMessage?: string;\n  errorMessage?: string;\n  onSubmit?: (email: string) => Promise<void> | void;\n}\n\nexport function NewsletterForm({\n  layout = \"horizontal\",\n  placeholder = \"Enter your email\",\n  ctaLabel = \"Subscribe\",\n  privacyNote,\n  successMessage = \"You're subscribed! Check your inbox.\",\n  errorMessage = \"Something went wrong. Please try again.\",\n  onSubmit,\n  className,\n  ...props\n}: NewsletterFormProps) {\n  const [email, setEmail] = React.useState(\"\");\n  const [state, setState] = React.useState<NewsletterState>(\"idle\");\n  const [message, setMessage] = React.useState(\"\");\n\n  const handleSubmit = async (e: React.FormEvent) => {\n    e.preventDefault();\n    if (!email || !email.includes(\"@\")) return;\n\n    setState(\"loading\");\n    try {\n      await onSubmit?.(email);\n      setState(\"success\");\n      setMessage(successMessage);\n      setEmail(\"\");\n    } catch {\n      setState(\"error\");\n      setMessage(errorMessage);\n    }\n  };\n\n  if (state === \"success\") {\n    return (\n      <div className={cn(\"flex items-center gap-3 py-3 text-emerald-600 dark:text-emerald-400\", className)}>\n        <CheckCircle className=\"size-5 shrink-0\" />\n        <p className=\"text-sm font-medium\">{message}</p>\n      </div>\n    );\n  }\n\n  return (\n    <div className={cn(\"w-full\", className)} {...props}>\n      <form\n        onSubmit={handleSubmit}\n        className={cn(\n          \"flex gap-2\",\n          layout === \"vertical\" ? \"flex-col\" : \"flex-row flex-wrap\"\n        )}\n      >\n        <div className=\"relative flex-1 min-w-[200px]\">\n          <Mail className=\"absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground pointer-events-none\" />\n          <input\n            type=\"email\"\n            value={email}\n            onChange={(e) => setEmail(e.target.value)}\n            placeholder={placeholder}\n            disabled={state === \"loading\"}\n            required\n            className={cn(\n              \"w-full pl-9 pr-4 py-2.5 rounded-xl border border-input bg-background\",\n              \"text-sm text-foreground placeholder:text-muted-foreground\",\n              \"focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent\",\n              \"transition-colors disabled:opacity-50\"\n            )}\n          />\n        </div>\n        <button\n          type=\"submit\"\n          disabled={state === \"loading\" || !email}\n          className={cn(\n            \"flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl\",\n            \"bg-primary text-primary-foreground text-sm font-semibold\",\n            \"hover:bg-primary/90 transition-colors\",\n            \"disabled:opacity-50 disabled:cursor-not-allowed\",\n            layout === \"vertical\" && \"w-full\"\n          )}\n        >\n          {state === \"loading\" ? (\n            <Loader2 className=\"size-4 animate-spin\" />\n          ) : ctaLabel}\n        </button>\n      </form>\n\n      {state === \"error\" && (\n        <p className=\"mt-2 text-xs text-red-600 dark:text-red-400\">{message}</p>\n      )}\n\n      {privacyNote && (\n        <div className=\"mt-2 text-xs text-muted-foreground\">{privacyNote}</div>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/marketing/newsletter-form.tsx"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "type": "registry:component"
+}

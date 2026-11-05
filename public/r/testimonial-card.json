@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "testimonial-card",
+  "title": "Testimonial Card",
+  "description": "User testimonial card with quote, author, role, company, rating stars, and featured variant.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/marketing/testimonial-card.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Star } from \"lucide-react\";\n\nexport type TestimonialVariant = \"compact\" | \"full\";\n\ninterface TestimonialCardProps extends React.HTMLAttributes<HTMLDivElement> {\n  quote: string;\n  author: string;\n  role?: string;\n  company?: string;\n  avatar?: string;\n  rating?: number;\n  variant?: TestimonialVariant;\n  featured?: boolean;\n}\n\nexport function TestimonialCard({\n  quote,\n  author,\n  role,\n  company,\n  avatar,\n  rating,\n  variant = \"full\",\n  featured = false,\n  className,\n  ...props\n}: TestimonialCardProps) {\n  const initials = author\n    .split(\" \")\n    .slice(0, 2)\n    .map((n) => n[0])\n    .join(\"\")\n    .toUpperCase();\n\n  return (\n    <div\n      className={cn(\n        \"rounded-xl border border-border bg-card p-6 flex flex-col gap-4\",\n        \"transition-shadow duration-200 hover:shadow-md\",\n        featured && \"border-primary/30 bg-primary/5\",\n        variant === \"compact\" && \"p-4 gap-3\",\n        className\n      )}\n      {...props}\n    >\n      {/* Rating */}\n      {rating !== undefined && (\n        <div className=\"flex items-center gap-0.5\">\n          {Array.from({ length: 5 }).map((_, i) => (\n            <Star\n              key={i}\n              className={cn(\n                \"size-4\",\n                i < rating ? \"fill-yellow-400 text-yellow-400\" : \"fill-muted text-muted\"\n              )}\n            />\n          ))}\n        </div>\n      )}\n\n      {/* Quote */}\n      <blockquote className={cn(\"text-foreground leading-relaxed\", variant === \"compact\" ? \"text-sm\" : \"text-sm\")}>\n        &ldquo;{quote}&rdquo;\n      </blockquote>\n\n      {/* Author */}\n      <div className=\"flex items-center gap-3 mt-auto\">\n        <div className=\"w-9 h-9 rounded-full overflow-hidden shrink-0 bg-primary/10 flex items-center justify-center\">\n          {avatar ? (\n            <img src={avatar} alt={author} className=\"w-full h-full object-cover\" />\n          ) : (\n            <span className=\"text-xs font-semibold text-primary\">{initials}</span>\n          )}\n        </div>\n        <div>\n          <p className=\"text-sm font-semibold text-foreground leading-tight\">{author}</p>\n          {(role || company) && (\n            <p className=\"text-xs text-muted-foreground leading-tight\">\n              {[role, company].filter(Boolean).join(\", \")}\n            </p>\n          )}\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/marketing/testimonial-card.tsx"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "type": "registry:component"
+}

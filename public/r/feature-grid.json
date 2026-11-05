@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature-grid",
+  "title": "Feature Grid",
+  "description": "Responsive 3-column feature grid with headline, description, and FeatureCard components.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "https://screen.solokit.run/r/feature-card.json"
+  ],
+  "files": [
+    {
+      "path": "lib/marketing/feature-grid.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { FeatureCard } from \"./feature-card\";\n\ninterface FeatureItem {\n  icon?: React.ReactNode;\n  title: string;\n  description: string;\n  badge?: string;\n}\n\ninterface FeatureGridProps extends React.HTMLAttributes<HTMLElement> {\n  headline?: string;\n  subheadline?: string;\n  description?: string;\n  features: FeatureItem[];\n  columns?: 2 | 3 | 4;\n  cardVariant?: \"simple\" | \"bordered\" | \"gradient\";\n  align?: \"center\" | \"left\";\n}\n\nconst colsMap = {\n  2: \"sm:grid-cols-2\",\n  3: \"sm:grid-cols-2 lg:grid-cols-3\",\n  4: \"sm:grid-cols-2 lg:grid-cols-4\",\n};\n\nexport function FeatureGrid({\n  headline,\n  subheadline,\n  description,\n  features,\n  columns = 3,\n  cardVariant = \"bordered\",\n  align = \"center\",\n  className,\n  ...props\n}: FeatureGridProps) {\n  return (\n    <section className={cn(\"w-full py-16\", className)} {...props}>\n      <div className=\"mx-auto max-w-5xl px-6\">\n        {(headline || description) && (\n          <div className={cn(\"mb-12\", align === \"center\" && \"text-center\")}>\n            {subheadline && (\n              <p className=\"text-sm font-semibold uppercase tracking-widest text-primary mb-3\">\n                {subheadline}\n              </p>\n            )}\n            {headline && (\n              <h2 className=\"text-3xl font-bold text-foreground md:text-4xl\">{headline}</h2>\n            )}\n            {description && (\n              <p className={cn(\"mt-4 text-muted-foreground text-base md:text-lg leading-relaxed\", align === \"center\" && \"max-w-2xl mx-auto\")}>\n                {description}\n              </p>\n            )}\n          </div>\n        )}\n\n        <div className={cn(\"grid grid-cols-1 gap-6\", colsMap[columns])}>\n          {features.map((feature, i) => (\n            <FeatureCard\n              key={i}\n              icon={feature.icon}\n              title={feature.title}\n              description={feature.description}\n              badge={feature.badge}\n              variant={cardVariant}\n            />\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/marketing/feature-grid.tsx"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "type": "registry:block"
+}

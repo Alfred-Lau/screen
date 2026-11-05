@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "particle-burst",
+  "title": "Particle Burst",
+  "description": "Colourful particle explosion on hover, click, or mount.",
+  "dependencies": [
+    "framer-motion",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/animation/particle-burst.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { motion, AnimatePresence } from \"framer-motion\";\nimport { cn } from \"@/lib/cn\";\n\ninterface Particle {\n  id: number;\n  x: number;\n  y: number;\n  angle: number;\n  speed: number;\n  size: number;\n  color: string;\n}\n\nconst BURST_COLORS = [\n  \"#8B5CF6\", \"#EC4899\", \"#F59E0B\", \"#10B981\", \"#3B82F6\", \"#EF4444\",\n];\n\nexport interface ParticleBurstProps {\n  children?: React.ReactNode;\n  particleCount?: number;\n  trigger?: \"hover\" | \"click\" | \"mount\";\n  className?: string;\n}\n\nexport function ParticleBurst({\n  children,\n  particleCount = 20,\n  trigger = \"hover\",\n  className,\n}: ParticleBurstProps) {\n  const [particles, setParticles] = React.useState<Particle[]>([]);\n  const containerRef = React.useRef<HTMLDivElement>(null);\n\n  function spawnParticles() {\n    const el = containerRef.current;\n    if (!el) return;\n    const rect = el.getBoundingClientRect();\n    const cx = rect.width / 2;\n    const cy = rect.height / 2;\n    const ps: Particle[] = Array.from({ length: particleCount }, (_, i) => ({\n      id: Date.now() + i,\n      x: cx,\n      y: cy,\n      angle: (360 / particleCount) * i + Math.random() * 10,\n      speed: 30 + Math.random() * 50,\n      size: 3 + Math.random() * 4,\n      color: BURST_COLORS[Math.floor(Math.random() * BURST_COLORS.length)],\n    }));\n    setParticles(ps);\n    setTimeout(() => setParticles([]), 1200);\n  }\n\n  React.useEffect(() => {\n    if (trigger === \"mount\") {\n      const t = setTimeout(spawnParticles, 200);\n      return () => clearTimeout(t);\n    }\n  }, [trigger]);\n\n  return (\n    <div\n      ref={containerRef}\n      className={cn(\"relative inline-flex items-center justify-center\", className)}\n      onMouseEnter={() => trigger === \"hover\" && spawnParticles()}\n      onClick={() => trigger === \"click\" && spawnParticles()}\n    >\n      <AnimatePresence>\n        {particles.map((p) => {\n          const rad = (p.angle * Math.PI) / 180;\n          const tx = Math.cos(rad) * p.speed;\n          const ty = Math.sin(rad) * p.speed;\n          return (\n            <motion.span\n              key={p.id}\n              className=\"absolute rounded-full pointer-events-none\"\n              style={{\n                left: p.x - p.size / 2,\n                top: p.y - p.size / 2,\n                width: p.size,\n                height: p.size,\n                backgroundColor: p.color,\n              }}\n              initial={{ x: 0, y: 0, opacity: 1, scale: 1 }}\n              animate={{ x: tx, y: ty, opacity: 0, scale: 0 }}\n              exit={{ opacity: 0 }}\n              transition={{ duration: 0.9, ease: [0.1, 0.8, 0.3, 1] }}\n            />\n          );\n        })}\n      </AnimatePresence>\n      {children}\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/animation/particle-burst.tsx"
+    }
+  ],
+  "categories": [
+    "animation"
+  ],
+  "type": "registry:component"
+}

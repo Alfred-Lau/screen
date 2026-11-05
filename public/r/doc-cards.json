@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "doc-cards",
+  "title": "Doc MDX Cards",
+  "description": "Card and CardGrid components for navigation links within MDX documentation.",
+  "dependencies": [
+    "next"
+  ],
+  "files": [
+    {
+      "path": "lib/docs/components/mdx/cards.tsx",
+      "content": "import Link from \"next/link\";\nimport Image from \"next/image\";\nimport React from \"react\";\nimport type { MDXCardProps } from \"../../types\";\n\nexport function Card({ title, description, href, icon, image }: MDXCardProps) {\n  return (\n    <Link\n      href={href}\n      className=\"group flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white hover:border-slate-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700 dark:hover:shadow-slate-900/50 transition-all duration-200\"\n    >\n      {image && (\n        <div className=\"aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-800 relative\">\n          <Image\n            src={image}\n            alt={title}\n            fill\n            className=\"object-cover transition-transform duration-300 group-hover:scale-105\"\n          />\n        </div>\n      )}\n      <div className=\"p-4\">\n        <div className=\"flex items-center gap-3\">\n          {icon && (\n            <div className=\"flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-900 dark:bg-slate-800 dark:text-slate-100 group-hover:bg-blue-500 group-hover:text-white transition-colors\">\n              {icon}\n            </div>\n          )}\n          <h3 className=\"font-semibold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400\">\n            {title}\n          </h3>\n        </div>\n        {description && (\n          <p className=\"mt-2 text-sm text-slate-600 dark:text-slate-400 line-clamp-2\">\n            {description}\n          </p>\n        )}\n      </div>\n    </Link>\n  );\n}\n\nexport function CardGrid({ children }: { children: React.ReactNode }) {\n  return (\n    <div className=\"grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 my-8\">\n      {children}\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/docs/components/mdx/cards.tsx"
+    }
+  ],
+  "categories": [
+    "docs"
+  ],
+  "type": "registry:component"
+}

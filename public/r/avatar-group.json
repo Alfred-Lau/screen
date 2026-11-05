@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-group",
+  "title": "Avatar Group",
+  "description": "Stacked avatar group with max display count, overflow badge, and tooltip on hover.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "https://screen.solokit.run/r/user-avatar.json"
+  ],
+  "files": [
+    {
+      "path": "lib/dashboard/avatar-group.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { UserAvatar } from \"./user-avatar\";\n\ninterface AvatarItem {\n  src?: string;\n  name?: string;\n  alt?: string;\n}\n\ninterface AvatarGroupProps extends React.HTMLAttributes<HTMLDivElement> {\n  avatars: AvatarItem[];\n  max?: number;\n  size?: \"xs\" | \"sm\" | \"md\" | \"lg\";\n  showTooltip?: boolean;\n  showCount?: boolean;\n}\n\nconst sizeOffsets = {\n  xs: \"-ml-1.5\",\n  sm: \"-ml-2\",\n  md: \"-ml-3\",\n  lg: \"-ml-4\",\n};\n\nconst countSizes = {\n  xs: \"w-6 h-6 text-xs\",\n  sm: \"w-8 h-8 text-xs\",\n  md: \"w-10 h-10 text-sm\",\n  lg: \"w-12 h-12 text-sm\",\n};\n\nexport function AvatarGroup({\n  avatars,\n  max = 4,\n  size = \"md\",\n  showTooltip = true,\n  showCount = true,\n  className,\n  ...props\n}: AvatarGroupProps) {\n  const visibleAvatars = avatars.slice(0, max);\n  const remainingCount = Math.max(0, avatars.length - max);\n\n  return (\n    <div className={cn(\"flex items-center\", className)} {...props}>\n      {visibleAvatars.map((avatar, index) => (\n        <div\n          key={index}\n          className={cn(\n            \"relative group\",\n            index > 0 && sizeOffsets[size]\n          )}\n          title={showTooltip ? avatar.name ?? avatar.alt : undefined}\n        >\n          <UserAvatar\n            src={avatar.src}\n            name={avatar.name}\n            alt={avatar.alt}\n            size={size}\n            showStatus={false}\n          />\n          {showTooltip && (avatar.name ?? avatar.alt) && (\n            <div className=\"absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded-md bg-popover border border-border text-popover-foreground text-xs whitespace-nowrap shadow-md opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-50\">\n              {avatar.name ?? avatar.alt}\n            </div>\n          )}\n        </div>\n      ))}\n\n      {remainingCount > 0 && showCount && (\n        <div\n          className={cn(\n            \"relative flex items-center justify-center rounded-full bg-muted text-muted-foreground font-semibold ring-2 ring-background shrink-0\",\n            sizeOffsets[size],\n            countSizes[size]\n          )}\n        >\n          +{remainingCount}\n        </div>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/dashboard/avatar-group.tsx"
+    }
+  ],
+  "categories": [
+    "dashboard"
+  ],
+  "type": "registry:component"
+}

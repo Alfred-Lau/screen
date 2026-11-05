@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "doc-table-of-contents",
+  "title": "Doc Table of Contents",
+  "description": "Auto-generated TOC from markdown headings with scroll spy and smooth scrolling.",
+  "registryDependencies": [
+    "https://screen.solokit.run/r/docs-base.json"
+  ],
+  "files": [
+    {
+      "path": "lib/docs/components/table-of-contents.tsx",
+      "content": "\"use client\";\n\nimport { useEffect, useState, useMemo } from \"react\";\nimport type { TOCItem, DocTableOfContentsProps } from \"../types\";\n\nfunction parseTocItems(content: string): TOCItem[] {\n  const headingRegex = /^(#{1,6})\\s+(.+)$/gm;\n  const items: TOCItem[] = [];\n  const idCounts: Record<string, number> = {};\n  let match;\n\n  while ((match = headingRegex.exec(content)) !== null) {\n    const level = match[1].length;\n    const text = match[2].trim();\n    const baseId = text\n      .toLowerCase()\n      .replace(/[^a-z0-9\\u4e00-\\u9fa5]+/g, \"-\")\n      .replace(/^-+|-+$/g, \"\");\n\n    let id = baseId;\n    if (idCounts[baseId]) {\n      idCounts[baseId]++;\n      id = `${baseId}-${idCounts[baseId]}`;\n    } else {\n      idCounts[baseId] = 1;\n    }\n\n    items.push({ id, text, level });\n  }\n\n  return items;\n}\n\nexport function DocTableOfContents({\n  content,\n  className = \"\",\n  title = \"On this page\",\n}: DocTableOfContentsProps) {\n  const tocItems = useMemo(() => parseTocItems(content), [content]);\n  const [activeId, setActiveId] = useState<string>(\"\");\n\n  useEffect(() => {\n    const handleScroll = () => {\n      const headings = tocItems\n        .map((item) => ({\n          id: item.id,\n          element: document.getElementById(item.id),\n        }))\n        .filter((h) => h.element);\n\n      const scrollY = window.scrollY + 100;\n\n      for (let i = headings.length - 1; i >= 0; i--) {\n        const heading = headings[i];\n        if (heading.element && heading.element.offsetTop <= scrollY) {\n          setActiveId(heading.id);\n          break;\n        }\n      }\n    };\n\n    window.addEventListener(\"scroll\", handleScroll);\n    handleScroll();\n\n    return () => window.removeEventListener(\"scroll\", handleScroll);\n  }, [tocItems]);\n\n  const scrollToHeading = (id: string) => {\n    const element = document.getElementById(id);\n    if (element) {\n      element.scrollIntoView({\n        behavior: \"smooth\",\n        block: \"start\",\n      });\n    }\n  };\n\n  if (tocItems.length === 0) return null;\n\n  return (\n    <nav className={`sticky top-24 h-[calc(100vh-6rem)] overflow-y-auto custom-scrollbar pb-10 ${className}`}>\n      <h3 className=\"font-semibold text-slate-900 dark:text-slate-100 mb-4 text-sm\">\n        {title}\n      </h3>\n      <ul className=\"space-y-2 text-sm border-l border-slate-200 dark:border-slate-800 pl-1\">\n        {tocItems.map((item) => (\n          <li key={item.id}>\n            <button\n              onClick={() => scrollToHeading(item.id)}\n              className={`\n                block w-full text-left py-1 px-3 -ml-[1px] border-l-2 transition-colors duration-200\n                ${\n                  activeId === item.id\n                    ? \"border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400 font-medium\"\n                    : \"border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200\"\n                }\n                ${item.level > 2 ? \"ml-3\" : \"\"}\n              `}\n            >\n              {item.text}\n            </button>\n          </li>\n        ))}\n      </ul>\n    </nav>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/docs/components/table-of-contents.tsx"
+    }
+  ],
+  "categories": [
+    "docs"
+  ],
+  "type": "registry:component"
+}

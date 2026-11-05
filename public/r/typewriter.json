@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typewriter",
+  "title": "Typewriter",
+  "description": "Typewriter text animation effect for streaming AI responses.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/chatbot/typewriter.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface TypewriterProps extends React.HTMLAttributes<HTMLSpanElement> {\n  text: string;\n  speed?: number;\n  enabled?: boolean;\n  cursor?: boolean;\n  cursorChar?: string;\n  renderContent?: (text: string) => React.ReactNode;\n  onComplete?: () => void;\n}\n\nexport function Typewriter({\n  text,\n  speed = 30,\n  enabled = true,\n  cursor = true,\n  cursorChar = \"|\",\n  renderContent,\n  onComplete,\n  className,\n  ...props\n}: TypewriterProps) {\n  const [displayText, setDisplayText] = React.useState(\"\");\n  const [currentIndex, setCurrentIndex] = React.useState(0);\n  const [isComplete, setIsComplete] = React.useState(!enabled);\n\n  React.useEffect(() => {\n    if (!enabled) {\n      setDisplayText(text);\n      setIsComplete(true);\n      return;\n    }\n\n    if (currentIndex < text.length) {\n      const timer = setTimeout(() => {\n        setDisplayText(text.slice(0, currentIndex + 1));\n        setCurrentIndex(currentIndex + 1);\n      }, speed);\n\n      return () => clearTimeout(timer);\n    } else if (currentIndex > 0 && !isComplete) {\n      setIsComplete(true);\n      onComplete?.();\n    }\n  }, [currentIndex, text, speed, enabled, isComplete, onComplete]);\n\n  React.useEffect(() => {\n    setCurrentIndex(0);\n    setDisplayText(\"\");\n    setIsComplete(!enabled);\n  }, [text, enabled]);\n\n  const content = renderContent ? renderContent(displayText) : displayText;\n\n  return (\n    <span className={cn(\"inline\", className)} {...props}>\n      {content}\n      {cursor && enabled && !isComplete && (\n        <span className=\"animate-pulse\">{cursorChar}</span>\n      )}\n    </span>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/chatbot/typewriter.tsx"
+    }
+  ],
+  "categories": [
+    "chatbot"
+  ],
+  "type": "registry:component"
+}

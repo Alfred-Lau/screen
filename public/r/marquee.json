@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marquee",
+  "title": "Marquee",
+  "description": "Infinite horizontal scroll marquee with pause-on-hover support.",
+  "dependencies": [
+    "framer-motion",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/animation/marquee.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { motion } from \"framer-motion\";\nimport { cn } from \"@/lib/cn\";\n\nexport interface MarqueeProps {\n  children: React.ReactNode;\n  speed?: number;\n  reverse?: boolean;\n  pauseOnHover?: boolean;\n  gap?: number;\n  className?: string;\n  itemClassName?: string;\n}\n\nexport function Marquee({\n  children,\n  speed = 40,\n  reverse = false,\n  pauseOnHover = true,\n  gap = 32,\n  className,\n  itemClassName,\n}: MarqueeProps) {\n  const [isPaused, setIsPaused] = React.useState(false);\n  const items = React.Children.toArray(children);\n  // Duplicate items to create seamless loop\n  const duplicated = [...items, ...items, ...items];\n\n  return (\n    <div\n      className={cn(\"overflow-hidden w-full\", className)}\n      onMouseEnter={() => pauseOnHover && setIsPaused(true)}\n      onMouseLeave={() => pauseOnHover && setIsPaused(false)}\n    >\n      <motion.div\n        className=\"flex\"\n        style={{ gap }}\n        animate={\n          isPaused\n            ? {}\n            : { x: reverse ? [\"-33.333%\", \"0%\"] : [\"0%\", \"-33.333%\"] }\n        }\n        transition={{\n          duration: (items.length * 120) / speed,\n          ease: \"linear\",\n          repeat: Infinity,\n          repeatType: \"loop\",\n        }}\n      >\n        {duplicated.map((child, i) => (\n          <div key={i} className={cn(\"shrink-0\", itemClassName)}>\n            {child}\n          </div>\n        ))}\n      </motion.div>\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/animation/marquee.tsx"
+    }
+  ],
+  "categories": [
+    "animation"
+  ],
+  "type": "registry:component"
+}

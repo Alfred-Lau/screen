@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fade-in",
+  "title": "Fade In",
+  "description": "Animate elements into view with configurable fade and directional slide.",
+  "dependencies": [
+    "framer-motion",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/animation/fade-in.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { motion, type Variants } from \"framer-motion\";\nimport { cn } from \"@/lib/cn\";\n\nexport type FadeInDirection = \"up\" | \"down\" | \"left\" | \"right\" | \"none\";\n\nexport interface FadeInProps {\n  children: React.ReactNode;\n  direction?: FadeInDirection;\n  delay?: number;\n  duration?: number;\n  distance?: number;\n  once?: boolean;\n  className?: string;\n  /** Increment this value to replay the animation */\n  replayKey?: number;\n}\n\nconst directionMap: Record<FadeInDirection, { x?: number; y?: number }> = {\n  up: { y: 24 },\n  down: { y: -24 },\n  left: { x: 24 },\n  right: { x: -24 },\n  none: {},\n};\n\nexport function FadeIn({\n  children,\n  direction = \"up\",\n  delay = 0,\n  duration = 0.5,\n  distance,\n  once = true,\n  className,\n  replayKey,\n}: FadeInProps) {\n  const offset = distance ?? 24;\n  const rawDir = directionMap[direction];\n  const initial = {\n    opacity: 0,\n    ...(rawDir.y !== undefined ? { y: rawDir.y > 0 ? offset : -offset } : {}),\n    ...(rawDir.x !== undefined ? { x: rawDir.x > 0 ? offset : -offset } : {}),\n  };\n\n  const variants: Variants = {\n    hidden: initial,\n    visible: {\n      opacity: 1,\n      x: 0,\n      y: 0,\n      transition: { duration, delay, ease: [0.16, 1, 0.3, 1] },\n    },\n  };\n\n  return (\n    <motion.div\n      key={replayKey}\n      className={cn(className)}\n      initial=\"hidden\"\n      whileInView=\"visible\"\n      viewport={{ once, margin: \"-40px\" }}\n      variants={variants}\n    >\n      {children}\n    </motion.div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/animation/fade-in.tsx"
+    }
+  ],
+  "categories": [
+    "animation"
+  ],
+  "type": "registry:component"
+}

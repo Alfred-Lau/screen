@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-reveal",
+  "title": "Text Reveal",
+  "description": "Animate text word-by-word or character-by-character with blur and slide effect.",
+  "dependencies": [
+    "framer-motion",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/animation/text-reveal.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { motion, type Variants } from \"framer-motion\";\nimport { cn } from \"@/lib/cn\";\n\nexport type TextRevealMode = \"words\" | \"chars\" | \"lines\";\n\nexport interface TextRevealProps {\n  text: string;\n  mode?: TextRevealMode;\n  delay?: number;\n  stagger?: number;\n  duration?: number;\n  once?: boolean;\n  className?: string;\n  wordClassName?: string;\n  /** Increment this value to replay the text reveal animation */\n  replayKey?: number;\n}\n\nconst wordVariants: Variants = {\n  hidden: { opacity: 0, y: 20, filter: \"blur(4px)\" },\n  visible: (i: number) => ({\n    opacity: 1,\n    y: 0,\n    filter: \"blur(0px)\",\n    transition: {\n      delay: i * 0.06,\n      duration: 0.5,\n      ease: [0.16, 1, 0.3, 1],\n    },\n  }),\n};\n\nconst charVariants: Variants = {\n  hidden: { opacity: 0, y: 16 },\n  visible: (i: number) => ({\n    opacity: 1,\n    y: 0,\n    transition: {\n      delay: i * 0.025,\n      duration: 0.35,\n      ease: [0.16, 1, 0.3, 1],\n    },\n  }),\n};\n\nexport function TextReveal({\n  text,\n  mode = \"words\",\n  delay = 0,\n  once = true,\n  className,\n  wordClassName,\n  replayKey,\n}: TextRevealProps) {\n  const [started, setStarted] = React.useState(false);\n\n  // Reset and restart when replayKey changes\n  React.useEffect(() => {\n    if (replayKey === undefined || replayKey === 0) return;\n    setStarted(false);\n    const timer = setTimeout(() => setStarted(true), 50);\n    return () => clearTimeout(timer);\n  }, [replayKey]);\n\n  if (mode === \"chars\") {\n    const chars = text.split(\"\");\n    return (\n      <motion.span\n        className={cn(\"inline-flex flex-wrap\", className)}\n        onViewportEnter={() => setStarted(true)}\n        viewport={{ once }}\n      >\n        {chars.map((char, i) => (\n          <motion.span\n            key={i}\n            className={cn(\"inline-block\", wordClassName)}\n            custom={i + delay * 16}\n            variants={charVariants}\n            initial=\"hidden\"\n            animate={started ? \"visible\" : \"hidden\"}\n          >\n            {char === \" \" ? \"\\u00A0\" : char}\n          </motion.span>\n        ))}\n      </motion.span>\n    );\n  }\n\n  const words = text.split(\" \");\n  return (\n    <motion.span\n      className={cn(\"inline-flex flex-wrap gap-x-[0.25em]\", className)}\n      onViewportEnter={() => setStarted(true)}\n      viewport={{ once }}\n    >\n      {words.map((word, i) => (\n        <motion.span\n          key={i}\n          className={cn(\"inline-block\", wordClassName)}\n          custom={i + delay * 16}\n          variants={wordVariants}\n          initial=\"hidden\"\n          animate={started ? \"visible\" : \"hidden\"}\n        >\n          {word}\n        </motion.span>\n      ))}\n    </motion.span>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/animation/text-reveal.tsx"
+    }
+  ],
+  "categories": [
+    "animation"
+  ],
+  "type": "registry:component"
+}

@@ -1,0 +1,2210 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "solokit",
+  "homepage": "https://screen.solokit.run",
+  "items": [
+    {
+      "name": "conversation",
+      "type": "registry:component",
+      "title": "Conversation",
+      "description": "Chat container with auto-scroll, user/assistant messages, and scroll-to-bottom button.",
+      "categories": [
+        "chatbot"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/chatbot/conversation.tsx",
+          "type": "registry:file",
+          "target": "lib/chatbot/conversation.tsx"
+        }
+      ]
+    },
+    {
+      "name": "message",
+      "type": "registry:component",
+      "title": "Message",
+      "description": "Message bubbles with user/assistant roles, content, actions, and avatar support.",
+      "categories": [
+        "chatbot"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge",
+        "next"
+      ],
+      "files": [
+        {
+          "path": "lib/chatbot/message.tsx",
+          "type": "registry:file",
+          "target": "lib/chatbot/message.tsx"
+        }
+      ]
+    },
+    {
+      "name": "reasoning",
+      "type": "registry:component",
+      "title": "Reasoning",
+      "description": "Collapsible thinking/reasoning blocks with streaming support for AI model transparency.",
+      "categories": [
+        "chatbot"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/chatbot/reasoning.tsx",
+          "type": "registry:file",
+          "target": "lib/chatbot/reasoning.tsx"
+        }
+      ]
+    },
+    {
+      "name": "data-card",
+      "type": "registry:component",
+      "title": "Data Card",
+      "description": "Collapsible data display cards with 11 semantic variants for different content types.",
+      "categories": [
+        "chatbot"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/chatbot/data-card.tsx",
+          "type": "registry:file",
+          "target": "lib/chatbot/data-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tool-invocation",
+      "type": "registry:component",
+      "title": "Tool Invocation",
+      "description": "Timeline-based tool execution display with input/output panels and status indicators.",
+      "categories": [
+        "chatbot"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/chatbot/tool-invocation.tsx",
+          "type": "registry:file",
+          "target": "lib/chatbot/tool-invocation.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sources",
+      "type": "registry:component",
+      "title": "Sources & Citations",
+      "description": "Collapsible source citations, inline citation badges, and source reference components.",
+      "categories": [
+        "chatbot"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/chatbot/sources.tsx",
+          "type": "registry:file",
+          "target": "lib/chatbot/sources.tsx"
+        }
+      ]
+    },
+    {
+      "name": "suggestions",
+      "type": "registry:component",
+      "title": "Suggestions",
+      "description": "Interactive suggestion cards and quick suggestion grids for AI follow-up prompts.",
+      "categories": [
+        "chatbot"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/chatbot/suggestions.tsx",
+          "type": "registry:file",
+          "target": "lib/chatbot/suggestions.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chatbot-code-block",
+      "type": "registry:component",
+      "title": "Code Block",
+      "description": "Syntax-highlighted code display with line numbers, copy, download, and inline code.",
+      "categories": [
+        "chatbot"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/chatbot/code-block.tsx",
+          "type": "registry:file",
+          "target": "lib/chatbot/code-block.tsx"
+        }
+      ]
+    },
+    {
+      "name": "web-preview",
+      "type": "registry:component",
+      "title": "Web Preview",
+      "description": "Rich link preview cards with OG image support in standard, compact, and grid layouts.",
+      "categories": [
+        "chatbot"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/chatbot/web-preview.tsx",
+          "type": "registry:file",
+          "target": "lib/chatbot/web-preview.tsx"
+        }
+      ]
+    },
+    {
+      "name": "loader",
+      "type": "registry:component",
+      "title": "Loader",
+      "description": "Loading indicators, skeletons, and streaming cursor for AI responses.",
+      "categories": [
+        "chatbot"
+      ],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/chatbot/loader.tsx",
+          "type": "registry:file",
+          "target": "lib/chatbot/loader.tsx"
+        }
+      ]
+    },
+    {
+      "name": "shimmer",
+      "type": "registry:component",
+      "title": "Shimmer",
+      "description": "Shimmer loading effect with framer-motion animation.",
+      "categories": [
+        "chatbot"
+      ],
+      "dependencies": [
+        "framer-motion",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/chatbot/shimmer.tsx",
+          "type": "registry:file",
+          "target": "lib/chatbot/shimmer.tsx"
+        }
+      ]
+    },
+    {
+      "name": "typewriter",
+      "type": "registry:component",
+      "title": "Typewriter",
+      "description": "Typewriter text animation effect for streaming AI responses.",
+      "categories": [
+        "chatbot"
+      ],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/chatbot/typewriter.tsx",
+          "type": "registry:file",
+          "target": "lib/chatbot/typewriter.tsx"
+        }
+      ]
+    },
+    {
+      "name": "actions",
+      "type": "registry:component",
+      "title": "Actions",
+      "description": "Message action bar with copy, regenerate, like/dislike, share, stop, and reload buttons.",
+      "categories": [
+        "chatbot"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/chatbot/actions.tsx",
+          "type": "registry:file",
+          "target": "lib/chatbot/actions.tsx"
+        }
+      ]
+    },
+    {
+      "name": "inline-citation",
+      "type": "registry:component",
+      "title": "Inline Citation",
+      "description": "Inline citation badges with tooltip previews and source linking.",
+      "categories": [
+        "chatbot"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/chatbot/inline-citation.tsx",
+          "type": "registry:file",
+          "target": "lib/chatbot/inline-citation.tsx"
+        }
+      ]
+    },
+    {
+      "name": "docs-base",
+      "type": "registry:lib",
+      "title": "Docs Base Types",
+      "description": "Shared types and constants for documentation components.",
+      "categories": [
+        "docs"
+      ],
+      "files": [
+        {
+          "path": "lib/docs/types.ts",
+          "type": "registry:file",
+          "target": "lib/docs/types.ts"
+        },
+        {
+          "path": "lib/docs/constants.ts",
+          "type": "registry:file",
+          "target": "lib/docs/constants.ts"
+        }
+      ]
+    },
+    {
+      "name": "doc-sidebar-navigation",
+      "type": "registry:component",
+      "title": "Doc Sidebar Navigation",
+      "description": "Collapsible tree navigation supporting nested documents with active state tracking.",
+      "categories": [
+        "docs"
+      ],
+      "dependencies": [
+        "next",
+        "next-intl",
+        "@heroicons/react"
+      ],
+      "registryDependencies": [
+        "https://screen.solokit.run/r/docs-base.json"
+      ],
+      "files": [
+        {
+          "path": "lib/docs/components/sidebar-navigation.tsx",
+          "type": "registry:file",
+          "target": "lib/docs/components/sidebar-navigation.tsx"
+        }
+      ]
+    },
+    {
+      "name": "doc-search",
+      "type": "registry:component",
+      "title": "Doc Search",
+      "description": "Command palette search (⌘K) with fuzzy matching across all documentation pages.",
+      "categories": [
+        "docs"
+      ],
+      "dependencies": [
+        "next",
+        "next-intl",
+        "@heroicons/react",
+        "cmdk",
+        "@radix-ui/react-dialog"
+      ],
+      "registryDependencies": [
+        "https://screen.solokit.run/r/docs-base.json",
+        "command",
+        "dialog"
+      ],
+      "files": [
+        {
+          "path": "lib/docs/components/doc-search.tsx",
+          "type": "registry:file",
+          "target": "lib/docs/components/doc-search.tsx"
+        }
+      ]
+    },
+    {
+      "name": "doc-breadcrumb",
+      "type": "registry:component",
+      "title": "Doc Breadcrumb",
+      "description": "Path-based breadcrumb navigation with customizable segment names.",
+      "categories": [
+        "docs"
+      ],
+      "dependencies": [
+        "next",
+        "next-intl",
+        "@heroicons/react"
+      ],
+      "registryDependencies": [
+        "https://screen.solokit.run/r/docs-base.json"
+      ],
+      "files": [
+        {
+          "path": "lib/docs/components/breadcrumb.tsx",
+          "type": "registry:file",
+          "target": "lib/docs/components/breadcrumb.tsx"
+        }
+      ]
+    },
+    {
+      "name": "doc-table-of-contents",
+      "type": "registry:component",
+      "title": "Doc Table of Contents",
+      "description": "Auto-generated TOC from markdown headings with scroll spy and smooth scrolling.",
+      "categories": [
+        "docs"
+      ],
+      "registryDependencies": [
+        "https://screen.solokit.run/r/docs-base.json"
+      ],
+      "files": [
+        {
+          "path": "lib/docs/components/table-of-contents.tsx",
+          "type": "registry:file",
+          "target": "lib/docs/components/table-of-contents.tsx"
+        }
+      ]
+    },
+    {
+      "name": "doc-reading-progress",
+      "type": "registry:component",
+      "title": "Doc Reading Progress",
+      "description": "Animated progress bar fixed at the top showing scroll position.",
+      "categories": [
+        "docs"
+      ],
+      "files": [
+        {
+          "path": "lib/docs/components/reading-progress.tsx",
+          "type": "registry:file",
+          "target": "lib/docs/components/reading-progress.tsx"
+        }
+      ]
+    },
+    {
+      "name": "doc-code-highlight",
+      "type": "registry:component",
+      "title": "Doc Code Highlight",
+      "description": "Prism.js syntax highlighting wrapper for code blocks.",
+      "categories": [
+        "docs"
+      ],
+      "dependencies": [
+        "prismjs"
+      ],
+      "devDependencies": [
+        "@types/prismjs"
+      ],
+      "files": [
+        {
+          "path": "lib/docs/components/code-highlight.tsx",
+          "type": "registry:file",
+          "target": "lib/docs/components/code-highlight.tsx"
+        }
+      ]
+    },
+    {
+      "name": "doc-content",
+      "type": "registry:component",
+      "title": "Doc Content",
+      "description": "Content wrapper with styled header, title gradient, description, and prose styling.",
+      "categories": [
+        "docs"
+      ],
+      "registryDependencies": [
+        "https://screen.solokit.run/r/doc-code-highlight.json"
+      ],
+      "files": [
+        {
+          "path": "lib/docs/components/doc-content.tsx",
+          "type": "registry:file",
+          "target": "lib/docs/components/doc-content.tsx"
+        }
+      ]
+    },
+    {
+      "name": "doc-navigation",
+      "type": "registry:component",
+      "title": "Doc Navigation",
+      "description": "Previous/Next navigation between documentation pages.",
+      "categories": [
+        "docs"
+      ],
+      "dependencies": [
+        "next",
+        "next-intl",
+        "@heroicons/react"
+      ],
+      "registryDependencies": [
+        "https://screen.solokit.run/r/docs-base.json"
+      ],
+      "files": [
+        {
+          "path": "lib/docs/components/doc-navigation.tsx",
+          "type": "registry:file",
+          "target": "lib/docs/components/doc-navigation.tsx"
+        }
+      ]
+    },
+    {
+      "name": "doc-cards",
+      "type": "registry:component",
+      "title": "Doc MDX Cards",
+      "description": "Card and CardGrid components for navigation links within MDX documentation.",
+      "categories": [
+        "docs"
+      ],
+      "dependencies": [
+        "next"
+      ],
+      "files": [
+        {
+          "path": "lib/docs/components/mdx/cards.tsx",
+          "type": "registry:file",
+          "target": "lib/docs/components/mdx/cards.tsx"
+        }
+      ]
+    },
+    {
+      "name": "doc-layout",
+      "type": "registry:block",
+      "title": "Doc Layout",
+      "description": "Full documentation page layout with sidebar, search, reading progress, and responsive mobile support.",
+      "categories": [
+        "docs"
+      ],
+      "dependencies": [
+        "next",
+        "next-intl",
+        "@heroicons/react"
+      ],
+      "registryDependencies": [
+        "https://screen.solokit.run/r/docs-base.json",
+        "https://screen.solokit.run/r/doc-sidebar-navigation.json",
+        "https://screen.solokit.run/r/doc-reading-progress.json",
+        "https://screen.solokit.run/r/doc-search.json"
+      ],
+      "files": [
+        {
+          "path": "lib/docs/components/doc-layout.tsx",
+          "type": "registry:file",
+          "target": "lib/docs/components/doc-layout.tsx"
+        }
+      ]
+    },
+    {
+      "name": "doc-hooks",
+      "type": "registry:hook",
+      "title": "Doc Hooks",
+      "description": "useDocsStructure and useTOC hooks for documentation pages.",
+      "categories": [
+        "docs"
+      ],
+      "dependencies": [
+        "next-intl"
+      ],
+      "registryDependencies": [
+        "https://screen.solokit.run/r/docs-base.json"
+      ],
+      "files": [
+        {
+          "path": "lib/docs/hooks/use-toc.ts",
+          "type": "registry:file",
+          "target": "lib/docs/hooks/use-toc.ts"
+        },
+        {
+          "path": "lib/docs/hooks/use-docs-structure.ts",
+          "type": "registry:file",
+          "target": "lib/docs/hooks/use-docs-structure.ts"
+        }
+      ]
+    },
+    {
+      "name": "metric-card",
+      "type": "registry:component",
+      "title": "Metric Card",
+      "description": "KPI metric card with value, trend indicator, percentage change, and icon slot.",
+      "categories": [
+        "dashboard"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/dashboard/metric-card.tsx",
+          "type": "registry:file",
+          "target": "lib/dashboard/metric-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stats-badge",
+      "type": "registry:component",
+      "title": "Stats Badge",
+      "description": "Inline statistics badge with up/down/neutral trend variants and colored dot indicator.",
+      "categories": [
+        "dashboard"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/dashboard/stats-badge.tsx",
+          "type": "registry:file",
+          "target": "lib/dashboard/stats-badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "status-indicator",
+      "type": "registry:component",
+      "title": "Status Indicator",
+      "description": "Service status indicator with online/offline/degraded/maintenance variants and pulse animation.",
+      "categories": [
+        "dashboard"
+      ],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/dashboard/status-indicator.tsx",
+          "type": "registry:file",
+          "target": "lib/dashboard/status-indicator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "user-avatar",
+      "type": "registry:component",
+      "title": "User Avatar",
+      "description": "User avatar with image, initials, and icon fallbacks, plus online/away/busy status badge.",
+      "categories": [
+        "dashboard"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/dashboard/user-avatar.tsx",
+          "type": "registry:file",
+          "target": "lib/dashboard/user-avatar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-group",
+      "type": "registry:component",
+      "title": "Avatar Group",
+      "description": "Stacked avatar group with max display count, overflow badge, and tooltip on hover.",
+      "categories": [
+        "dashboard"
+      ],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "https://screen.solokit.run/r/user-avatar.json"
+      ],
+      "files": [
+        {
+          "path": "lib/dashboard/avatar-group.tsx",
+          "type": "registry:file",
+          "target": "lib/dashboard/avatar-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "activity-feed",
+      "type": "registry:component",
+      "title": "Activity Feed",
+      "description": "Timeline activity feed with avatar/icon/dot prefix types and semantic status colors.",
+      "categories": [
+        "dashboard"
+      ],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "https://screen.solokit.run/r/user-avatar.json"
+      ],
+      "files": [
+        {
+          "path": "lib/dashboard/activity-feed.tsx",
+          "type": "registry:file",
+          "target": "lib/dashboard/activity-feed.tsx"
+        }
+      ]
+    },
+    {
+      "name": "mini-chart",
+      "type": "registry:component",
+      "title": "Mini Chart",
+      "description": "Pure SVG sparkline chart (line/bar/area) for displaying trends without external dependencies.",
+      "categories": [
+        "dashboard"
+      ],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/dashboard/mini-chart.tsx",
+          "type": "registry:file",
+          "target": "lib/dashboard/mini-chart.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progress-ring",
+      "type": "registry:component",
+      "title": "Progress Ring",
+      "description": "Animated SVG circular progress ring with customizable size, color, and label.",
+      "categories": [
+        "dashboard"
+      ],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/dashboard/progress-ring.tsx",
+          "type": "registry:file",
+          "target": "lib/dashboard/progress-ring.tsx"
+        }
+      ]
+    },
+    {
+      "name": "data-table",
+      "type": "registry:component",
+      "title": "Data Table",
+      "description": "Sortable data table with striped rows, loading skeletons, pagination support, and empty states.",
+      "categories": [
+        "dashboard"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/dashboard/data-table.tsx",
+          "type": "registry:file",
+          "target": "lib/dashboard/data-table.tsx"
+        }
+      ]
+    },
+    {
+      "name": "filter-bar",
+      "type": "registry:component",
+      "title": "Filter Bar",
+      "description": "Flexible filter control bar with search input, dropdown filters, and clear all action.",
+      "categories": [
+        "dashboard"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/dashboard/filter-bar.tsx",
+          "type": "registry:file",
+          "target": "lib/dashboard/filter-bar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dashboard-layout",
+      "type": "registry:block",
+      "title": "Dashboard Layout",
+      "description": "Complete dashboard shell with collapsible sidebar, top header, responsive mobile drawer, and navigation slots.",
+      "categories": [
+        "dashboard"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/dashboard/dashboard-layout.tsx",
+          "type": "registry:file",
+          "target": "lib/dashboard/dashboard-layout.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stats-grid",
+      "type": "registry:block",
+      "title": "Stats Grid",
+      "description": "Responsive 2/3/4 column grid of MetricCards for dashboard overview panels.",
+      "categories": [
+        "dashboard"
+      ],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "https://screen.solokit.run/r/metric-card.json"
+      ],
+      "files": [
+        {
+          "path": "lib/dashboard/stats-grid.tsx",
+          "type": "registry:file",
+          "target": "lib/dashboard/stats-grid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "feature-card",
+      "type": "registry:component",
+      "title": "Feature Card",
+      "description": "Feature highlight card with icon, title, description, and simple/bordered/gradient variants.",
+      "categories": [
+        "marketing"
+      ],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/marketing/feature-card.tsx",
+          "type": "registry:file",
+          "target": "lib/marketing/feature-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "testimonial-card",
+      "type": "registry:component",
+      "title": "Testimonial Card",
+      "description": "User testimonial card with quote, author, role, company, rating stars, and featured variant.",
+      "categories": [
+        "marketing"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/marketing/testimonial-card.tsx",
+          "type": "registry:file",
+          "target": "lib/marketing/testimonial-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pricing-card",
+      "type": "registry:component",
+      "title": "Pricing Card",
+      "description": "Pricing plan card with feature list, CTA button, and recommended highlight variant.",
+      "categories": [
+        "marketing"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/marketing/pricing-card.tsx",
+          "type": "registry:file",
+          "target": "lib/marketing/pricing-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "announcement-bar",
+      "type": "registry:component",
+      "title": "Announcement Bar",
+      "description": "Dismissible page-top announcement bar with icon, message, link, and color variants.",
+      "categories": [
+        "marketing"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/marketing/announcement-bar.tsx",
+          "type": "registry:file",
+          "target": "lib/marketing/announcement-bar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "newsletter-form",
+      "type": "registry:component",
+      "title": "Newsletter Form",
+      "description": "Email newsletter subscription form with horizontal/vertical layout and success/error states.",
+      "categories": [
+        "marketing"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/marketing/newsletter-form.tsx",
+          "type": "registry:file",
+          "target": "lib/marketing/newsletter-form.tsx"
+        }
+      ]
+    },
+    {
+      "name": "social-proof",
+      "type": "registry:component",
+      "title": "Social Proof",
+      "description": "Social proof widget with stacked user avatars, member count, and star rating display.",
+      "categories": [
+        "marketing"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/marketing/social-proof.tsx",
+          "type": "registry:file",
+          "target": "lib/marketing/social-proof.tsx"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb-nav",
+      "type": "registry:component",
+      "title": "Breadcrumb Nav",
+      "description": "Responsive breadcrumb navigation with custom separator, max items, and home icon support.",
+      "categories": [
+        "marketing"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/marketing/breadcrumb-nav.tsx",
+          "type": "registry:file",
+          "target": "lib/marketing/breadcrumb-nav.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hero-section",
+      "type": "registry:block",
+      "title": "Hero Section",
+      "description": "Landing page hero with title, subtitle, description, CTA buttons, media slot, and background decorators.",
+      "categories": [
+        "marketing"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/marketing/hero-section.tsx",
+          "type": "registry:file",
+          "target": "lib/marketing/hero-section.tsx"
+        }
+      ]
+    },
+    {
+      "name": "feature-grid",
+      "type": "registry:block",
+      "title": "Feature Grid",
+      "description": "Responsive 3-column feature grid with headline, description, and FeatureCard components.",
+      "categories": [
+        "marketing"
+      ],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "https://screen.solokit.run/r/feature-card.json"
+      ],
+      "files": [
+        {
+          "path": "lib/marketing/feature-grid.tsx",
+          "type": "registry:file",
+          "target": "lib/marketing/feature-grid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pricing-section",
+      "type": "registry:block",
+      "title": "Pricing Section",
+      "description": "Full pricing section with monthly/yearly toggle, discount badge, and multiple plan cards.",
+      "categories": [
+        "marketing"
+      ],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "https://screen.solokit.run/r/pricing-card.json"
+      ],
+      "files": [
+        {
+          "path": "lib/marketing/pricing-section.tsx",
+          "type": "registry:file",
+          "target": "lib/marketing/pricing-section.tsx"
+        }
+      ]
+    },
+    {
+      "name": "testimonial-grid",
+      "type": "registry:block",
+      "title": "Testimonial Grid",
+      "description": "Testimonial section with masonry or uniform grid layout and headline area.",
+      "categories": [
+        "marketing"
+      ],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "https://screen.solokit.run/r/testimonial-card.json"
+      ],
+      "files": [
+        {
+          "path": "lib/marketing/testimonial-grid.tsx",
+          "type": "registry:file",
+          "target": "lib/marketing/testimonial-grid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "faq-accordion",
+      "type": "registry:block",
+      "title": "FAQ Accordion",
+      "description": "FAQ section with searchable accordion, category tabs, and smooth expand/collapse animation.",
+      "categories": [
+        "marketing"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/marketing/faq-accordion.tsx",
+          "type": "registry:file",
+          "target": "lib/marketing/faq-accordion.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cta-banner",
+      "type": "registry:block",
+      "title": "CTA Banner",
+      "description": "Call-to-action banner with fullwidth/card layouts, gradient/solid/subtle backgrounds, and primary/secondary buttons.",
+      "categories": [
+        "marketing"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/marketing/cta-banner.tsx",
+          "type": "registry:file",
+          "target": "lib/marketing/cta-banner.tsx"
+        }
+      ]
+    },
+    {
+      "name": "logo-banner",
+      "type": "registry:block",
+      "title": "Logo Banner",
+      "description": "Partner/client logo showcase with static grid or infinite marquee scrolling animation.",
+      "categories": [
+        "marketing"
+      ],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/marketing/logo-banner.tsx",
+          "type": "registry:file",
+          "target": "lib/marketing/logo-banner.tsx"
+        }
+      ]
+    },
+    {
+      "name": "step-process",
+      "type": "registry:block",
+      "title": "Step Process",
+      "description": "Step-by-step process visualization in horizontal or vertical orientation with connector lines.",
+      "categories": [
+        "marketing"
+      ],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/marketing/step-process.tsx",
+          "type": "registry:file",
+          "target": "lib/marketing/step-process.tsx"
+        }
+      ]
+    },
+    {
+      "name": "comparison-table",
+      "type": "registry:block",
+      "title": "Comparison Table",
+      "description": "Feature comparison table with plan columns, check/cross/text cells, and recommended column highlight.",
+      "categories": [
+        "marketing"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/marketing/comparison-table.tsx",
+          "type": "registry:file",
+          "target": "lib/marketing/comparison-table.tsx"
+        }
+      ]
+    },
+    {
+      "name": "form-field",
+      "type": "registry:component",
+      "title": "Form Field",
+      "description": "Form field wrapper with label, required indicator, helper text, and error message display.",
+      "categories": [
+        "form"
+      ],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/form/form-field.tsx",
+          "type": "registry:file",
+          "target": "lib/form/form-field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tag-input",
+      "type": "registry:component",
+      "title": "Tag Input",
+      "description": "Tag/chip input with Enter/comma creation, click-to-remove, color variants, and max count.",
+      "categories": [
+        "form"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/form/tag-input.tsx",
+          "type": "registry:file",
+          "target": "lib/form/tag-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "rating-input",
+      "type": "registry:component",
+      "title": "Rating Input",
+      "description": "Interactive star/heart/thumb rating input with half-star support and hover preview.",
+      "categories": [
+        "form"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/form/rating-input.tsx",
+          "type": "registry:file",
+          "target": "lib/form/rating-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "file-upload",
+      "type": "registry:component",
+      "title": "File Upload",
+      "description": "Drag-and-drop file upload zone with image previews, size validation, and upload progress.",
+      "categories": [
+        "form"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/form/file-upload.tsx",
+          "type": "registry:file",
+          "target": "lib/form/file-upload.tsx"
+        }
+      ]
+    },
+    {
+      "name": "otp-input",
+      "type": "registry:component",
+      "title": "OTP Input",
+      "description": "One-time password input with auto-focus navigation, paste support, and shake error animation.",
+      "categories": [
+        "form"
+      ],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/form/otp-input.tsx",
+          "type": "registry:file",
+          "target": "lib/form/otp-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "search-input",
+      "type": "registry:component",
+      "title": "Search Input",
+      "description": "Enhanced search input with clear button, loading state, keyboard shortcut hint, and custom slots.",
+      "categories": [
+        "form"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/form/search-input.tsx",
+          "type": "registry:file",
+          "target": "lib/form/search-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "slider-input",
+      "type": "registry:component",
+      "title": "Slider Input",
+      "description": "Range slider with single or dual-thumb mode, value display, and custom format function.",
+      "categories": [
+        "form"
+      ],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/form/slider-input.tsx",
+          "type": "registry:file",
+          "target": "lib/form/slider-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "color-picker",
+      "type": "registry:component",
+      "title": "Color Picker",
+      "description": "Color picker with preset swatches, hex input, and native color picker fallback in a popover.",
+      "categories": [
+        "form"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/form/color-picker.tsx",
+          "type": "registry:file",
+          "target": "lib/form/color-picker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:component",
+      "title": "Date Picker",
+      "description": "Calendar date picker with month navigation, disabled dates, today shortcut, and clear action.",
+      "categories": [
+        "form"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/form/date-picker.tsx",
+          "type": "registry:file",
+          "target": "lib/form/date-picker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:component",
+      "title": "Toggle Group",
+      "description": "Single or multi-select toggle group with icon+text, icon-only, and text-only display modes.",
+      "categories": [
+        "form"
+      ],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/form/toggle-group.tsx",
+          "type": "registry:file",
+          "target": "lib/form/toggle-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "multi-select",
+      "type": "registry:component",
+      "title": "Multi Select",
+      "description": "Multi-select dropdown with search filter, tag display, select-all, and max selection limit.",
+      "categories": [
+        "form"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/form/multi-select.tsx",
+          "type": "registry:file",
+          "target": "lib/form/multi-select.tsx"
+        }
+      ]
+    },
+    {
+      "name": "login-form",
+      "type": "registry:block",
+      "title": "Login Form",
+      "description": "Complete login form block with email/password fields, remember me, forgot password, and social auth divider.",
+      "categories": [
+        "form"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/form/login-form.tsx",
+          "type": "registry:file",
+          "target": "lib/form/login-form.tsx"
+        }
+      ]
+    },
+    {
+      "name": "fade-in",
+      "type": "registry:component",
+      "title": "Fade In",
+      "description": "Animate elements into view with configurable fade and directional slide.",
+      "categories": [
+        "animation"
+      ],
+      "dependencies": [
+        "framer-motion",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/animation/fade-in.tsx",
+          "type": "registry:file",
+          "target": "lib/animation/fade-in.tsx"
+        }
+      ]
+    },
+    {
+      "name": "slide-in",
+      "type": "registry:component",
+      "title": "Slide In",
+      "description": "Spring-physics slide-in animation from any direction on viewport entry.",
+      "categories": [
+        "animation"
+      ],
+      "dependencies": [
+        "framer-motion",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/animation/slide-in.tsx",
+          "type": "registry:file",
+          "target": "lib/animation/slide-in.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scale-in",
+      "type": "registry:component",
+      "title": "Scale In",
+      "description": "Scale and fade elements in from a smaller size on viewport entry.",
+      "categories": [
+        "animation"
+      ],
+      "dependencies": [
+        "framer-motion",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/animation/scale-in.tsx",
+          "type": "registry:file",
+          "target": "lib/animation/scale-in.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stagger-list",
+      "type": "registry:component",
+      "title": "Stagger List",
+      "description": "Animate a list of children with staggered entrance delay.",
+      "categories": [
+        "animation"
+      ],
+      "dependencies": [
+        "framer-motion",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/animation/stagger-list.tsx",
+          "type": "registry:file",
+          "target": "lib/animation/stagger-list.tsx"
+        }
+      ]
+    },
+    {
+      "name": "count-up",
+      "type": "registry:component",
+      "title": "Count Up",
+      "description": "Animated number counter that counts from a start value to target on viewport entry.",
+      "categories": [
+        "animation"
+      ],
+      "dependencies": [
+        "framer-motion",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/animation/count-up.tsx",
+          "type": "registry:file",
+          "target": "lib/animation/count-up.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-reveal",
+      "type": "registry:component",
+      "title": "Text Reveal",
+      "description": "Animate text word-by-word or character-by-character with blur and slide effect.",
+      "categories": [
+        "animation"
+      ],
+      "dependencies": [
+        "framer-motion",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/animation/text-reveal.tsx",
+          "type": "registry:file",
+          "target": "lib/animation/text-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "flip-card",
+      "type": "registry:component",
+      "title": "Flip Card",
+      "description": "3D flip card with front/back faces, supports hover or click trigger.",
+      "categories": [
+        "animation"
+      ],
+      "dependencies": [
+        "framer-motion",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/animation/flip-card.tsx",
+          "type": "registry:file",
+          "target": "lib/animation/flip-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "magnetic-button",
+      "type": "registry:component",
+      "title": "Magnetic Button",
+      "description": "Button that magnetically follows cursor with spring physics.",
+      "categories": [
+        "animation"
+      ],
+      "dependencies": [
+        "framer-motion",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/animation/magnetic-button.tsx",
+          "type": "registry:file",
+          "target": "lib/animation/magnetic-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ripple-button",
+      "type": "registry:component",
+      "title": "Ripple Button",
+      "description": "Button with material-style ripple effect on click.",
+      "categories": [
+        "animation"
+      ],
+      "dependencies": [
+        "framer-motion",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/animation/ripple-button.tsx",
+          "type": "registry:file",
+          "target": "lib/animation/ripple-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "confetti-button",
+      "type": "registry:component",
+      "title": "Confetti Button",
+      "description": "Button that bursts colourful confetti particles on click.",
+      "categories": [
+        "animation"
+      ],
+      "dependencies": [
+        "framer-motion",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/animation/confetti-button.tsx",
+          "type": "registry:file",
+          "target": "lib/animation/confetti-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "marquee",
+      "type": "registry:component",
+      "title": "Marquee",
+      "description": "Infinite horizontal scroll marquee with pause-on-hover support.",
+      "categories": [
+        "animation"
+      ],
+      "dependencies": [
+        "framer-motion",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/animation/marquee.tsx",
+          "type": "registry:file",
+          "target": "lib/animation/marquee.tsx"
+        }
+      ]
+    },
+    {
+      "name": "orbit",
+      "type": "registry:component",
+      "title": "Orbit",
+      "description": "Items orbiting around a center element with configurable speed and radius.",
+      "categories": [
+        "animation"
+      ],
+      "dependencies": [
+        "framer-motion",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/animation/orbit.tsx",
+          "type": "registry:file",
+          "target": "lib/animation/orbit.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spotlight-card",
+      "type": "registry:component",
+      "title": "Spotlight Card",
+      "description": "Card with dynamic spotlight/glow effect that follows the cursor.",
+      "categories": [
+        "animation"
+      ],
+      "dependencies": [
+        "framer-motion",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/animation/spotlight-card.tsx",
+          "type": "registry:file",
+          "target": "lib/animation/spotlight-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "particle-burst",
+      "type": "registry:component",
+      "title": "Particle Burst",
+      "description": "Colourful particle explosion on hover, click, or mount.",
+      "categories": [
+        "animation"
+      ],
+      "dependencies": [
+        "framer-motion",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/animation/particle-burst.tsx",
+          "type": "registry:file",
+          "target": "lib/animation/particle-burst.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkpoint",
+      "type": "registry:component",
+      "title": "Checkpoint",
+      "description": "Timeline of run snapshots, each restorable to files, chat, or both.",
+      "categories": [
+        "agent"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/agent/checkpoint.tsx",
+          "type": "registry:file",
+          "target": "lib/agent/checkpoint.tsx"
+        }
+      ]
+    },
+    {
+      "name": "run-receipt",
+      "type": "registry:component",
+      "title": "Run Receipt",
+      "description": "End-of-run summary: status, stats, artifacts, and what to do next.",
+      "categories": [
+        "agent"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/agent/run-receipt.tsx",
+          "type": "registry:file",
+          "target": "lib/agent/run-receipt.tsx"
+        }
+      ]
+    },
+    {
+      "name": "run-controls",
+      "type": "registry:component",
+      "title": "Run Controls",
+      "description": "Live run header: state, current step, elapsed, tokens, cost, and stop or retry.",
+      "categories": [
+        "agent"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/agent/run-controls.tsx",
+          "type": "registry:file",
+          "target": "lib/agent/run-controls.tsx"
+        }
+      ]
+    },
+    {
+      "name": "plan",
+      "type": "registry:component",
+      "title": "Agent Plan",
+      "description": "Reorder, retry, and stop the steps of one run, with tool chips, estimates, blocked steps, and a progress bar.",
+      "categories": [
+        "agent"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/agent/plan.tsx",
+          "type": "registry:file",
+          "target": "lib/agent/plan.tsx"
+        }
+      ]
+    },
+    {
+      "name": "approval",
+      "type": "registry:component",
+      "title": "Approval",
+      "description": "Ask before an agent sends, refunds, or otherwise leaves the product, with a reason, an expiry, and keyboard shortcuts.",
+      "categories": [
+        "agent"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/agent/approval.tsx",
+          "type": "registry:file",
+          "target": "lib/agent/approval.tsx"
+        }
+      ]
+    },
+    {
+      "name": "trace",
+      "type": "registry:component",
+      "title": "Agent Trace",
+      "description": "Waterfall of model calls, tools, and sub-agents with span-level latency, tokens, and cost.",
+      "categories": [
+        "agent"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/agent/trace.tsx",
+          "type": "registry:file",
+          "target": "lib/agent/trace.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tool-group",
+      "type": "registry:component",
+      "title": "Tool Group",
+      "description": "Collapse a run of tool calls into one summary row you can open.",
+      "categories": [
+        "agent"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/agent/tool-group.tsx",
+          "type": "registry:file",
+          "target": "lib/agent/tool-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "terminal",
+      "type": "registry:component",
+      "title": "Terminal",
+      "description": "A command and its output, with exit code and folded long output.",
+      "categories": [
+        "agent"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/agent/terminal.tsx",
+          "type": "registry:file",
+          "target": "lib/agent/terminal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "inbox",
+      "type": "registry:component",
+      "title": "Agent Inbox",
+      "description": "Background agent tasks with filters for what needs you, unread dots, live progress, and approve, reject, retry, or open.",
+      "categories": [
+        "agent"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/agent/inbox.tsx",
+          "type": "registry:file",
+          "target": "lib/agent/inbox.tsx"
+        }
+      ]
+    },
+    {
+      "name": "steering",
+      "type": "registry:component",
+      "title": "Agent Steering",
+      "description": "Queue a note for the next unfinished step, or interrupt the run and apply it now.",
+      "categories": [
+        "agent"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/agent/steering.tsx",
+          "type": "registry:file",
+          "target": "lib/agent/steering.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tree",
+      "type": "registry:component",
+      "title": "Agent Tree",
+      "description": "Orchestrator and the tools or sub-agents it started, with tokens, cost per node, and foldable branches.",
+      "categories": [
+        "agent"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/agent/tree.tsx",
+          "type": "registry:file",
+          "target": "lib/agent/tree.tsx"
+        }
+      ]
+    },
+    {
+      "name": "memory",
+      "type": "registry:component",
+      "title": "Agent Memory",
+      "description": "Facts one run is using, typed as preference, fact, or rule, with confidence, source, pin, and forget.",
+      "categories": [
+        "agent"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/agent/memory.tsx",
+          "type": "registry:file",
+          "target": "lib/agent/memory.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ledger",
+      "type": "registry:component",
+      "title": "Agent Ledger",
+      "description": "Proposed edits for one run, with an inline diff, apply all, and revert.",
+      "categories": [
+        "agent"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/agent/ledger.tsx",
+          "type": "registry:file",
+          "target": "lib/agent/ledger.tsx"
+        }
+      ]
+    },
+    {
+      "name": "diff",
+      "type": "registry:component",
+      "title": "Diff",
+      "description": "File changes for one run, with per-hunk accept and reject.",
+      "categories": [
+        "agent"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/agent/diff.tsx",
+          "type": "registry:file",
+          "target": "lib/agent/diff.tsx"
+        }
+      ]
+    },
+    {
+      "name": "error-recovery",
+      "type": "registry:component",
+      "title": "Error Recovery",
+      "description": "A failed step with its reason and the ways out: retry, edit, skip, or switch model.",
+      "categories": [
+        "agent"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/agent/error-recovery.tsx",
+          "type": "registry:file",
+          "target": "lib/agent/error-recovery.tsx"
+        }
+      ]
+    },
+    {
+      "name": "autonomy",
+      "type": "registry:component",
+      "title": "Agent Autonomy",
+      "description": "Choose whether a run asks, waits on the send, or finishes alone, with per-action exceptions and hard limits.",
+      "categories": [
+        "agent"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/agent/autonomy.tsx",
+          "type": "registry:file",
+          "target": "lib/agent/autonomy.tsx"
+        }
+      ]
+    },
+    {
+      "name": "floating-badge",
+      "type": "registry:component",
+      "title": "Floating Badge",
+      "description": "Animated badge that floats over a child element with spring entrance/exit.",
+      "categories": [
+        "animation"
+      ],
+      "dependencies": [
+        "framer-motion",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/animation/floating-badge.tsx",
+          "type": "registry:file",
+          "target": "lib/animation/floating-badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "prompt-input",
+      "type": "registry:component",
+      "title": "Prompt Input",
+      "description": "Composer with @-context chips, attachments, model and effort selectors, and send/stop.",
+      "categories": [
+        "agent"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/agent/prompt-input.tsx",
+          "type": "registry:file",
+          "target": "lib/agent/prompt-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tool-permission",
+      "type": "registry:component",
+      "title": "Tool Permission",
+      "description": "Tool-level grant with risk level, argument preview, and once / session / always scope.",
+      "categories": [
+        "agent"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/agent/tool-permission.tsx",
+          "type": "registry:file",
+          "target": "lib/agent/tool-permission.tsx"
+        }
+      ]
+    },
+    {
+      "name": "a2ui-surface",
+      "type": "registry:component",
+      "title": "A2UI Surface",
+      "description": "Renders a declarative agent UI payload into real components, with an inspectable JSON source.",
+      "categories": [
+        "agent"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/agent/a2ui-surface.tsx",
+          "type": "registry:file",
+          "target": "lib/agent/a2ui-surface.tsx"
+        }
+      ]
+    },
+    {
+      "name": "artifact",
+      "type": "registry:component",
+      "title": "Artifact",
+      "description": "Tabs of files a run produced, with code or image preview and copy, download, and open actions.",
+      "categories": [
+        "agent"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/agent/artifact.tsx",
+          "type": "registry:file",
+          "target": "lib/agent/artifact.tsx"
+        }
+      ]
+    },
+    {
+      "name": "task",
+      "type": "registry:component",
+      "title": "Task List",
+      "description": "A live checklist with nested subtasks, progress, and blocked states for long multi-step work.",
+      "categories": [
+        "agent"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/agent/task.tsx",
+          "type": "registry:file",
+          "target": "lib/agent/task.tsx"
+        }
+      ]
+    },
+    {
+      "name": "eval-badge",
+      "type": "registry:component",
+      "title": "Eval Badge",
+      "description": "Compact eval verdict that expands into per-metric scores and the run it came from.",
+      "categories": [
+        "agent"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/agent/eval-badge.tsx",
+          "type": "registry:file",
+          "target": "lib/agent/eval-badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "handoff",
+      "type": "registry:component",
+      "title": "Handoff",
+      "description": "Swimlane timeline of who did what, with the points where work moved between agents.",
+      "categories": [
+        "agent"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/agent/handoff.tsx",
+          "type": "registry:file",
+          "target": "lib/agent/handoff.tsx"
+        }
+      ]
+    }
+  ]
+}

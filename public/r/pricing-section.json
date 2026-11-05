@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pricing-section",
+  "title": "Pricing Section",
+  "description": "Full pricing section with monthly/yearly toggle, discount badge, and multiple plan cards.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "https://screen.solokit.run/r/pricing-card.json"
+  ],
+  "files": [
+    {
+      "path": "lib/marketing/pricing-section.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { PricingCard } from \"./pricing-card\";\n\ninterface PricingFeature {\n  text: string;\n  included?: boolean;\n  highlight?: boolean;\n}\n\ninterface PricingPlan {\n  name: string;\n  description?: string;\n  price: number | string;\n  yearlyPrice?: number;\n  features: PricingFeature[];\n  ctaLabel?: string;\n  recommended?: boolean;\n  badge?: string;\n  footnote?: string;\n}\n\ninterface PricingSectionProps extends React.HTMLAttributes<HTMLElement> {\n  headline?: string;\n  subheadline?: string;\n  description?: string;\n  plans: PricingPlan[];\n  showToggle?: boolean;\n  discountBadge?: string;\n  currency?: string;\n  period?: string;\n  onPlanSelect?: (planName: string, isYearly: boolean) => void;\n}\n\nexport function PricingSection({\n  headline = \"Simple, transparent pricing\",\n  subheadline,\n  description,\n  plans,\n  showToggle = true,\n  discountBadge = \"Save 20%\",\n  currency = \"$\",\n  period,\n  onPlanSelect,\n  className,\n  ...props\n}: PricingSectionProps) {\n  const [isYearly, setIsYearly] = React.useState(false);\n\n  return (\n    <section className={cn(\"w-full py-16\", className)} {...props}>\n      <div className=\"mx-auto max-w-5xl px-6\">\n        {/* Header */}\n        <div className=\"text-center mb-10\">\n          {subheadline && (\n            <p className=\"text-sm font-semibold uppercase tracking-widest text-primary mb-3\">\n              {subheadline}\n            </p>\n          )}\n          <h2 className=\"text-3xl font-bold text-foreground md:text-4xl\">{headline}</h2>\n          {description && (\n            <p className=\"mt-4 text-muted-foreground max-w-xl mx-auto\">{description}</p>\n          )}\n\n          {/* Toggle */}\n          {showToggle && (\n            <div className=\"mt-8 inline-flex items-center gap-3 p-1 bg-muted rounded-xl\">\n              <button\n                onClick={() => setIsYearly(false)}\n                className={cn(\n                  \"px-4 py-1.5 rounded-lg text-sm font-medium transition-all\",\n                  !isYearly\n                    ? \"bg-background text-foreground shadow-sm\"\n                    : \"text-muted-foreground hover:text-foreground\"\n                )}\n              >\n                Monthly\n              </button>\n              <button\n                onClick={() => setIsYearly(true)}\n                className={cn(\n                  \"flex items-center gap-2 px-4 py-1.5 rounded-lg text-sm font-medium transition-all\",\n                  isYearly\n                    ? \"bg-background text-foreground shadow-sm\"\n                    : \"text-muted-foreground hover:text-foreground\"\n                )}\n              >\n                Yearly\n                {discountBadge && (\n                  <span className=\"px-1.5 py-0.5 rounded-full text-xs font-semibold bg-primary text-primary-foreground\">\n                    {discountBadge}\n                  </span>\n                )}\n              </button>\n            </div>\n          )}\n        </div>\n\n        {/* Plans */}\n        <div className={cn(\n          \"grid gap-6 items-center\",\n          plans.length === 2 && \"sm:grid-cols-2\",\n          plans.length === 3 && \"sm:grid-cols-2 lg:grid-cols-3\",\n          plans.length >= 4 && \"sm:grid-cols-2 lg:grid-cols-4\"\n        )}>\n          {plans.map((plan, i) => {\n            const displayPrice = isYearly && plan.yearlyPrice !== undefined\n              ? plan.yearlyPrice\n              : plan.price;\n            const displayPeriod = period ?? (isYearly ? \"/year\" : \"/month\");\n\n            return (\n              <PricingCard\n                key={i}\n                name={plan.name}\n                description={plan.description}\n                price={displayPrice}\n                period={displayPeriod}\n                currency={currency}\n                features={plan.features}\n                ctaLabel={plan.ctaLabel}\n                recommended={plan.recommended}\n                badge={plan.badge}\n                footnote={plan.footnote}\n                onCtaClick={() => onPlanSelect?.(plan.name, isYearly)}\n              />\n            );\n          })}\n        </div>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/marketing/pricing-section.tsx"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb-nav",
+  "title": "Breadcrumb Nav",
+  "description": "Responsive breadcrumb navigation with custom separator, max items, and home icon support.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/marketing/breadcrumb-nav.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { ChevronRight, Home } from \"lucide-react\";\n\ninterface BreadcrumbItem {\n  label: string;\n  href?: string;\n  icon?: React.ReactNode;\n}\n\ninterface BreadcrumbNavProps extends React.HTMLAttributes<HTMLElement> {\n  items: BreadcrumbItem[];\n  separator?: React.ReactNode;\n  maxItems?: number;\n  showHome?: boolean;\n  homeHref?: string;\n}\n\nexport function BreadcrumbNav({\n  items,\n  separator,\n  maxItems,\n  showHome = false,\n  homeHref = \"/\",\n  className,\n  ...props\n}: BreadcrumbNavProps) {\n  const allItems: BreadcrumbItem[] = showHome\n    ? [{ label: \"Home\", href: homeHref, icon: <Home className=\"size-3.5\" /> }, ...items]\n    : items;\n\n  let displayItems = allItems;\n  if (maxItems && allItems.length > maxItems) {\n    const front = allItems.slice(0, 1);\n    const back = allItems.slice(allItems.length - (maxItems - 2));\n    displayItems = [...front, { label: \"...\", href: undefined }, ...back];\n  }\n\n  const defaultSeparator = separator ?? <ChevronRight className=\"size-3.5 text-muted-foreground/60 shrink-0\" />;\n\n  return (\n    <nav\n      aria-label=\"Breadcrumb\"\n      className={cn(\"flex items-center\", className)}\n      {...props}\n    >\n      <ol className=\"flex flex-wrap items-center gap-1\">\n        {displayItems.map((item, index) => {\n          const isLast = index === displayItems.length - 1;\n          const isEllipsis = item.label === \"...\";\n\n          return (\n            <li key={index} className=\"flex items-center gap-1\">\n              {index > 0 && defaultSeparator}\n              {isEllipsis ? (\n                <span className=\"text-sm text-muted-foreground px-0.5\">•••</span>\n              ) : isLast ? (\n                <span className=\"flex items-center gap-1.5 text-sm font-medium text-foreground\">\n                  {item.icon}\n                  {item.label}\n                </span>\n              ) : item.href ? (\n                <a\n                  href={item.href}\n                  className=\"flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors\"\n                >\n                  {item.icon}\n                  {item.label}\n                </a>\n              ) : (\n                <span className=\"flex items-center gap-1.5 text-sm text-muted-foreground\">\n                  {item.icon}\n                  {item.label}\n                </span>\n              )}\n            </li>\n          );\n        })}\n      </ol>\n    </nav>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/marketing/breadcrumb-nav.tsx"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "type": "registry:component"
+}

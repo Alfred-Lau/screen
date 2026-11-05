@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "orbit",
+  "title": "Orbit",
+  "description": "Items orbiting around a center element with configurable speed and radius.",
+  "dependencies": [
+    "framer-motion",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/animation/orbit.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { motion } from \"framer-motion\";\nimport { cn } from \"@/lib/cn\";\n\nexport interface OrbitItem {\n  content: React.ReactNode;\n  radius?: number;\n  duration?: number;\n  delay?: number;\n  reverse?: boolean;\n  className?: string;\n}\n\nexport interface OrbitProps {\n  center: React.ReactNode;\n  items: OrbitItem[];\n  className?: string;\n  size?: number;\n}\n\nexport function Orbit({ center, items, className, size = 220 }: OrbitProps) {\n  return (\n    <div\n      className={cn(\"relative flex items-center justify-center\", className)}\n      style={{ width: size, height: size }}\n    >\n      {/* Center */}\n      <div className=\"relative z-10 flex items-center justify-center\">\n        {center}\n      </div>\n\n      {/* Orbit rings and items */}\n      {items.map((item, i) => {\n        const radius = item.radius ?? size * 0.42;\n        const dur = item.duration ?? 8 + i * 2;\n        const delay = item.delay ?? i * -1.5;\n        const dir = item.reverse ? 1 : -1;\n\n        return (\n          <React.Fragment key={i}>\n            {/* Ring */}\n            <div\n              className=\"absolute rounded-full border border-dashed border-gray-200 dark:border-gray-700\"\n              style={{\n                width: radius * 2,\n                height: radius * 2,\n              }}\n            />\n            {/* Item */}\n            <motion.div\n              className=\"absolute\"\n              style={{\n                width: radius * 2,\n                height: radius * 2,\n              }}\n              animate={{ rotate: dir * 360 }}\n              transition={{\n                duration: dur,\n                ease: \"linear\",\n                repeat: Infinity,\n                delay,\n              }}\n            >\n              {/* Counter-rotate so item stays upright */}\n              <motion.div\n                className={cn(\"absolute -translate-x-1/2 -translate-y-1/2 top-0 left-1/2\", item.className)}\n                animate={{ rotate: -dir * 360 }}\n                transition={{\n                  duration: dur,\n                  ease: \"linear\",\n                  repeat: Infinity,\n                  delay,\n                }}\n              >\n                {item.content}\n              </motion.div>\n            </motion.div>\n          </React.Fragment>\n        );\n      })}\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/animation/orbit.tsx"
+    }
+  ],
+  "categories": [
+    "animation"
+  ],
+  "type": "registry:component"
+}

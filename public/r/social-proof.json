@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "social-proof",
+  "title": "Social Proof",
+  "description": "Social proof widget with stacked user avatars, member count, and star rating display.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/marketing/social-proof.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Star } from \"lucide-react\";\n\ninterface SocialProofAvatar {\n  src?: string;\n  name?: string;\n}\n\ninterface SocialProofProps extends React.HTMLAttributes<HTMLDivElement> {\n  avatars?: SocialProofAvatar[];\n  count?: number;\n  countLabel?: string;\n  rating?: number;\n  reviewCount?: number;\n  layout?: \"horizontal\" | \"vertical\";\n}\n\nfunction getInitials(name = \"\"): string {\n  return name.split(\" \").slice(0, 2).map((n) => n[0]).join(\"\").toUpperCase();\n}\n\nconst avatarColors = [\n  \"bg-blue-500\", \"bg-violet-500\", \"bg-pink-500\",\n  \"bg-amber-500\", \"bg-teal-500\", \"bg-indigo-500\",\n];\n\nexport function SocialProof({\n  avatars = [],\n  count,\n  countLabel = \"people already joined\",\n  rating,\n  reviewCount,\n  layout = \"horizontal\",\n  className,\n  ...props\n}: SocialProofProps) {\n  const displayAvatars = avatars.slice(0, 5);\n  const maxStars = 5;\n\n  return (\n    <div\n      className={cn(\n        \"flex items-center gap-3\",\n        layout === \"vertical\" && \"flex-col\",\n        className\n      )}\n      {...props}\n    >\n      {/* Avatar stack */}\n      {displayAvatars.length > 0 && (\n        <div className=\"flex items-center -space-x-2\">\n          {displayAvatars.map((avatar, i) => (\n            <div\n              key={i}\n              className={cn(\n                \"w-8 h-8 rounded-full ring-2 ring-background overflow-hidden flex items-center justify-center shrink-0\",\n                !avatar.src && avatarColors[i % avatarColors.length]\n              )}\n              title={avatar.name}\n            >\n              {avatar.src ? (\n                <img src={avatar.src} alt={avatar.name} className=\"w-full h-full object-cover\" />\n              ) : (\n                <span className=\"text-xs font-semibold text-white\">{getInitials(avatar.name)}</span>\n              )}\n            </div>\n          ))}\n        </div>\n      )}\n\n      <div className={cn(\"flex flex-col gap-0.5\", layout === \"vertical\" && \"items-center\")}>\n        {/* Count */}\n        {count !== undefined && (\n          <p className=\"text-sm font-semibold text-foreground\">\n            <span className=\"text-primary font-bold\">{count.toLocaleString()}+</span>{\" \"}\n            {countLabel}\n          </p>\n        )}\n\n        {/* Rating */}\n        {rating !== undefined && (\n          <div className=\"flex items-center gap-1.5\">\n            <div className=\"flex items-center\">\n              {Array.from({ length: maxStars }).map((_, i) => (\n                <Star\n                  key={i}\n                  className={cn(\n                    \"size-3.5\",\n                    i < Math.floor(rating)\n                      ? \"fill-yellow-400 text-yellow-400\"\n                      : i < rating\n                      ? \"fill-yellow-400/50 text-yellow-400\"\n                      : \"fill-muted text-muted\"\n                  )}\n                />\n              ))}\n            </div>\n            <span className=\"text-xs text-muted-foreground font-medium\">\n              {rating.toFixed(1)}\n              {reviewCount !== undefined && ` (${reviewCount.toLocaleString()} reviews)`}\n            </span>\n          </div>\n        )}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/marketing/social-proof.tsx"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "type": "registry:component"
+}

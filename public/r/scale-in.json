@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scale-in",
+  "title": "Scale In",
+  "description": "Scale and fade elements in from a smaller size on viewport entry.",
+  "dependencies": [
+    "framer-motion",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/animation/scale-in.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { motion, type Variants } from \"framer-motion\";\nimport { cn } from \"@/lib/cn\";\n\nexport interface ScaleInProps {\n  children: React.ReactNode;\n  from?: number;\n  delay?: number;\n  duration?: number;\n  once?: boolean;\n  className?: string;\n  /** Increment this value to replay the animation */\n  replayKey?: number;\n}\n\nexport function ScaleIn({\n  children,\n  from = 0.85,\n  delay = 0,\n  duration = 0.45,\n  once = true,\n  className,\n  replayKey,\n}: ScaleInProps) {\n  const variants: Variants = {\n    hidden: { opacity: 0, scale: from },\n    visible: {\n      opacity: 1,\n      scale: 1,\n      transition: {\n        duration,\n        delay,\n        ease: [0.16, 1, 0.3, 1],\n      },\n    },\n  };\n\n  return (\n    <motion.div\n      key={replayKey}\n      className={cn(className)}\n      initial=\"hidden\"\n      whileInView=\"visible\"\n      viewport={{ once, margin: \"-40px\" }}\n      variants={variants}\n    >\n      {children}\n    </motion.div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/animation/scale-in.tsx"
+    }
+  ],
+  "categories": [
+    "animation"
+  ],
+  "type": "registry:component"
+}

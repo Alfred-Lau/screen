@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slide-in",
+  "title": "Slide In",
+  "description": "Spring-physics slide-in animation from any direction on viewport entry.",
+  "dependencies": [
+    "framer-motion",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/animation/slide-in.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { motion, type Variants } from \"framer-motion\";\nimport { cn } from \"@/lib/cn\";\n\nexport type SlideDirection = \"up\" | \"down\" | \"left\" | \"right\";\n\nexport interface SlideInProps {\n  children: React.ReactNode;\n  direction?: SlideDirection;\n  delay?: number;\n  duration?: number;\n  distance?: number;\n  once?: boolean;\n  className?: string;\n  /** Increment this value to replay the animation */\n  replayKey?: number;\n}\n\nexport function SlideIn({\n  children,\n  direction = \"left\",\n  delay = 0,\n  duration = 0.6,\n  distance = 40,\n  once = true,\n  className,\n  replayKey,\n}: SlideInProps) {\n  const initial: Record<string, number | string> = { opacity: 0 };\n  if (direction === \"up\") initial.y = distance;\n  if (direction === \"down\") initial.y = -distance;\n  if (direction === \"left\") initial.x = -distance;\n  if (direction === \"right\") initial.x = distance;\n\n  const variants: Variants = {\n    hidden: initial,\n    visible: {\n      opacity: 1,\n      x: 0,\n      y: 0,\n      transition: {\n        duration,\n        delay,\n        type: \"spring\",\n        stiffness: 100,\n        damping: 20,\n      },\n    },\n  };\n\n  return (\n    <motion.div\n      key={replayKey}\n      className={cn(\"overflow-hidden\", className)}\n      initial=\"hidden\"\n      whileInView=\"visible\"\n      viewport={{ once, margin: \"-40px\" }}\n      variants={variants}\n    >\n      {children}\n    </motion.div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/animation/slide-in.tsx"
+    }
+  ],
+  "categories": [
+    "animation"
+  ],
+  "type": "registry:component"
+}

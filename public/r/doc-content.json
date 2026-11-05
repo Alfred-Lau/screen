@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "doc-content",
+  "title": "Doc Content",
+  "description": "Content wrapper with styled header, title gradient, description, and prose styling.",
+  "registryDependencies": [
+    "https://screen.solokit.run/r/doc-code-highlight.json"
+  ],
+  "files": [
+    {
+      "path": "lib/docs/components/doc-content.tsx",
+      "content": "\"use client\";\n\nimport { DocCodeHighlight } from \"./code-highlight\";\nimport type { DocContentProps } from \"../types\";\n\nexport function DocContent({\n  title,\n  description,\n  children,\n  className = \"\",\n}: DocContentProps) {\n  return (\n    <DocCodeHighlight className={className}>\n      <article className=\"prose dark:prose-invert max-w-none docs-content\">\n        <header className=\"mb-12 border-b border-gray-200 dark:border-gray-700 pb-8\">\n          <h1 className=\"text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4 leading-tight\">\n            {title}\n          </h1>\n          {description && (\n            <p className=\"text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl\">\n              {description}\n            </p>\n          )}\n        </header>\n        <div className=\"prose-content text-gray-800 dark:text-gray-200\">\n          {children}\n        </div>\n      </article>\n    </DocCodeHighlight>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/docs/components/doc-content.tsx"
+    }
+  ],
+  "categories": [
+    "docs"
+  ],
+  "type": "registry:component"
+}

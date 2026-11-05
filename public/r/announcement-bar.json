@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "announcement-bar",
+  "title": "Announcement Bar",
+  "description": "Dismissible page-top announcement bar with icon, message, link, and color variants.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/marketing/announcement-bar.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { X, Megaphone, Info, AlertTriangle, Sparkles } from \"lucide-react\";\n\nexport type AnnouncementVariant = \"default\" | \"info\" | \"warning\" | \"success\" | \"promo\";\n\ninterface AnnouncementBarProps extends React.HTMLAttributes<HTMLDivElement> {\n  message: React.ReactNode;\n  variant?: AnnouncementVariant;\n  dismissible?: boolean;\n  onDismiss?: () => void;\n  icon?: React.ReactNode;\n  link?: { href: string; label: string };\n  ctaButton?: { label: string; onClick: () => void };\n}\n\nconst variantConfig: Record<AnnouncementVariant, { bg: string; text: string; icon: React.ReactNode }> = {\n  default: {\n    bg: \"bg-muted\",\n    text: \"text-foreground\",\n    icon: <Megaphone className=\"size-4\" />,\n  },\n  info: {\n    bg: \"bg-blue-50 dark:bg-blue-950/40\",\n    text: \"text-blue-800 dark:text-blue-200\",\n    icon: <Info className=\"size-4\" />,\n  },\n  warning: {\n    bg: \"bg-yellow-50 dark:bg-yellow-950/40\",\n    text: \"text-yellow-800 dark:text-yellow-200\",\n    icon: <AlertTriangle className=\"size-4\" />,\n  },\n  success: {\n    bg: \"bg-emerald-50 dark:bg-emerald-950/40\",\n    text: \"text-emerald-800 dark:text-emerald-200\",\n    icon: <Sparkles className=\"size-4\" />,\n  },\n  promo: {\n    bg: \"bg-gradient-to-r from-primary to-accent\",\n    text: \"text-primary-foreground\",\n    icon: <Sparkles className=\"size-4\" />,\n  },\n};\n\nexport function AnnouncementBar({\n  message,\n  variant = \"default\",\n  dismissible = true,\n  onDismiss,\n  icon,\n  link,\n  ctaButton,\n  className,\n  ...props\n}: AnnouncementBarProps) {\n  const [dismissed, setDismissed] = React.useState(false);\n  const config = variantConfig[variant];\n\n  if (dismissed) return null;\n\n  const handleDismiss = () => {\n    setDismissed(true);\n    onDismiss?.();\n  };\n\n  return (\n    <div\n      className={cn(\n        \"w-full px-4 py-2.5 flex items-center justify-center gap-3\",\n        config.bg,\n        config.text,\n        className\n      )}\n      {...props}\n    >\n      <div className=\"flex items-center gap-2 flex-1 justify-center min-w-0\">\n        <span className=\"shrink-0 opacity-80\">{icon ?? config.icon}</span>\n        <p className=\"text-sm font-medium truncate\">{message}</p>\n        {link && (\n          <a\n            href={link.href}\n            className=\"shrink-0 text-sm font-semibold underline underline-offset-2 hover:no-underline ml-1\"\n          >\n            {link.label} →\n          </a>\n        )}\n        {ctaButton && (\n          <button\n            onClick={ctaButton.onClick}\n            className=\"shrink-0 ml-2 px-3 py-0.5 rounded-md text-xs font-semibold border border-current opacity-80 hover:opacity-100 transition-opacity\"\n          >\n            {ctaButton.label}\n          </button>\n        )}\n      </div>\n      {dismissible && (\n        <button\n          onClick={handleDismiss}\n          className=\"shrink-0 p-0.5 rounded opacity-60 hover:opacity-100 transition-opacity ml-auto\"\n          aria-label=\"Dismiss\"\n        >\n          <X className=\"size-3.5\" />\n        </button>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/marketing/announcement-bar.tsx"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "type": "registry:component"
+}

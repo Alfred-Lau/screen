@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "inline-citation",
+  "title": "Inline Citation",
+  "description": "Inline citation badges with tooltip previews and source linking.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/chatbot/inline-citation.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { ExternalLink } from \"lucide-react\";\n\nexport interface Citation {\n  id: string;\n  title: string;\n  url?: string;\n  source?: string;\n  snippet?: string;\n}\n\nexport interface InlineCitationProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, \"onClick\"> {\n  citation: Citation;\n  number?: number;\n  onClick?: (citation: Citation) => void;\n  showTooltip?: boolean;\n}\n\nexport function InlineCitation({\n  citation,\n  number,\n  className,\n  onClick,\n  showTooltip = true,\n  ...props\n}: InlineCitationProps) {\n  const handleClick = (e: React.MouseEvent) => {\n    e.preventDefault();\n    if (citation.url) {\n      window.open(citation.url, \"_blank\", \"noopener,noreferrer\");\n    }\n    onClick?.(citation);\n  };\n\n  return (\n    <span className=\"relative inline-block group\" {...props}>\n      <button\n        onClick={handleClick}\n        className={cn(\n          \"inline-flex items-center gap-1 px-1.5 py-0.5 text-xs font-medium rounded border\",\n          \"text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20\",\n          \"border-blue-200 dark:border-blue-800 hover:bg-blue-100 dark:hover:bg-blue-900/30\",\n          \"transition-colors cursor-pointer\",\n          className,\n        )}\n        title={citation.title}\n      >\n        {number && <span className=\"text-xs font-bold\">{number}</span>}\n        <ExternalLink size={10} />\n      </button>\n\n      {showTooltip && (\n        <div className=\"absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 p-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10\">\n          <div className=\"text-sm font-medium text-gray-900 dark:text-gray-100 mb-1 line-clamp-2\">\n            {citation.title}\n          </div>\n          {citation.source && (\n            <div className=\"text-xs text-gray-500 dark:text-gray-400 mb-2\">\n              {citation.source}\n            </div>\n          )}\n          {citation.snippet && (\n            <div className=\"text-xs text-gray-600 dark:text-gray-300 line-clamp-3\">\n              {citation.snippet}\n            </div>\n          )}\n          {citation.url && (\n            <div className=\"text-xs text-blue-600 dark:text-blue-400 mt-2 truncate\">\n              {(() => {\n                try {\n                  return new URL(citation.url).hostname;\n                } catch {\n                  return citation.url;\n                }\n              })()}\n            </div>\n          )}\n          <div className=\"absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white dark:border-t-gray-800\" />\n        </div>\n      )}\n    </span>\n  );\n}\n\nexport function parseInlineCitations(\n  text: string,\n  citations: Citation[],\n): React.ReactNode[] {\n  const citationPattern = /\\[(\\d+|[\\w-]+)\\]/g;\n  const parts: React.ReactNode[] = [];\n  let lastIndex = 0;\n  let match;\n\n  while ((match = citationPattern.exec(text)) !== null) {\n    if (match.index > lastIndex) {\n      parts.push(text.slice(lastIndex, match.index));\n    }\n\n    const citationRef = match[1];\n    let citation: Citation | undefined;\n\n    if (/^\\d+$/.test(citationRef)) {\n      const index = parseInt(citationRef) - 1;\n      citation = citations[index];\n    } else {\n      citation = citations.find((c) => c.id === citationRef);\n    }\n\n    if (citation) {\n      parts.push(\n        <InlineCitation\n          key={`citation-${match.index}`}\n          citation={citation}\n          number={\n            /^\\d+$/.test(citationRef) ? parseInt(citationRef) : undefined\n          }\n        />,\n      );\n    } else {\n      parts.push(match[0]);\n    }\n\n    lastIndex = citationPattern.lastIndex;\n  }\n\n  if (lastIndex < text.length) {\n    parts.push(text.slice(lastIndex));\n  }\n\n  return parts;\n}\n",
+      "type": "registry:file",
+      "target": "lib/chatbot/inline-citation.tsx"
+    }
+  ],
+  "categories": [
+    "chatbot"
+  ],
+  "type": "registry:component"
+}

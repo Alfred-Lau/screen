@@ -1,0 +1,1249 @@
+{
+  "$comment": "Agent-facing catalog for the Screen component library. Pick a component by description, then read props to call it. Each registryUrl resolves to the full source.",
+  "site": "https://screen.solokit.run",
+  "generatedAt": "2026-11-05",
+  "count": 23,
+  "components": [
+    {
+      "name": "a2ui-surface",
+      "title": "A2UI Surface",
+      "description": "Renders a declarative agent UI payload into real components, with an inspectable JSON source.",
+      "component": "A2uiSurface",
+      "source": "lib/agent/a2ui-surface.tsx",
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "install": "npx shadcn@latest add https://screen.solokit.run/r/a2ui-surface.json",
+      "registryUrl": "https://screen.solokit.run/r/a2ui-surface.json",
+      "docs": "https://screen.solokit.run/en/components#a2ui-surface",
+      "props": [
+        {
+          "name": "spec",
+          "type": "A2uiSurfaceSpec",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "catalog",
+          "type": "Record<string, A2uiRenderer>",
+          "required": false
+        },
+        {
+          "name": "onAction",
+          "type": "(action: string, componentId: string) => void",
+          "required": false
+        },
+        {
+          "name": "showSource",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "approval",
+      "title": "Approval",
+      "description": "Ask before an agent sends, refunds, or otherwise leaves the product, with a reason, an expiry, and keyboard shortcuts.",
+      "component": "ApprovalCard",
+      "source": "lib/agent/approval.tsx",
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "install": "npx shadcn@latest add https://screen.solokit.run/r/approval.json",
+      "registryUrl": "https://screen.solokit.run/r/approval.json",
+      "docs": "https://screen.solokit.run/en/components#approval",
+      "props": [
+        {
+          "name": "request",
+          "type": "ApprovalRequest",
+          "required": true
+        },
+        {
+          "name": "decision",
+          "type": "ApprovalDecision | null",
+          "required": false
+        },
+        {
+          "name": "onDecide",
+          "type": "(decision: ApprovalDecision) => void",
+          "required": false
+        },
+        {
+          "name": "onExpire",
+          "type": "() => void",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "artifact",
+      "title": "Artifact",
+      "description": "Tabs of files a run produced, with code or image preview and copy, download, and open actions.",
+      "component": "Artifact",
+      "source": "lib/agent/artifact.tsx",
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "install": "npx shadcn@latest add https://screen.solokit.run/r/artifact.json",
+      "registryUrl": "https://screen.solokit.run/r/artifact.json",
+      "docs": "https://screen.solokit.run/en/components#artifact",
+      "props": [
+        {
+          "name": "items",
+          "type": "ArtifactItem[]",
+          "required": true
+        },
+        {
+          "name": "defaultId",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "onDownload",
+          "type": "(id: string) => void",
+          "required": false
+        },
+        {
+          "name": "onOpen",
+          "type": "(id: string) => void",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "autonomy",
+      "title": "Agent Autonomy",
+      "description": "Choose whether a run asks, waits on the send, or finishes alone, with per-action exceptions and hard limits.",
+      "component": "AgentAutonomy",
+      "source": "lib/agent/autonomy.tsx",
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "install": "npx shadcn@latest add https://screen.solokit.run/r/autonomy.json",
+      "registryUrl": "https://screen.solokit.run/r/autonomy.json",
+      "docs": "https://screen.solokit.run/en/components#autonomy",
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "value",
+          "type": "AutonomyLevel",
+          "required": true
+        },
+        {
+          "name": "onChange",
+          "type": "(value: AutonomyLevel) => void",
+          "required": false
+        },
+        {
+          "name": "overrides",
+          "type": "AutonomyOverride[]",
+          "required": false
+        },
+        {
+          "name": "onOverrideChange",
+          "type": "(id: string, level: AutonomyLevel) => void",
+          "required": false
+        },
+        {
+          "name": "limits",
+          "type": "AutonomyLimits",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "checkpoint",
+      "title": "Checkpoint",
+      "description": "Timeline of run snapshots, each restorable to files, chat, or both.",
+      "component": "Checkpoint",
+      "source": "lib/agent/checkpoint.tsx",
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "install": "npx shadcn@latest add https://screen.solokit.run/r/checkpoint.json",
+      "registryUrl": "https://screen.solokit.run/r/checkpoint.json",
+      "docs": "https://screen.solokit.run/en/components#checkpoint",
+      "props": [
+        {
+          "name": "checkpoints",
+          "type": "Checkpoint[]",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "defaultOpen",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "onRestore",
+          "type": "(id: string, scope: CheckpointScope) => void",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "diff",
+      "title": "Diff",
+      "description": "File changes for one run, with per-hunk accept and reject.",
+      "component": "Diff",
+      "source": "lib/agent/diff.tsx",
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "install": "npx shadcn@latest add https://screen.solokit.run/r/diff.json",
+      "registryUrl": "https://screen.solokit.run/r/diff.json",
+      "docs": "https://screen.solokit.run/en/components#diff",
+      "props": [
+        {
+          "name": "files",
+          "type": "DiffFile[]",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "view",
+          "type": "DiffView",
+          "required": false
+        },
+        {
+          "name": "defaultOpen",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "onAccept",
+          "type": "(fileId: string, hunkId?: string) => void",
+          "required": false
+        },
+        {
+          "name": "onReject",
+          "type": "(fileId: string, hunkId?: string) => void",
+          "required": false
+        },
+        {
+          "name": "onAcceptAll",
+          "type": "() => void",
+          "required": false
+        },
+        {
+          "name": "onRejectAll",
+          "type": "() => void",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "error-recovery",
+      "title": "Error Recovery",
+      "description": "A failed step with its reason and the ways out: retry, edit, skip, or switch model.",
+      "component": "ErrorRecovery",
+      "source": "lib/agent/error-recovery.tsx",
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "install": "npx shadcn@latest add https://screen.solokit.run/r/error-recovery.json",
+      "registryUrl": "https://screen.solokit.run/r/error-recovery.json",
+      "docs": "https://screen.solokit.run/en/components#error-recovery",
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "step",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "detail",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "options",
+          "type": "RecoveryOption[]",
+          "required": false
+        },
+        {
+          "name": "onSelect",
+          "type": "(id: string) => void",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "eval-badge",
+      "title": "Eval Badge",
+      "description": "Compact eval verdict that expands into per-metric scores and the run it came from.",
+      "component": "EvalBadge",
+      "source": "lib/agent/eval-badge.tsx",
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "install": "npx shadcn@latest add https://screen.solokit.run/r/eval-badge.json",
+      "registryUrl": "https://screen.solokit.run/r/eval-badge.json",
+      "docs": "https://screen.solokit.run/en/components#eval-badge",
+      "props": [
+        {
+          "name": "verdict",
+          "type": "EvalVerdict",
+          "required": true
+        },
+        {
+          "name": "suite",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "passed",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "total",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "scores",
+          "type": "EvalScore[]",
+          "required": false
+        },
+        {
+          "name": "runId",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "ranAt",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "onOpen",
+          "type": "() => void",
+          "required": false
+        },
+        {
+          "name": "defaultOpen",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "handoff",
+      "title": "Handoff",
+      "description": "Swimlane timeline of who did what, with the points where work moved between agents.",
+      "component": "Handoff",
+      "source": "lib/agent/handoff.tsx",
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "install": "npx shadcn@latest add https://screen.solokit.run/r/handoff.json",
+      "registryUrl": "https://screen.solokit.run/r/handoff.json",
+      "docs": "https://screen.solokit.run/en/components#handoff",
+      "props": [
+        {
+          "name": "lanes",
+          "type": "HandoffLane[]",
+          "required": true
+        },
+        {
+          "name": "spans",
+          "type": "HandoffSpan[]",
+          "required": true
+        },
+        {
+          "name": "transfers",
+          "type": "HandoffTransfer[]",
+          "required": false
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "totalMs",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "inbox",
+      "title": "Agent Inbox",
+      "description": "Background agent tasks with filters for what needs you, unread dots, live progress, and approve, reject, retry, or open.",
+      "component": "AgentInbox",
+      "source": "lib/agent/inbox.tsx",
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "install": "npx shadcn@latest add https://screen.solokit.run/r/inbox.json",
+      "registryUrl": "https://screen.solokit.run/r/inbox.json",
+      "docs": "https://screen.solokit.run/en/components#inbox",
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "items",
+          "type": "InboxItem[]",
+          "required": true
+        },
+        {
+          "name": "defaultFilter",
+          "type": "InboxFilter",
+          "required": false
+        },
+        {
+          "name": "onApprove",
+          "type": "(id: string) => void",
+          "required": false
+        },
+        {
+          "name": "onReject",
+          "type": "(id: string) => void",
+          "required": false
+        },
+        {
+          "name": "onRetry",
+          "type": "(id: string) => void",
+          "required": false
+        },
+        {
+          "name": "onOpen",
+          "type": "(id: string) => void",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "ledger",
+      "title": "Agent Ledger",
+      "description": "Proposed edits for one run, with an inline diff, apply all, and revert.",
+      "component": "AgentLedger",
+      "source": "lib/agent/ledger.tsx",
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "install": "npx shadcn@latest add https://screen.solokit.run/r/ledger.json",
+      "registryUrl": "https://screen.solokit.run/r/ledger.json",
+      "docs": "https://screen.solokit.run/en/components#ledger",
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "changes",
+          "type": "AgentChange[]",
+          "required": true
+        },
+        {
+          "name": "onApply",
+          "type": "(id: string) => void",
+          "required": false
+        },
+        {
+          "name": "onRevert",
+          "type": "(id: string) => void",
+          "required": false
+        },
+        {
+          "name": "onApplyAll",
+          "type": "() => void",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "memory",
+      "title": "Agent Memory",
+      "description": "Facts one run is using, typed as preference, fact, or rule, with confidence, source, pin, and forget.",
+      "component": "AgentMemory",
+      "source": "lib/agent/memory.tsx",
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "install": "npx shadcn@latest add https://screen.solokit.run/r/memory.json",
+      "registryUrl": "https://screen.solokit.run/r/memory.json",
+      "docs": "https://screen.solokit.run/en/components#memory",
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "facts",
+          "type": "MemoryFact[]",
+          "required": true
+        },
+        {
+          "name": "onForget",
+          "type": "(id: string) => void",
+          "required": false
+        },
+        {
+          "name": "onPin",
+          "type": "(id: string, pinned: boolean) => void",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "plan",
+      "title": "Agent Plan",
+      "description": "Reorder, retry, and stop the steps of one run, with tool chips, estimates, blocked steps, and a progress bar.",
+      "component": "AgentPlan",
+      "source": "lib/agent/plan.tsx",
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "install": "npx shadcn@latest add https://screen.solokit.run/r/plan.json",
+      "registryUrl": "https://screen.solokit.run/r/plan.json",
+      "docs": "https://screen.solokit.run/en/components#plan",
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "steps",
+          "type": "PlanStep[]",
+          "required": true
+        },
+        {
+          "name": "onReorder",
+          "type": "(steps: PlanStep[]) => void",
+          "required": false
+        },
+        {
+          "name": "onRetry",
+          "type": "(id: string) => void",
+          "required": false
+        },
+        {
+          "name": "onStop",
+          "type": "() => void",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "prompt-input",
+      "title": "Prompt Input",
+      "description": "Composer with @-context chips, attachments, model and effort selectors, and send/stop.",
+      "component": "PromptInput",
+      "source": "lib/agent/prompt-input.tsx",
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "install": "npx shadcn@latest add https://screen.solokit.run/r/prompt-input.json",
+      "registryUrl": "https://screen.solokit.run/r/prompt-input.json",
+      "docs": "https://screen.solokit.run/en/components#prompt-input",
+      "props": [
+        {
+          "name": "defaultValue",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "contexts",
+          "type": "PromptContext[]",
+          "required": false
+        },
+        {
+          "name": "onRemoveContext",
+          "type": "(id: string) => void",
+          "required": false
+        },
+        {
+          "name": "models",
+          "type": "PromptOption[]",
+          "required": false
+        },
+        {
+          "name": "model",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "onModelChange",
+          "type": "(id: string) => void",
+          "required": false
+        },
+        {
+          "name": "efforts",
+          "type": "PromptOption[]",
+          "required": false
+        },
+        {
+          "name": "effort",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "onEffortChange",
+          "type": "(id: string) => void",
+          "required": false
+        },
+        {
+          "name": "running",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "hint",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "onSubmit",
+          "type": "(value: string) => void",
+          "required": false
+        },
+        {
+          "name": "onStop",
+          "type": "() => void",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "run-controls",
+      "title": "Run Controls",
+      "description": "Live run header: state, current step, elapsed, tokens, cost, and stop or retry.",
+      "component": "RunControls",
+      "source": "lib/agent/run-controls.tsx",
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "install": "npx shadcn@latest add https://screen.solokit.run/r/run-controls.json",
+      "registryUrl": "https://screen.solokit.run/r/run-controls.json",
+      "docs": "https://screen.solokit.run/en/components#run-controls",
+      "props": [
+        {
+          "name": "state",
+          "type": "RunState",
+          "required": true
+        },
+        {
+          "name": "step",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "stepIndex",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "stepTotal",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "elapsed",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "tokens",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "cost",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "onPause",
+          "type": "() => void",
+          "required": false
+        },
+        {
+          "name": "onResume",
+          "type": "() => void",
+          "required": false
+        },
+        {
+          "name": "onStop",
+          "type": "() => void",
+          "required": false
+        },
+        {
+          "name": "onRetry",
+          "type": "() => void",
+          "required": false
+        },
+        {
+          "name": "onRestart",
+          "type": "() => void",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "run-receipt",
+      "title": "Run Receipt",
+      "description": "End-of-run summary: status, stats, artifacts, and what to do next.",
+      "component": "RunReceipt",
+      "source": "lib/agent/run-receipt.tsx",
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "install": "npx shadcn@latest add https://screen.solokit.run/r/run-receipt.json",
+      "registryUrl": "https://screen.solokit.run/r/run-receipt.json",
+      "docs": "https://screen.solokit.run/en/components#run-receipt",
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "summary",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "status",
+          "type": "ReceiptStatus",
+          "required": false
+        },
+        {
+          "name": "time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "stats",
+          "type": "ReceiptStat[]",
+          "required": false
+        },
+        {
+          "name": "artifacts",
+          "type": "ReceiptArtifact[]",
+          "required": false
+        },
+        {
+          "name": "actions",
+          "type": "ReceiptAction[]",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "steering",
+      "title": "Agent Steering",
+      "description": "Queue a note for the next unfinished step, or interrupt the run and apply it now.",
+      "component": "AgentSteering",
+      "source": "lib/agent/steering.tsx",
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "install": "npx shadcn@latest add https://screen.solokit.run/r/steering.json",
+      "registryUrl": "https://screen.solokit.run/r/steering.json",
+      "docs": "https://screen.solokit.run/en/components#steering",
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "notes",
+          "type": "SteeringNote[]",
+          "required": true
+        },
+        {
+          "name": "onSubmit",
+          "type": "(text: string, mode: SteeringMode) => void",
+          "required": false
+        },
+        {
+          "name": "onRemove",
+          "type": "(id: string) => void",
+          "required": false
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "task",
+      "title": "Task List",
+      "description": "A live checklist with nested subtasks, progress, and blocked states for long multi-step work.",
+      "component": "TaskList",
+      "source": "lib/agent/task.tsx",
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "install": "npx shadcn@latest add https://screen.solokit.run/r/task.json",
+      "registryUrl": "https://screen.solokit.run/r/task.json",
+      "docs": "https://screen.solokit.run/en/components#task",
+      "props": [
+        {
+          "name": "tasks",
+          "type": "TaskItem[]",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "terminal",
+      "title": "Terminal",
+      "description": "A command and its output, with exit code and folded long output.",
+      "component": "Terminal",
+      "source": "lib/agent/terminal.tsx",
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "install": "npx shadcn@latest add https://screen.solokit.run/r/terminal.json",
+      "registryUrl": "https://screen.solokit.run/r/terminal.json",
+      "docs": "https://screen.solokit.run/en/components#terminal",
+      "props": [
+        {
+          "name": "command",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "cwd",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "lines",
+          "type": "(string | TerminalLine)[]",
+          "required": true
+        },
+        {
+          "name": "exitCode",
+          "type": "number | null",
+          "required": false
+        },
+        {
+          "name": "duration",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "state",
+          "type": "TerminalState",
+          "required": false
+        },
+        {
+          "name": "maxLines",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "defaultOpen",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "prompt",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "onRerun",
+          "type": "() => void",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "tool-group",
+      "title": "Tool Group",
+      "description": "Collapse a run of tool calls into one summary row you can open.",
+      "component": "ToolGroup",
+      "source": "lib/agent/tool-group.tsx",
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "install": "npx shadcn@latest add https://screen.solokit.run/r/tool-group.json",
+      "registryUrl": "https://screen.solokit.run/r/tool-group.json",
+      "docs": "https://screen.solokit.run/en/components#tool-group",
+      "props": [
+        {
+          "name": "calls",
+          "type": "ToolCall[]",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "summary",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "defaultOpen",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "onOpen",
+          "type": "(id: string) => void",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "tool-permission",
+      "title": "Tool Permission",
+      "description": "Tool-level grant with risk level, argument preview, and once / session / always scope.",
+      "component": "ToolPermission",
+      "source": "lib/agent/tool-permission.tsx",
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "install": "npx shadcn@latest add https://screen.solokit.run/r/tool-permission.json",
+      "registryUrl": "https://screen.solokit.run/r/tool-permission.json",
+      "docs": "https://screen.solokit.run/en/components#tool-permission",
+      "props": [
+        {
+          "name": "tool",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "server",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "risk",
+          "type": "PermissionRisk",
+          "required": false
+        },
+        {
+          "name": "args",
+          "type": "PermissionArg[]",
+          "required": false
+        },
+        {
+          "name": "scopes",
+          "type": "PermissionScope[]",
+          "required": false
+        },
+        {
+          "name": "defaultScope",
+          "type": "PermissionScope",
+          "required": false
+        },
+        {
+          "name": "allowLabel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "denyLabel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "onAllow",
+          "type": "(scope: PermissionScope) => void",
+          "required": false
+        },
+        {
+          "name": "onDeny",
+          "type": "() => void",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "trace",
+      "title": "Agent Trace",
+      "description": "Waterfall of model calls, tools, and sub-agents with span-level latency, tokens, and cost.",
+      "component": "AgentTrace",
+      "source": "lib/agent/trace.tsx",
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "install": "npx shadcn@latest add https://screen.solokit.run/r/trace.json",
+      "registryUrl": "https://screen.solokit.run/r/trace.json",
+      "docs": "https://screen.solokit.run/en/components#trace",
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "spans",
+          "type": "TraceSpan[]",
+          "required": true
+        },
+        {
+          "name": "layout",
+          "type": "TraceLayout",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "tree",
+      "title": "Agent Tree",
+      "description": "Orchestrator and the tools or sub-agents it started, with tokens, cost per node, and foldable branches.",
+      "component": "AgentTree",
+      "source": "lib/agent/tree.tsx",
+      "dependencies": [
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "install": "npx shadcn@latest add https://screen.solokit.run/r/tree.json",
+      "registryUrl": "https://screen.solokit.run/r/tree.json",
+      "docs": "https://screen.solokit.run/en/components#tree",
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "root",
+          "type": "AgentNode",
+          "required": true
+        },
+        {
+          "name": "defaultCollapsed",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

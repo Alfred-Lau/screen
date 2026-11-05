@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shimmer",
+  "title": "Shimmer",
+  "description": "Shimmer loading effect with framer-motion animation.",
+  "dependencies": [
+    "framer-motion",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/chatbot/shimmer.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { motion } from \"framer-motion\";\nimport {\n  type CSSProperties,\n  type ElementType,\n  type JSX,\n  memo,\n  useMemo,\n} from \"react\";\n\nexport type ShimmerProps = {\n  children: string;\n  as?: ElementType;\n  className?: string;\n  duration?: number;\n  spread?: number;\n};\n\nconst ShimmerComponent = ({\n  children,\n  as: Component = \"p\",\n  className,\n  duration = 2,\n  spread = 2,\n}: ShimmerProps) => {\n  const MotionComponent = motion.create(\n    Component as keyof JSX.IntrinsicElements,\n  );\n\n  const dynamicSpread = useMemo(\n    () => (children?.length ?? 0) * spread,\n    [children, spread],\n  );\n\n  return (\n    <MotionComponent\n      animate={{ backgroundPosition: \"0% center\" }}\n      className={cn(\n        \"relative inline-block bg-[length:250%_100%,auto] bg-clip-text text-transparent\",\n        \"[--bg:linear-gradient(90deg,#0000_calc(50%-var(--spread)),var(--ds-gray-100),#0000_calc(50%+var(--spread)))] [background-repeat:no-repeat,padding-box]\",\n        className,\n      )}\n      initial={{ backgroundPosition: \"100% center\" }}\n      style={\n        {\n          \"--spread\": `${dynamicSpread}px`,\n          backgroundImage:\n            \"var(--bg), linear-gradient(var(--ds-gray-600), var(--ds-gray-600))\",\n        } as CSSProperties\n      }\n      transition={{\n        repeat: Number.POSITIVE_INFINITY,\n        duration,\n        ease: \"linear\",\n      }}\n    >\n      {children}\n    </MotionComponent>\n  );\n};\n\nexport const Shimmer = memo(ShimmerComponent);\nShimmer.displayName = \"Shimmer\";\n",
+      "type": "registry:file",
+      "target": "lib/chatbot/shimmer.tsx"
+    }
+  ],
+  "categories": [
+    "chatbot"
+  ],
+  "type": "registry:component"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "logo-banner",
+  "title": "Logo Banner",
+  "description": "Partner/client logo showcase with static grid or infinite marquee scrolling animation.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/marketing/logo-banner.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface LogoItem {\n  name: string;\n  logo: React.ReactNode;\n  href?: string;\n}\n\ninterface LogoBannerProps extends React.HTMLAttributes<HTMLElement> {\n  logos: LogoItem[];\n  headline?: string;\n  layout?: \"static\" | \"marquee\";\n  columns?: 3 | 4 | 5 | 6;\n  speed?: \"slow\" | \"normal\" | \"fast\";\n  grayscale?: boolean;\n}\n\nconst colsMap = {\n  3: \"grid-cols-3\",\n  4: \"sm:grid-cols-4\",\n  5: \"sm:grid-cols-3 md:grid-cols-5\",\n  6: \"sm:grid-cols-3 md:grid-cols-6\",\n};\n\nconst speedMap = {\n  slow: \"40s\",\n  normal: \"25s\",\n  fast: \"15s\",\n};\n\nexport function LogoBanner({\n  logos,\n  headline,\n  layout = \"marquee\",\n  columns = 5,\n  speed = \"normal\",\n  grayscale = true,\n  className,\n  ...props\n}: LogoBannerProps) {\n  const duration = speedMap[speed];\n\n  return (\n    <section className={cn(\"w-full py-10\", className)} {...props}>\n      <div className=\"mx-auto max-w-5xl px-6\">\n        {headline && (\n          <p className=\"text-center text-sm font-medium text-muted-foreground mb-8 uppercase tracking-widest\">\n            {headline}\n          </p>\n        )}\n\n        {layout === \"static\" ? (\n          <div className={cn(\"grid grid-cols-2 gap-8 items-center justify-items-center\", colsMap[columns])}>\n            {logos.map((logo, i) => (\n              <LogoItem key={i} logo={logo} grayscale={grayscale} />\n            ))}\n          </div>\n        ) : (\n          <div className=\"relative overflow-hidden\">\n            {/* Fade edges */}\n            <div className=\"absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none\" />\n            <div className=\"absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none\" />\n\n            <div\n              className=\"flex items-center gap-12\"\n              style={{\n                animation: `marquee ${duration} linear infinite`,\n                width: \"max-content\",\n              }}\n            >\n              {/* Duplicate for seamless loop */}\n              {[...logos, ...logos].map((logo, i) => (\n                <LogoItem key={i} logo={logo} grayscale={grayscale} />\n              ))}\n            </div>\n          </div>\n        )}\n      </div>\n\n      <style>{`\n        @keyframes marquee {\n          from { transform: translateX(0); }\n          to { transform: translateX(-50%); }\n        }\n      `}</style>\n    </section>\n  );\n}\n\nfunction LogoItem({ logo, grayscale }: { logo: LogoItem; grayscale: boolean }) {\n  const content = (\n    <div\n      className={cn(\n        \"flex items-center justify-center h-10 px-4 transition-all duration-200\",\n        grayscale && \"opacity-50 grayscale hover:opacity-100 hover:grayscale-0\"\n      )}\n      title={logo.name}\n    >\n      {logo.logo}\n    </div>\n  );\n\n  return logo.href ? (\n    <a href={logo.href} aria-label={logo.name}>\n      {content}\n    </a>\n  ) : (\n    <div>{content}</div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/marketing/logo-banner.tsx"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "type": "registry:block"
+}

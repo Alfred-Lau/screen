@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature-card",
+  "title": "Feature Card",
+  "description": "Feature highlight card with icon, title, description, and simple/bordered/gradient variants.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/marketing/feature-card.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport type FeatureCardVariant = \"simple\" | \"bordered\" | \"gradient\";\n\ninterface FeatureCardProps extends React.HTMLAttributes<HTMLDivElement> {\n  icon?: React.ReactNode;\n  title: string;\n  description: string;\n  variant?: FeatureCardVariant;\n  badge?: string;\n  link?: { href: string; label: string };\n}\n\nexport function FeatureCard({\n  icon,\n  title,\n  description,\n  variant = \"simple\",\n  badge,\n  link,\n  className,\n  ...props\n}: FeatureCardProps) {\n  const variantStyles: Record<FeatureCardVariant, string> = {\n    simple: \"bg-transparent\",\n    bordered: \"bg-card border border-border rounded-xl p-6 hover:shadow-md transition-shadow\",\n    gradient:\n      \"bg-gradient-to-br from-primary/5 via-accent/5 to-background border border-border/50 rounded-xl p-6 hover:border-primary/30 transition-all\",\n  };\n\n  return (\n    <div className={cn(variantStyles[variant], variant === \"simple\" && \"py-4\", className)} {...props}>\n      {badge && (\n        <span className=\"inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary mb-3\">\n          {badge}\n        </span>\n      )}\n      {icon && (\n        <div className=\"flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary mb-4\">\n          {icon}\n        </div>\n      )}\n      <h3 className=\"text-base font-semibold text-foreground mb-2\">{title}</h3>\n      <p className=\"text-sm text-muted-foreground leading-relaxed\">{description}</p>\n      {link && (\n        <a\n          href={link.href}\n          className=\"inline-flex items-center gap-1 mt-3 text-sm font-medium text-primary hover:underline\"\n        >\n          {link.label}\n          <svg className=\"size-3.5\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\">\n            <path strokeLinecap=\"round\" strokeLinejoin=\"round\" strokeWidth={2} d=\"M9 5l7 7-7 7\" />\n          </svg>\n        </a>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/marketing/feature-card.tsx"
+    }
+  ],
+  "categories": [
+    "marketing"
+  ],
+  "type": "registry:component"
+}

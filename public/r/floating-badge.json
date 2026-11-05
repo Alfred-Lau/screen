@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "floating-badge",
+  "title": "Floating Badge",
+  "description": "Animated badge that floats over a child element with spring entrance/exit.",
+  "dependencies": [
+    "framer-motion",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/animation/floating-badge.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { motion, AnimatePresence } from \"framer-motion\";\nimport { cn } from \"@/lib/cn\";\n\nexport type FloatingBadgePosition = \"top-left\" | \"top-right\" | \"bottom-left\" | \"bottom-right\";\n\nexport interface FloatingBadgeProps {\n  children: React.ReactNode;\n  badge: React.ReactNode;\n  position?: FloatingBadgePosition;\n  pulse?: boolean;\n  visible?: boolean;\n  className?: string;\n  badgeClassName?: string;\n}\n\nconst positionClass: Record<FloatingBadgePosition, string> = {\n  \"top-left\": \"-top-2 -left-2\",\n  \"top-right\": \"-top-2 -right-2\",\n  \"bottom-left\": \"-bottom-2 -left-2\",\n  \"bottom-right\": \"-bottom-2 -right-2\",\n};\n\nexport function FloatingBadge({\n  children,\n  badge,\n  position = \"top-right\",\n  pulse = false,\n  visible = true,\n  className,\n  badgeClassName,\n}: FloatingBadgeProps) {\n  return (\n    <div className={cn(\"relative inline-flex\", className)}>\n      {children}\n      <AnimatePresence>\n        {visible && (\n          <motion.div\n            className={cn(\"absolute z-10\", positionClass[position])}\n            initial={{ scale: 0, opacity: 0 }}\n            animate={{ scale: 1, opacity: 1 }}\n            exit={{ scale: 0, opacity: 0 }}\n            transition={{ type: \"spring\", stiffness: 300, damping: 20 }}\n          >\n            {pulse && (\n              <span className=\"absolute inset-0 rounded-full animate-ping bg-current opacity-30\" />\n            )}\n            <span className={cn(\"relative flex items-center justify-center\", badgeClassName)}>\n              {badge}\n            </span>\n          </motion.div>\n        )}\n      </AnimatePresence>\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "lib/animation/floating-badge.tsx"
+    }
+  ],
+  "categories": [
+    "animation"
+  ],
+  "type": "registry:component"
+}
