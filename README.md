@@ -61,21 +61,53 @@ Plus 13 composable blocks (`registry:block`) such as `dashboard-layout`, `stats-
 
 Components read design tokens from CSS variables, so light and dark mode come for free. The theme presets and the visual editor live in `lib/theme/`. Import `ThemeProvider` from `lib/theme-provider.tsx` to wire tokens at runtime.
 
-### One line you must add
+### Import the theme layer first
 
 Tailwind 4 points the `dark:` variant at `prefers-color-scheme`, not at a class.
 `ThemeProvider` toggles `.dark` on `<html>`, so the variant has to be redefined
-or every dark style silently does nothing:
+or every dark style silently does nothing.
+
+`styles/screen.css` already does this, together with the token definitions every
+component reads from:
 
 ```css
+/* your globals.css */
 @import "tailwindcss";
+@import "./styles/screen.css";   /* copy it in, or import it from node_modules */
+```
 
+That is the whole setup. Without it the app still "switches theme" — the CSS
+variables change — but any component using `dark:` utilities keeps its light
+styling. This is the most common integration mistake with this library.
+
+If you would rather define tokens yourself, the one line that matters is:
+
+```css
 @custom-variant dark (&:where(.dark, .dark *));
 ```
 
-Without this line the app still "switches theme" — the CSS variables change —
-but any component using `dark:` utilities keeps its light styling. This is the
-most common integration mistake with this library.
+### Set the class before the first paint
+
+Add this to `<head>`, ahead of your app bundle. Resolving the theme in a React
+effect instead means components render light first and then flip — and anything
+carrying a `transition` (the suggestion chips do) can stay stuck at its starting
+colour:
+
+```html
+<script>
+  (function () {
+    var q = new URLSearchParams(location.search).get("theme");
+    var stored = null;
+    try { stored = localStorage.getItem("solokit-theme-mode"); } catch (e) {}
+    var choice = q || stored || "system";
+    var dark =
+      choice === "dark" ||
+      (choice === "system" &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches);
+    document.documentElement.classList.toggle("dark", dark);
+  })();
+</script>
+```
 
 ### Tokens
 

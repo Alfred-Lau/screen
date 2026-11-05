@@ -4,6 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Screen — component demo</title>
+    <script>
+      // Resolve the theme before the first paint. Doing this in a React effect
+      // means components render light, then flip — anything with a transition
+      // (the suggestion chips do) can get stuck at its starting colour.
+      (function () {
+        var q = new URLSearchParams(location.search).get("theme");
+        var stored = null;
+        try {
+          stored = localStorage.getItem("solokit-theme-mode");
+        } catch (e) {}
+        var choice = q || stored || "system";
+        var dark =
+          choice === "dark" ||
+          (choice === "system" &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.classList.toggle("dark", dark);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -18,6 +18,14 @@
     "tailwindcss",
     "nextjs"
   ],
+  "files": [
+    "lib",
+    "styles",
+    "public/r",
+    "registry.json",
+    "README.md",
+    "LICENSE"
+  ],
   "packageManager": "pnpm@10.26.0",
   "engines": {
     "node": ">=20"

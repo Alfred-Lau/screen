@@ -1,0 +1,77 @@
+/*
+ * Screen — theme layer
+ *
+ * Import this after Tailwind:
+ *
+ *   @import "tailwindcss";
+ *   @import "./screen.css";
+ *
+ * It does two things:
+ *   1. redefines the `dark:` variant so it follows a class on <html> instead of
+ *      the OS setting (Tailwind 4 defaults to prefers-color-scheme)
+ *   2. declares the design tokens every component reads from
+ *
+ * Skip step 1 and every `dark:` utility in the library silently does nothing
+ * while the rest of the page still looks themed.
+ */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;
+  --color-card: #ffffff;
+  --color-card-foreground: #0f172a;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #0f172a;
+  --color-primary: #2563eb;
+  --color-primary-foreground: #f8fafc;
+  --color-secondary: #f1f5f9;
+  --color-secondary-foreground: #334155;
+  --color-muted: #f8fafc;
+  --color-muted-foreground: #64748b;
+  --color-accent: #f1f5f9;
+  --color-accent-foreground: #334155;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #f8fafc;
+  --color-border: #e2e8f0;
+  --color-input: #e2e8f0;
+  --color-ring: #2563eb;
+  --radius: 0.75rem;
+
+  /* Screen brand */
+  --color-professional-blue: #3b82f6;
+  --color-professional-gray: #475569;
+  --color-professional-light: #f8fafc;
+  --color-success-green: #22c55e;
+  --color-warning-orange: #f97316;
+
+  /* Charts */
+  --color-chart-1: #dc2626;
+  --color-chart-2: #10b981;
+  --color-chart-3: #3b82f6;
+  --color-chart-4: #f59e0b;
+  --color-chart-5: #8b5cf6;
+}
+
+.dark {
+  --color-background: #030712;
+  --color-foreground: #f8fafc;
+  --color-card: #0f172a;
+  --color-card-foreground: #f8fafc;
+  --color-popover: #0f172a;
+  --color-popover-foreground: #f8fafc;
+  --color-primary: #3b82f6;
+  --color-primary-foreground: #030712;
+  --color-secondary: #1e293b;
+  --color-secondary-foreground: #cbd5e1;
+  --color-muted: #1e293b;
+  --color-muted-foreground: #94a3b8;
+  --color-accent: #1e293b;
+  --color-accent-foreground: #cbd5e1;
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #f8fafc;
+  --color-border: #1e293b;
+  --color-input: #1e293b;
+  --color-ring: #3b82f6;
+}
