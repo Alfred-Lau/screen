@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useTheme } from "@/lib/theme-provider";
 import ChatSection from "./sections/ChatSection";
 import AgentSection from "./sections/AgentSection";
@@ -25,11 +26,24 @@ function Section({
   );
 }
 
+// Lets a screenshot tool or a shared link pin the theme: ?theme=dark
+function ThemeFromQuery() {
+  const { setTheme } = useTheme();
+  useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get("theme");
+    if (requested === "light" || requested === "dark" || requested === "system") {
+      setTheme(requested);
+    }
+  }, [setTheme]);
+  return null;
+}
+
 export default function App() {
   const { effectiveTheme, setTheme } = useTheme();
 
   return (
     <div className="mx-auto max-w-5xl px-6 pb-24">
+      <ThemeFromQuery />
       <header className="flex items-center justify-between border-b border-border py-6">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">Screen</h1>

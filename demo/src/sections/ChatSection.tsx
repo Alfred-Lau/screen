@@ -31,7 +31,7 @@ export function Thread({ messages }) {
 export default function ChatSection() {
   return (
     <div className="space-y-6">
-      <Conversation className="h-[460px] rounded-xl border border-border bg-card">
+      <Conversation className="h-[520px] rounded-xl border border-border bg-card">
         <ConversationContent>
           <Message from="user">
             <MessageContent variant="user">

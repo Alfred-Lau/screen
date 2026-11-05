@@ -61,6 +61,28 @@ Plus 13 composable blocks (`registry:block`) such as `dashboard-layout`, `stats-
 
 Components read design tokens from CSS variables, so light and dark mode come for free. The theme presets and the visual editor live in `lib/theme/`. Import `ThemeProvider` from `lib/theme-provider.tsx` to wire tokens at runtime.
 
+### One line you must add
+
+Tailwind 4 points the `dark:` variant at `prefers-color-scheme`, not at a class.
+`ThemeProvider` toggles `.dark` on `<html>`, so the variant has to be redefined
+or every dark style silently does nothing:
+
+```css
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+```
+
+Without this line the app still "switches theme" — the CSS variables change —
+but any component using `dark:` utilities keeps its light styling. This is the
+most common integration mistake with this library.
+
+### Tokens
+
+`ThemeProvider` writes `solokit-theme-mode` to `localStorage` (exported as
+`THEME_STORAGE_KEY`). Values are validated against `light` / `dark` / `system`;
+an unrecognised value falls back to `system`.
+
 ## Develop
 
 ```bash
@@ -79,7 +101,13 @@ pnpm verify           # typecheck + test + registry build
 registry uses — no wrapper layer, no mocked data source. `pnpm demo`, open
 http://localhost:4318. It covers the chat primitives (conversation, message,
 reasoning, sources, code block, loader, suggestions), the agent approval
-surfaces, and the dashboard cards, in both light and dark mode.
+surfaces, and the dashboard cards.
+
+Add `?theme=dark` to pin the theme when sharing a link or taking a screenshot.
+
+| Light | Dark |
+| --- | --- |
+| ![Light theme](./demo/preview-light.png) | ![Dark theme](./demo/preview-dark.png) |
 
 ## Security
 
