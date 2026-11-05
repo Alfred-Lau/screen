@@ -8,7 +8,8 @@
     "tailwind-merge"
   ],
   "registryDependencies": [
-    "https://screen.solokit.run/r/feature-card.json"
+    "https://screen.solokit.run/r/feature-card.json",
+    "theme"
   ],
   "files": [
     {

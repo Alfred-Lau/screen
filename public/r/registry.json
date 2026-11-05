@@ -4,6 +4,22 @@
   "homepage": "https://screen.solokit.run",
   "items": [
     {
+      "name": "theme",
+      "type": "registry:file",
+      "title": "Screen theme",
+      "description": "Design tokens plus the dark-variant redefinition every component depends on. Import it from your globals.css once: @import \"tailwindcss\"; @import \"./styles/screen.css\";",
+      "categories": [
+        "setup"
+      ],
+      "files": [
+        {
+          "path": "styles/screen.css",
+          "type": "registry:file",
+          "target": "~/styles/screen.css"
+        }
+      ]
+    },
+    {
       "name": "conversation",
       "type": "registry:component",
       "title": "Conversation",
@@ -22,6 +38,9 @@
           "type": "registry:file",
           "target": "lib/chatbot/conversation.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -44,6 +63,9 @@
           "type": "registry:file",
           "target": "lib/chatbot/message.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -65,6 +87,9 @@
           "type": "registry:file",
           "target": "lib/chatbot/reasoning.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -86,6 +111,9 @@
           "type": "registry:file",
           "target": "lib/chatbot/data-card.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -107,6 +135,9 @@
           "type": "registry:file",
           "target": "lib/chatbot/tool-invocation.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -128,6 +159,9 @@
           "type": "registry:file",
           "target": "lib/chatbot/sources.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -149,6 +183,9 @@
           "type": "registry:file",
           "target": "lib/chatbot/suggestions.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -170,6 +207,9 @@
           "type": "registry:file",
           "target": "lib/chatbot/code-block.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -191,6 +231,9 @@
           "type": "registry:file",
           "target": "lib/chatbot/web-preview.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -211,6 +254,9 @@
           "type": "registry:file",
           "target": "lib/chatbot/loader.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -232,6 +278,9 @@
           "type": "registry:file",
           "target": "lib/chatbot/shimmer.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -252,6 +301,9 @@
           "type": "registry:file",
           "target": "lib/chatbot/typewriter.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -273,6 +325,9 @@
           "type": "registry:file",
           "target": "lib/chatbot/actions.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -294,6 +349,9 @@
           "type": "registry:file",
           "target": "lib/chatbot/inline-citation.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -315,6 +373,9 @@
           "type": "registry:file",
           "target": "lib/docs/constants.ts"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -331,7 +392,8 @@
         "@heroicons/react"
       ],
       "registryDependencies": [
-        "https://screen.solokit.run/r/docs-base.json"
+        "https://screen.solokit.run/r/docs-base.json",
+        "theme"
       ],
       "files": [
         {
@@ -359,7 +421,8 @@
       "registryDependencies": [
         "https://screen.solokit.run/r/docs-base.json",
         "command",
-        "dialog"
+        "dialog",
+        "theme"
       ],
       "files": [
         {
@@ -383,7 +446,8 @@
         "@heroicons/react"
       ],
       "registryDependencies": [
-        "https://screen.solokit.run/r/docs-base.json"
+        "https://screen.solokit.run/r/docs-base.json",
+        "theme"
       ],
       "files": [
         {
@@ -402,7 +466,8 @@
         "docs"
       ],
       "registryDependencies": [
-        "https://screen.solokit.run/r/docs-base.json"
+        "https://screen.solokit.run/r/docs-base.json",
+        "theme"
       ],
       "files": [
         {
@@ -426,6 +491,9 @@
           "type": "registry:file",
           "target": "lib/docs/components/reading-progress.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -448,6 +516,9 @@
           "type": "registry:file",
           "target": "lib/docs/components/code-highlight.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -459,7 +530,8 @@
         "docs"
       ],
       "registryDependencies": [
-        "https://screen.solokit.run/r/doc-code-highlight.json"
+        "https://screen.solokit.run/r/doc-code-highlight.json",
+        "theme"
       ],
       "files": [
         {
@@ -483,7 +555,8 @@
         "@heroicons/react"
       ],
       "registryDependencies": [
-        "https://screen.solokit.run/r/docs-base.json"
+        "https://screen.solokit.run/r/docs-base.json",
+        "theme"
       ],
       "files": [
         {
@@ -510,6 +583,9 @@
           "type": "registry:file",
           "target": "lib/docs/components/mdx/cards.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -529,7 +605,8 @@
         "https://screen.solokit.run/r/docs-base.json",
         "https://screen.solokit.run/r/doc-sidebar-navigation.json",
         "https://screen.solokit.run/r/doc-reading-progress.json",
-        "https://screen.solokit.run/r/doc-search.json"
+        "https://screen.solokit.run/r/doc-search.json",
+        "theme"
       ],
       "files": [
         {
@@ -551,7 +628,8 @@
         "next-intl"
       ],
       "registryDependencies": [
-        "https://screen.solokit.run/r/docs-base.json"
+        "https://screen.solokit.run/r/docs-base.json",
+        "theme"
       ],
       "files": [
         {
@@ -585,6 +663,9 @@
           "type": "registry:file",
           "target": "lib/dashboard/metric-card.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -606,6 +687,9 @@
           "type": "registry:file",
           "target": "lib/dashboard/stats-badge.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -626,6 +710,9 @@
           "type": "registry:file",
           "target": "lib/dashboard/status-indicator.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -647,6 +734,9 @@
           "type": "registry:file",
           "target": "lib/dashboard/user-avatar.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -662,7 +752,8 @@
         "tailwind-merge"
       ],
       "registryDependencies": [
-        "https://screen.solokit.run/r/user-avatar.json"
+        "https://screen.solokit.run/r/user-avatar.json",
+        "theme"
       ],
       "files": [
         {
@@ -685,7 +776,8 @@
         "tailwind-merge"
       ],
       "registryDependencies": [
-        "https://screen.solokit.run/r/user-avatar.json"
+        "https://screen.solokit.run/r/user-avatar.json",
+        "theme"
       ],
       "files": [
         {
@@ -713,6 +805,9 @@
           "type": "registry:file",
           "target": "lib/dashboard/mini-chart.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -733,6 +828,9 @@
           "type": "registry:file",
           "target": "lib/dashboard/progress-ring.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -754,6 +852,9 @@
           "type": "registry:file",
           "target": "lib/dashboard/data-table.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -775,6 +876,9 @@
           "type": "registry:file",
           "target": "lib/dashboard/filter-bar.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -796,6 +900,9 @@
           "type": "registry:file",
           "target": "lib/dashboard/dashboard-layout.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -811,7 +918,8 @@
         "tailwind-merge"
       ],
       "registryDependencies": [
-        "https://screen.solokit.run/r/metric-card.json"
+        "https://screen.solokit.run/r/metric-card.json",
+        "theme"
       ],
       "files": [
         {
@@ -839,6 +947,9 @@
           "type": "registry:file",
           "target": "lib/marketing/feature-card.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -860,6 +971,9 @@
           "type": "registry:file",
           "target": "lib/marketing/testimonial-card.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -881,6 +995,9 @@
           "type": "registry:file",
           "target": "lib/marketing/pricing-card.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -902,6 +1019,9 @@
           "type": "registry:file",
           "target": "lib/marketing/announcement-bar.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -923,6 +1043,9 @@
           "type": "registry:file",
           "target": "lib/marketing/newsletter-form.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -944,6 +1067,9 @@
           "type": "registry:file",
           "target": "lib/marketing/social-proof.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -965,6 +1091,9 @@
           "type": "registry:file",
           "target": "lib/marketing/breadcrumb-nav.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -986,6 +1115,9 @@
           "type": "registry:file",
           "target": "lib/marketing/hero-section.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1001,7 +1133,8 @@
         "tailwind-merge"
       ],
       "registryDependencies": [
-        "https://screen.solokit.run/r/feature-card.json"
+        "https://screen.solokit.run/r/feature-card.json",
+        "theme"
       ],
       "files": [
         {
@@ -1024,7 +1157,8 @@
         "tailwind-merge"
       ],
       "registryDependencies": [
-        "https://screen.solokit.run/r/pricing-card.json"
+        "https://screen.solokit.run/r/pricing-card.json",
+        "theme"
       ],
       "files": [
         {
@@ -1047,7 +1181,8 @@
         "tailwind-merge"
       ],
       "registryDependencies": [
-        "https://screen.solokit.run/r/testimonial-card.json"
+        "https://screen.solokit.run/r/testimonial-card.json",
+        "theme"
       ],
       "files": [
         {
@@ -1076,6 +1211,9 @@
           "type": "registry:file",
           "target": "lib/marketing/faq-accordion.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1097,6 +1235,9 @@
           "type": "registry:file",
           "target": "lib/marketing/cta-banner.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1117,6 +1258,9 @@
           "type": "registry:file",
           "target": "lib/marketing/logo-banner.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1137,6 +1281,9 @@
           "type": "registry:file",
           "target": "lib/marketing/step-process.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1158,6 +1305,9 @@
           "type": "registry:file",
           "target": "lib/marketing/comparison-table.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1178,6 +1328,9 @@
           "type": "registry:file",
           "target": "lib/form/form-field.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1199,6 +1352,9 @@
           "type": "registry:file",
           "target": "lib/form/tag-input.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1220,6 +1376,9 @@
           "type": "registry:file",
           "target": "lib/form/rating-input.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1241,6 +1400,9 @@
           "type": "registry:file",
           "target": "lib/form/file-upload.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1261,6 +1423,9 @@
           "type": "registry:file",
           "target": "lib/form/otp-input.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1282,6 +1447,9 @@
           "type": "registry:file",
           "target": "lib/form/search-input.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1302,6 +1470,9 @@
           "type": "registry:file",
           "target": "lib/form/slider-input.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1323,6 +1494,9 @@
           "type": "registry:file",
           "target": "lib/form/color-picker.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1344,6 +1518,9 @@
           "type": "registry:file",
           "target": "lib/form/date-picker.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1364,6 +1541,9 @@
           "type": "registry:file",
           "target": "lib/form/toggle-group.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1385,6 +1565,9 @@
           "type": "registry:file",
           "target": "lib/form/multi-select.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1406,6 +1589,9 @@
           "type": "registry:file",
           "target": "lib/form/login-form.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1427,6 +1613,9 @@
           "type": "registry:file",
           "target": "lib/animation/fade-in.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1448,6 +1637,9 @@
           "type": "registry:file",
           "target": "lib/animation/slide-in.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1469,6 +1661,9 @@
           "type": "registry:file",
           "target": "lib/animation/scale-in.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1490,6 +1685,9 @@
           "type": "registry:file",
           "target": "lib/animation/stagger-list.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1511,6 +1709,9 @@
           "type": "registry:file",
           "target": "lib/animation/count-up.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1532,6 +1733,9 @@
           "type": "registry:file",
           "target": "lib/animation/text-reveal.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1553,6 +1757,9 @@
           "type": "registry:file",
           "target": "lib/animation/flip-card.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1574,6 +1781,9 @@
           "type": "registry:file",
           "target": "lib/animation/magnetic-button.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1595,6 +1805,9 @@
           "type": "registry:file",
           "target": "lib/animation/ripple-button.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1616,6 +1829,9 @@
           "type": "registry:file",
           "target": "lib/animation/confetti-button.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1637,6 +1853,9 @@
           "type": "registry:file",
           "target": "lib/animation/marquee.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1658,6 +1877,9 @@
           "type": "registry:file",
           "target": "lib/animation/orbit.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1679,6 +1901,9 @@
           "type": "registry:file",
           "target": "lib/animation/spotlight-card.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1700,6 +1925,9 @@
           "type": "registry:file",
           "target": "lib/animation/particle-burst.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1721,6 +1949,9 @@
           "type": "registry:file",
           "target": "lib/agent/checkpoint.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1742,6 +1973,9 @@
           "type": "registry:file",
           "target": "lib/agent/run-receipt.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1763,6 +1997,9 @@
           "type": "registry:file",
           "target": "lib/agent/run-controls.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1784,6 +2021,9 @@
           "type": "registry:file",
           "target": "lib/agent/plan.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1805,6 +2045,9 @@
           "type": "registry:file",
           "target": "lib/agent/approval.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1826,6 +2069,9 @@
           "type": "registry:file",
           "target": "lib/agent/trace.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1847,6 +2093,9 @@
           "type": "registry:file",
           "target": "lib/agent/tool-group.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1868,6 +2117,9 @@
           "type": "registry:file",
           "target": "lib/agent/terminal.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1889,6 +2141,9 @@
           "type": "registry:file",
           "target": "lib/agent/inbox.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1910,6 +2165,9 @@
           "type": "registry:file",
           "target": "lib/agent/steering.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1931,6 +2189,9 @@
           "type": "registry:file",
           "target": "lib/agent/tree.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1952,6 +2213,9 @@
           "type": "registry:file",
           "target": "lib/agent/memory.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1973,6 +2237,9 @@
           "type": "registry:file",
           "target": "lib/agent/ledger.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -1994,6 +2261,9 @@
           "type": "registry:file",
           "target": "lib/agent/diff.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -2015,6 +2285,9 @@
           "type": "registry:file",
           "target": "lib/agent/error-recovery.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -2036,6 +2309,9 @@
           "type": "registry:file",
           "target": "lib/agent/autonomy.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -2057,6 +2333,9 @@
           "type": "registry:file",
           "target": "lib/animation/floating-badge.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -2078,6 +2357,9 @@
           "type": "registry:file",
           "target": "lib/agent/prompt-input.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -2099,6 +2381,9 @@
           "type": "registry:file",
           "target": "lib/agent/tool-permission.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -2120,6 +2405,9 @@
           "type": "registry:file",
           "target": "lib/agent/a2ui-surface.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -2141,6 +2429,9 @@
           "type": "registry:file",
           "target": "lib/agent/artifact.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -2162,6 +2453,9 @@
           "type": "registry:file",
           "target": "lib/agent/task.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -2183,6 +2477,9 @@
           "type": "registry:file",
           "target": "lib/agent/eval-badge.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     },
     {
@@ -2204,6 +2501,9 @@
           "type": "registry:file",
           "target": "lib/agent/handoff.tsx"
         }
+      ],
+      "registryDependencies": [
+        "theme"
       ]
     }
   ]

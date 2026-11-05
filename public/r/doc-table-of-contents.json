@@ -4,7 +4,8 @@
   "title": "Doc Table of Contents",
   "description": "Auto-generated TOC from markdown headings with scroll spy and smooth scrolling.",
   "registryDependencies": [
-    "https://screen.solokit.run/r/docs-base.json"
+    "https://screen.solokit.run/r/docs-base.json",
+    "theme"
   ],
   "files": [
     {

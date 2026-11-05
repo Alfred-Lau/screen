@@ -9,7 +9,8 @@
     "@heroicons/react"
   ],
   "registryDependencies": [
-    "https://screen.solokit.run/r/docs-base.json"
+    "https://screen.solokit.run/r/docs-base.json",
+    "theme"
   ],
   "files": [
     {

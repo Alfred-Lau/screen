@@ -4,7 +4,8 @@
   "title": "Doc Content",
   "description": "Content wrapper with styled header, title gradient, description, and prose styling.",
   "registryDependencies": [
-    "https://screen.solokit.run/r/doc-code-highlight.json"
+    "https://screen.solokit.run/r/doc-code-highlight.json",
+    "theme"
   ],
   "files": [
     {

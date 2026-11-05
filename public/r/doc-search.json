@@ -13,7 +13,8 @@
   "registryDependencies": [
     "https://screen.solokit.run/r/docs-base.json",
     "command",
-    "dialog"
+    "dialog",
+    "theme"
   ],
   "files": [
     {

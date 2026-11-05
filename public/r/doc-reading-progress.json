@@ -3,6 +3,9 @@
   "name": "doc-reading-progress",
   "title": "Doc Reading Progress",
   "description": "Animated progress bar fixed at the top showing scroll position.",
+  "registryDependencies": [
+    "theme"
+  ],
   "files": [
     {
       "path": "lib/docs/components/reading-progress.tsx",

@@ -12,7 +12,8 @@
     "https://screen.solokit.run/r/docs-base.json",
     "https://screen.solokit.run/r/doc-sidebar-navigation.json",
     "https://screen.solokit.run/r/doc-reading-progress.json",
-    "https://screen.solokit.run/r/doc-search.json"
+    "https://screen.solokit.run/r/doc-search.json",
+    "theme"
   ],
   "files": [
     {

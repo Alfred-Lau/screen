@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme",
+  "title": "Screen theme",
+  "description": "Design tokens plus the dark-variant redefinition every component depends on. Import it from your globals.css once: @import \"tailwindcss\"; @import \"./styles/screen.css\";",
+  "files": [
+    {
+      "path": "styles/screen.css",
+      "content": "/*\n * Screen — theme layer\n *\n * Import this after Tailwind:\n *\n *   @import \"tailwindcss\";\n *   @import \"./screen.css\";\n *\n * It does two things:\n *   1. redefines the `dark:` variant so it follows a class on <html> instead of\n *      the OS setting (Tailwind 4 defaults to prefers-color-scheme)\n *   2. declares the design tokens every component reads from\n *\n * Skip step 1 and every `dark:` utility in the library silently does nothing\n * while the rest of the page still looks themed.\n */\n\n@custom-variant dark (&:where(.dark, .dark *));\n\n@theme {\n  --color-background: #ffffff;\n  --color-foreground: #0f172a;\n  --color-card: #ffffff;\n  --color-card-foreground: #0f172a;\n  --color-popover: #ffffff;\n  --color-popover-foreground: #0f172a;\n  --color-primary: #2563eb;\n  --color-primary-foreground: #f8fafc;\n  --color-secondary: #f1f5f9;\n  --color-secondary-foreground: #334155;\n  --color-muted: #f8fafc;\n  --color-muted-foreground: #64748b;\n  --color-accent: #f1f5f9;\n  --color-accent-foreground: #334155;\n  --color-destructive: #ef4444;\n  --color-destructive-foreground: #f8fafc;\n  --color-border: #e2e8f0;\n  --color-input: #e2e8f0;\n  --color-ring: #2563eb;\n  --radius: 0.75rem;\n\n  /* Screen brand */\n  --color-professional-blue: #3b82f6;\n  --color-professional-gray: #475569;\n  --color-professional-light: #f8fafc;\n  --color-success-green: #22c55e;\n  --color-warning-orange: #f97316;\n\n  /* Charts */\n  --color-chart-1: #dc2626;\n  --color-chart-2: #10b981;\n  --color-chart-3: #3b82f6;\n  --color-chart-4: #f59e0b;\n  --color-chart-5: #8b5cf6;\n}\n\n.dark {\n  --color-background: #030712;\n  --color-foreground: #f8fafc;\n  --color-card: #0f172a;\n  --color-card-foreground: #f8fafc;\n  --color-popover: #0f172a;\n  --color-popover-foreground: #f8fafc;\n  --color-primary: #3b82f6;\n  --color-primary-foreground: #030712;\n  --color-secondary: #1e293b;\n  --color-secondary-foreground: #cbd5e1;\n  --color-muted: #1e293b;\n  --color-muted-foreground: #94a3b8;\n  --color-accent: #1e293b;\n  --color-accent-foreground: #cbd5e1;\n  --color-destructive: #dc2626;\n  --color-destructive-foreground: #f8fafc;\n  --color-border: #1e293b;\n  --color-input: #1e293b;\n  --color-ring: #3b82f6;\n}\n",
+      "type": "registry:file",
+      "target": "~/styles/screen.css"
+    }
+  ],
+  "categories": [
+    "setup"
+  ],
+  "type": "registry:file"
+}

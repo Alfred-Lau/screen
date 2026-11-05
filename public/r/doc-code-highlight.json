@@ -9,6 +9,9 @@
   "devDependencies": [
     "@types/prismjs"
   ],
+  "registryDependencies": [
+    "theme"
+  ],
   "files": [
     {
       "path": "lib/docs/components/code-highlight.tsx",

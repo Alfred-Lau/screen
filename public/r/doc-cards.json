@@ -6,6 +6,9 @@
   "dependencies": [
     "next"
   ],
+  "registryDependencies": [
+    "theme"
+  ],
   "files": [
     {
       "path": "lib/docs/components/mdx/cards.tsx",

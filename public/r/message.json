@@ -9,6 +9,9 @@
     "tailwind-merge",
     "next"
   ],
+  "registryDependencies": [
+    "theme"
+  ],
   "files": [
     {
       "path": "lib/chatbot/message.tsx",

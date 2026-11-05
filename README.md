@@ -16,6 +16,10 @@ npx shadcn@latest add "https://screen.solokit.run/r/conversation"
 
 The registry is free to copy. Swap the component name for anything in `registry.json`.
 
+Every item declares the `theme` item as a dependency, so the CLI also drops
+`styles/screen.css` into your project. You still have to import it once — see
+[Theming](#theming).
+
 ### Let your editor do it
 
 Screen exposes an MCP server with no API key. Point Claude Code, Cursor or Codex at it:
@@ -34,7 +38,7 @@ An agent can also read [`llms.txt`](https://screen.solokit.run/llms.txt) for the
 
 ### Copy by hand
 
-Every component is a single file under `lib/<category>/`. Copy it, fix the `@/lib/utils` import to your own path alias, install whatever the file imports, done.
+Every component is a single file under `lib/<category>/`. Copy it, fix the `@/lib/utils` import to your own path alias, install whatever the file imports, done. Grab `styles/screen.css` too — the components assume its tokens exist.
 
 ## What's inside
 

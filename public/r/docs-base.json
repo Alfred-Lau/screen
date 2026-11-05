@@ -3,6 +3,9 @@
   "name": "docs-base",
   "title": "Docs Base Types",
   "description": "Shared types and constants for documentation components.",
+  "registryDependencies": [
+    "theme"
+  ],
   "files": [
     {
       "path": "lib/docs/types.ts",
