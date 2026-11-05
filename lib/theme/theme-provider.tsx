@@ -173,8 +173,6 @@ export function ThemeTokenProvider({ children }: { children: ReactNode }) {
   const setMode = useCallback((m: ThemeMode) => {
     setModeState(m);
     try { localStorage.setItem(STORAGE_KEYS.themeMode, m); } catch { /* */ }
-    // Also sync the legacy ThemeProvider's localStorage key so both agree
-    try { localStorage.setItem("seo-sentinel-theme", m); } catch { /* */ }
     // Directly toggle the dark class for immediate effect
     if (typeof document !== "undefined") {
       const isDark = m === "dark" || (m === "system" && systemMode === "dark");

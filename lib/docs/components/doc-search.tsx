@@ -64,7 +64,7 @@ export function DocSearch({
   useEffect(() => {
     async function fetchDocs() {
       try {
-        const response = await fetch(`${structureApiEndpoint}?locale=${locale}`);
+        const response = await fetch(`${structureApiEndpoint}?locale=${encodeURIComponent(locale)}`);
         if (response.ok) {
           const data = await response.json();
           if (data.items) {

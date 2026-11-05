@@ -7,6 +7,13 @@ import { Clock, ShieldAlert, ShieldCheck, ShieldX, UserRound } from "lucide-reac
 export type ApprovalRisk = "low" | "medium" | "high";
 export type ApprovalDecision = "once" | "always" | "deny";
 
+/**
+ * SECURITY: this component is presentation only.
+ *
+ * An approval click is a UI event, not an authorization grant. Validate the
+ * decision server-side against the actual request before acting on it.
+ */
+
 export interface ApprovalRequest {
   title: string;
   description: string;

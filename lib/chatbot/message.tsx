@@ -3,7 +3,6 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { User, Copy, RefreshCcw, ThumbsUp, ThumbsDown, Share2 } from "lucide-react";
-import Image from "next/image";
 
 // Message Component
 interface MessageProps extends React.HTMLAttributes<HTMLDivElement> {

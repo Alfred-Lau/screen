@@ -66,8 +66,32 @@ Components read design tokens from CSS variables, so light and dark mode come fo
 ```bash
 pnpm install
 pnpm typecheck        # tsc --noEmit
+pnpm test             # vitest — 72 tests
+pnpm test:coverage    # coverage report
+pnpm demo             # live demo on http://localhost:4318
 pnpm registry:build   # rebuild public/r/*.json from registry.json
+pnpm verify           # typecheck + test + registry build
 ```
+
+## Demo
+
+`demo/` is a Vite app that imports components through the same `@/` alias the
+registry uses — no wrapper layer, no mocked data source. `pnpm demo`, open
+http://localhost:4318. It covers the chat primitives (conversation, message,
+reasoning, sources, code block, loader, suggestions), the agent approval
+surfaces, and the dashboard cards, in both light and dark mode.
+
+## Security
+
+See [SECURITY.md](./SECURITY.md) for the disclosure policy and for the
+boundaries consumers must respect. Two matter more than the rest:
+
+- `ToolPermission` and `ApprovalCard` are UI. They do not authorize anything.
+- Nothing in this library sanitizes HTML. Sanitize model or third-party content
+  before rendering it.
+
+A pre-publication review covering code, data exposure and supply chain is in
+[docs/security-review.md](./docs/security-review.md).
 
 ## License
 

@@ -14,6 +14,9 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+/** Shared with lib/theme/constants.ts so both providers agree on one key. */
+export const THEME_STORAGE_KEY = "solokit-theme-mode";
+
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>("system");
   const [systemTheme, setSystemTheme] = useState<"light" | "dark">("light");
@@ -36,7 +39,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   // Load the saved theme from local storage
   useEffect(() => {
     try {
-      const storedTheme = localStorage.getItem("seo-sentinel-theme") as Theme;
+      const storedTheme = localStorage.getItem(THEME_STORAGE_KEY) as Theme;
       if (storedTheme && ["light", "dark", "system"].includes(storedTheme)) {
         setThemeState(storedTheme);
       }
@@ -55,17 +58,15 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const root = document.documentElement;
     if (effectiveTheme === "dark") {
       root.classList.add("dark");
-      console.log("Applied dark theme, classes:", root.className);
     } else {
       root.classList.remove("dark");
-      console.log("Applied light theme, classes:", root.className);
     }
   }, [effectiveTheme, mounted]);
 
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme);
     try {
-      localStorage.setItem("seo-sentinel-theme", newTheme);
+      localStorage.setItem(THEME_STORAGE_KEY, newTheme);
     } catch (error) {
       console.warn("Failed to save theme to localStorage:", error);
     }

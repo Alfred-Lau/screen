@@ -7,6 +7,15 @@ import { AlertTriangle, Check, ChevronRight, Server, ShieldQuestion, Wrench, X }
 export type PermissionScope = "once" | "session" | "always";
 export type PermissionRisk = "low" | "medium" | "high";
 
+/**
+ * SECURITY: this component is presentation only.
+ *
+ * It renders the permission prompt and forwards the user's choice through
+ * `onAllow` / `onDeny`. It does not enforce anything. Every tool call must be
+ * re-checked on the server before execution — a browser-side "allow" is a UI
+ * event, not an authorization grant.
+ */
+
 export interface PermissionArg {
   label: string;
   value: string;

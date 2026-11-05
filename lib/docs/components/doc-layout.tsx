@@ -33,7 +33,7 @@ export function DocLayout({
   useEffect(() => {
     async function loadDocsStructure() {
       try {
-        const response = await fetch(`${structureApiEndpoint}?locale=${locale}`);
+        const response = await fetch(`${structureApiEndpoint}?locale=${encodeURIComponent(locale)}`);
         if (response.ok) {
           const data = await response.json();
           setCurrentNavItems(data.items || navItems);

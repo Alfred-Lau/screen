@@ -32,7 +32,7 @@ export function useDocsStructure(
   useEffect(() => {
     async function loadDocsStructure() {
       try {
-        const response = await fetch(`${apiEndpoint}?locale=${locale}`);
+        const response = await fetch(`${apiEndpoint}?locale=${encodeURIComponent(locale)}`);
         if (response.ok) {
           const data = await response.json();
           setItems(data.items || fallbackItems);
