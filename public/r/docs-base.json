@@ -4,7 +4,7 @@
   "title": "Docs Base Types",
   "description": "Shared types and constants for documentation components.",
   "registryDependencies": [
-    "theme"
+    "https://screen.solokit.run/r/theme.json"
   ],
   "files": [
     {

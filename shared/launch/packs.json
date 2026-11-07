@@ -1,0 +1,234 @@
+[
+  {
+    "id": "validate-mvp",
+    "version": "1.0.0",
+    "title": {
+      "zh": "需求验证与 MVP",
+      "en": "Validate an idea & define an MVP"
+    },
+    "description": {
+      "zh": "从可验证的用户问题开始，形成可交付开发的产品 Brief。",
+      "en": "Start with a testable user problem and deliver a brief a builder can implement."
+    },
+    "steps": [
+      {
+        "id": "evidence",
+        "title": {
+          "zh": "事实与假设",
+          "en": "Evidence & assumptions"
+        },
+        "instruction": {
+          "zh": "基于项目背景，把目标用户、具体问题、已有替代方案和付费动机拆成事实与假设表。为每项事实列来源，为假设设计低成本反证方法。不要替用户编造访谈。",
+          "en": "Separate audience, problem, alternatives and willingness to pay into evidence and assumptions. Cite supplied sources and propose a low-cost falsification test for each assumption. Never invent interviews."
+        },
+        "output": {
+          "zh": "事实／假设表",
+          "en": "Evidence table"
+        },
+        "acceptance": {
+          "zh": "每条事实可追溯；每项核心假设有反证条件。",
+          "en": "Every fact has a source; every key assumption has a falsification condition."
+        }
+      },
+      {
+        "id": "interview",
+        "title": {
+          "zh": "访谈与验证",
+          "en": "Interview & validation"
+        },
+        "instruction": {
+          "zh": "根据事实与假设表设计 5 个非诱导式访谈问题，询问过去行为、替代方案、成本和失败经历；给出招募对象与记录模板，明确哪些结果会否定想法。",
+          "en": "Write five non-leading interview questions about past behavior, alternatives, costs and failures. Specify recruiting criteria, a notes template and results that would invalidate the idea."
+        },
+        "output": {
+          "zh": "访谈提纲与验证计划",
+          "en": "Interview script & validation plan"
+        },
+        "acceptance": {
+          "zh": "问题不诱导赞同；没有把口头喜欢当作购买证据。",
+          "en": "Questions do not seek agreement; stated enthusiasm is not treated as purchase evidence."
+        }
+      },
+      {
+        "id": "brief",
+        "title": {
+          "zh": "定义最小产品",
+          "en": "Define the smallest product"
+        },
+        "instruction": {
+          "zh": "基于已有输出写开发 Brief：一个核心用户任务、必要功能、明确不做的内容、主流程、失败状态、数据需求和可测试验收条件。未验证假设单独保留。",
+          "en": "Write a development brief covering one core user job, essential features, explicit exclusions, main flow, failure states, data requirements and testable acceptance criteria. Keep unvalidated assumptions separate."
+        },
+        "output": {
+          "zh": "产品 Brief",
+          "en": "Product brief"
+        },
+        "acceptance": {
+          "zh": "每个必要功能对应核心任务；验收可由他人执行。",
+          "en": "Each essential feature supports the core job; another person can execute the acceptance checks."
+        }
+      }
+    ]
+  },
+  {
+    "id": "launch-website",
+    "version": "1.0.0",
+    "title": {
+      "zh": "产品网站与页面文案",
+      "en": "Build a product launch website"
+    },
+    "description": {
+      "zh": "将产品背景转成页面结构、可信文案和 Screen 实施交接。",
+      "en": "Turn project context into page structure, grounded copy and a Screen implementation handoff."
+    },
+    "steps": [
+      {
+        "id": "positioning",
+        "title": {
+          "zh": "明确用户与价值",
+          "en": "Audience & value"
+        },
+        "instruction": {
+          "zh": "根据项目背景写一句价值主张、目标用户、使用场景和一个主要转化动作。列出支持主张的事实与还缺少的证据。若信息不足，先给出待回答问题。",
+          "en": "Define one value proposition, audience, use case and primary conversion action. List supporting facts and missing evidence. Ask targeted questions where context is missing."
+        },
+        "output": {
+          "zh": "定位说明",
+          "en": "Positioning statement"
+        },
+        "acceptance": {
+          "zh": "用户、问题和下一步明确；所有效果主张都有依据或明确标为待验证。",
+          "en": "Audience, problem and next action are clear; outcome claims are grounded or marked unvalidated."
+        }
+      },
+      {
+        "id": "page-copy",
+        "title": {
+          "zh": "编排页面与文案",
+          "en": "Page structure & copy"
+        },
+        "instruction": {
+          "zh": "生成发布站页面结构与逐区块文案：Hero、问题、工作方式、功能、真实限制、FAQ、CTA。只使用提供的客户与价格事实；没有证据时不要生成评价和客户 Logo。给出手机端阅读顺序。",
+          "en": "Create launch-site sections and copy: hero, problem, how it works, features, real limitations, FAQ and CTA. Use only supplied customer and pricing facts. Omit testimonials and customer logos without evidence. Include mobile reading order."
+        },
+        "output": {
+          "zh": "页面清单与文案",
+          "en": "Page inventory & copy"
+        },
+        "acceptance": {
+          "zh": "CTA 目标真实；没有虚构评价、价格或集成；中英文表达一致。",
+          "en": "CTA destinations are real; no invented testimonials, prices or integrations; language versions are consistent."
+        }
+      },
+      {
+        "id": "screen-handoff",
+        "title": {
+          "zh": "交接给 Screen 与开发 Agent",
+          "en": "Handoff to Screen & a coding agent"
+        },
+        "instruction": {
+          "zh": "将已有文案变成 Screen 产品发布站实施说明：页面结构、要使用的场景包、设计约束、内容映射、真实 CTA 地址、需要后端接入的部分、键盘与手机端验收。不要把 UI 示例写成已接入业务。",
+          "en": "Turn the copy into a Screen launch-site brief: structure, scenario package, design constraints, content mapping, real CTA URLs, backend integration points, keyboard and mobile acceptance checks. Distinguish UI examples from connected business features."
+        },
+        "output": {
+          "zh": "实施 Brief 与验收清单",
+          "en": "Implementation brief & acceptance checklist"
+        },
+        "acceptance": {
+          "zh": "独立开发者能按说明实现；所有未接入能力被标记；需要的文件和依赖清晰。",
+          "en": "A builder can implement it; unconnected features are marked; files and dependencies are explicit."
+        }
+      },
+      {
+        "id": "geo-handoff",
+        "title": {
+          "zh": "发布前检查与 GEO 交接",
+          "en": "Launch checks & GEO handoff"
+        },
+        "instruction": {
+          "zh": "根据已有输出准备上线检查：域名与真实页面、索引设置、标题描述、canonical、语言版本、内部链接、表单/CTA、页面可读性。按站点类型列出发布后需要观察的数据。输出问题、证据、修改方法和复验条件，不承诺流量或 AI 引用。",
+          "en": "Prepare launch checks for real URLs, index settings, titles/descriptions, canonical, locale variants, internal links, forms/CTAs and readable content. Specify post-launch observations by site type. Output issue, evidence, fix and retest criteria without promising traffic or AI citations."
+        },
+        "output": {
+          "zh": "上线检查与整改任务",
+          "en": "Launch checklist & remediation tasks"
+        },
+        "acceptance": {
+          "zh": "检查失败与业务效果分开；每项问题有页面和复验方法。",
+          "en": "Technical checks and business outcomes are separate; each issue has a URL and retest method."
+        }
+      }
+    ]
+  },
+  {
+    "id": "cold-start",
+    "version": "1.0.0",
+    "title": {
+      "zh": "冷启动与 Launch",
+      "en": "Find early users & launch"
+    },
+    "description": {
+      "zh": "为真实目标用户准备招募、发布材料和复盘，不批量制造噪声。",
+      "en": "Prepare recruiting, launch materials and a review for a specific audience."
+    },
+    "steps": [
+      {
+        "id": "recruit",
+        "title": {
+          "zh": "寻找首批用户",
+          "en": "Recruit early users"
+        },
+        "instruction": {
+          "zh": "围绕核心痛点制定首批用户招募计划：目标人群、出现的社区与场景、招募标准、个性化邀约模板、体验任务和反馈记录。把渠道选择作为待验证假设，不编造渠道效果。",
+          "en": "Plan early-user recruitment: audience, relevant communities and situations, criteria, personalized invitation, trial task and feedback notes. Treat channel fit as a hypothesis; do not invent channel performance."
+        },
+        "output": {
+          "zh": "首批用户计划",
+          "en": "Early-user plan"
+        },
+        "acceptance": {
+          "zh": "每个渠道说明为何适合；邀请具体且可拒绝；成功以完成核心任务衡量。",
+          "en": "Each channel has a rationale; invitations are specific and optional; success means completing the core task."
+        }
+      },
+      {
+        "id": "launch",
+        "title": {
+          "zh": "准备发布材料",
+          "en": "Prepare launch materials"
+        },
+        "instruction": {
+          "zh": "基于已有产品事实写发布简介、60 秒演示脚本、邮件与社交文案。按不同渠道读者调整表达，列出发布前链接与支持准备事项。价格、折扣、用户数未提供时明确留空。",
+          "en": "Using supplied product facts, write a launch description, 60-second demo script, email and social copy. Adapt to each audience and include link/support preparation. Leave prices, discounts and user counts blank if not provided."
+        },
+        "output": {
+          "zh": "发布材料包",
+          "en": "Launch materials"
+        },
+        "acceptance": {
+          "zh": "演示能被真实产品复现；没有虚构用户与优惠；所有入口可验证。",
+          "en": "The real product can reproduce the demo; no invented users or offers; all destinations can be checked."
+        }
+      },
+      {
+        "id": "review",
+        "title": {
+          "zh": "复盘并决定下一步",
+          "en": "Review & decide next steps"
+        },
+        "instruction": {
+          "zh": "基于提供的访问、核心任务完成、反馈与付费数据写复盘。缺失数据标为未提供。区分观察、可能原因和下一次实验；不要把相关性写成因果。",
+          "en": "Review supplied visits, core-task completions, feedback and payments. Mark missing data as not provided. Separate observations, possible explanations and the next experiment; do not imply causation from correlation."
+        },
+        "output": {
+          "zh": "发布复盘与下一次实验",
+          "en": "Launch review & next experiment"
+        },
+        "acceptance": {
+          "zh": "明确继续、修改或暂停的依据；下一次实验有观察指标和结束条件。",
+          "en": "Continue/change/pause decisions cite evidence; the next experiment has observable metrics and a stopping condition."
+        }
+      }
+    ]
+  }
+]

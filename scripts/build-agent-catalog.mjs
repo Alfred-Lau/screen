@@ -1,3 +1,4 @@
+import ts from 'typescript';
 // Builds public/r/agent-catalog.json: a machine-readable index of the agent
 // components so an agent can pick a component and call it without reading docs.
 //
@@ -20,24 +21,10 @@ function readSource(filePath) {
 
 /** Pulls the first `interface XProps { ... }` block and its fields. */
 function parseProps(source) {
-  const block = source.match(/interface\s+\w+Props\s*(?:extends[^{]+)?\{([\s\S]*?)\n\}/);
-  if (!block) return [];
-
-  return block[1]
-    .split("\n")
-    .map((line) => line.trim())
-    .filter((line) => line && !line.startsWith("//") && !line.startsWith("*") && !line.startsWith("/*"))
-    .map((line) => {
-      const match = line.match(/^([A-Za-z_$][\w$]*)(\?)?:\s*(.+?);?$/);
-      if (!match) return null;
-      const [, name, optional, type] = match;
-      return {
-        name,
-        type: type.replace(/\s+/g, " ").replace(/;$/, "").trim(),
-        required: !optional,
-      };
-    })
-    .filter(Boolean);
+  const ast=ts.createSourceFile('component.tsx',source,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
+  const props=ast.statements.find(node=>ts.isInterfaceDeclaration(node)&&node.name.text.endsWith('Props'));
+  if(!props)return [];
+  return props.members.filter(ts.isPropertySignature).map(member=>({name:member.name.getText(ast),type:member.type?.getText(ast)||'unknown',required:!member.questionToken,description:ts.getJSDocCommentsAndTags(member).map(n=>n.comment||'').join(' ')}));
 }
 
 function parseComponentName(source) {
@@ -45,11 +32,11 @@ function parseComponentName(source) {
   return match ? match[1] : null;
 }
 
-const agentItems = registry.items.filter((item) => (item.categories ?? []).includes("agent"));
+const agentItems = registry.items;
 
 const components = agentItems
   .map((item) => {
-    const file = item.files?.[0]?.path ?? "";
+    const file = item.files?.find(f => /\.tsx?$/.test(f.path))?.path ?? item.files?.[0]?.path ?? "";
     const source = readSource(file);
     return {
       name: item.name,
@@ -58,6 +45,9 @@ const components = agentItems
       component: parseComponentName(source) ?? item.name,
       source: file,
       dependencies: item.dependencies ?? [],
+      registryDependencies: item.registryDependencies ?? [],
+      files: item.files ?? [],
+      categories: item.categories ?? [],
       install: `npx shadcn@latest add ${origin}/r/${item.name}.json`,
       registryUrl: `${origin}/r/${item.name}.json`,
       docs: `${origin}/en/components#${item.name}`,

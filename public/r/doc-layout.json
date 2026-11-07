@@ -13,7 +13,7 @@
     "https://screen.solokit.run/r/doc-sidebar-navigation.json",
     "https://screen.solokit.run/r/doc-reading-progress.json",
     "https://screen.solokit.run/r/doc-search.json",
-    "theme"
+    "https://screen.solokit.run/r/theme.json"
   ],
   "files": [
     {

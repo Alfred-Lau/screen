@@ -7,7 +7,7 @@
     "next"
   ],
   "registryDependencies": [
-    "theme"
+    "https://screen.solokit.run/r/theme.json"
   ],
   "files": [
     {

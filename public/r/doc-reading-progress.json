@@ -4,7 +4,7 @@
   "title": "Doc Reading Progress",
   "description": "Animated progress bar fixed at the top showing scroll position.",
   "registryDependencies": [
-    "theme"
+    "https://screen.solokit.run/r/theme.json"
   ],
   "files": [
     {

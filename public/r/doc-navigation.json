@@ -10,7 +10,7 @@
   ],
   "registryDependencies": [
     "https://screen.solokit.run/r/docs-base.json",
-    "theme"
+    "https://screen.solokit.run/r/theme.json"
   ],
   "files": [
     {

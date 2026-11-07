@@ -40,7 +40,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -65,7 +65,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -89,7 +89,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -113,7 +113,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -137,7 +137,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -161,7 +161,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -185,7 +185,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -209,7 +209,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -233,7 +233,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -256,7 +256,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -280,7 +280,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -303,7 +303,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -327,7 +327,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -351,7 +351,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -375,7 +375,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -393,7 +393,7 @@
       ],
       "registryDependencies": [
         "https://screen.solokit.run/r/docs-base.json",
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ],
       "files": [
         {
@@ -407,7 +407,7 @@
       "name": "doc-search",
       "type": "registry:component",
       "title": "Doc Search",
-      "description": "Command palette search (⌘K) with fuzzy matching across all documentation pages.",
+      "description": "Command palette search (\u2318K) with fuzzy matching across all documentation pages.",
       "categories": [
         "docs"
       ],
@@ -422,7 +422,7 @@
         "https://screen.solokit.run/r/docs-base.json",
         "command",
         "dialog",
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ],
       "files": [
         {
@@ -447,7 +447,7 @@
       ],
       "registryDependencies": [
         "https://screen.solokit.run/r/docs-base.json",
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ],
       "files": [
         {
@@ -467,7 +467,7 @@
       ],
       "registryDependencies": [
         "https://screen.solokit.run/r/docs-base.json",
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ],
       "files": [
         {
@@ -493,7 +493,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -518,7 +518,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -531,7 +531,7 @@
       ],
       "registryDependencies": [
         "https://screen.solokit.run/r/doc-code-highlight.json",
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ],
       "files": [
         {
@@ -556,7 +556,7 @@
       ],
       "registryDependencies": [
         "https://screen.solokit.run/r/docs-base.json",
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ],
       "files": [
         {
@@ -585,7 +585,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -606,7 +606,7 @@
         "https://screen.solokit.run/r/doc-sidebar-navigation.json",
         "https://screen.solokit.run/r/doc-reading-progress.json",
         "https://screen.solokit.run/r/doc-search.json",
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ],
       "files": [
         {
@@ -629,7 +629,7 @@
       ],
       "registryDependencies": [
         "https://screen.solokit.run/r/docs-base.json",
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ],
       "files": [
         {
@@ -665,7 +665,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -689,7 +689,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -712,7 +712,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -736,7 +736,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -753,7 +753,7 @@
       ],
       "registryDependencies": [
         "https://screen.solokit.run/r/user-avatar.json",
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ],
       "files": [
         {
@@ -777,7 +777,7 @@
       ],
       "registryDependencies": [
         "https://screen.solokit.run/r/user-avatar.json",
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ],
       "files": [
         {
@@ -807,7 +807,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -830,7 +830,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -854,7 +854,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -878,7 +878,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -902,7 +902,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -919,7 +919,7 @@
       ],
       "registryDependencies": [
         "https://screen.solokit.run/r/metric-card.json",
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ],
       "files": [
         {
@@ -949,7 +949,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -973,7 +973,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -997,7 +997,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1021,7 +1021,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1045,7 +1045,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1069,7 +1069,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1093,7 +1093,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1117,7 +1117,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1134,7 +1134,7 @@
       ],
       "registryDependencies": [
         "https://screen.solokit.run/r/feature-card.json",
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ],
       "files": [
         {
@@ -1158,7 +1158,7 @@
       ],
       "registryDependencies": [
         "https://screen.solokit.run/r/pricing-card.json",
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ],
       "files": [
         {
@@ -1182,7 +1182,7 @@
       ],
       "registryDependencies": [
         "https://screen.solokit.run/r/testimonial-card.json",
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ],
       "files": [
         {
@@ -1213,7 +1213,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1237,7 +1237,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1260,7 +1260,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1283,7 +1283,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1307,7 +1307,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1330,7 +1330,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1354,7 +1354,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1378,7 +1378,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1402,7 +1402,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1425,7 +1425,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1449,7 +1449,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1472,7 +1472,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1496,7 +1496,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1520,7 +1520,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1543,7 +1543,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1567,7 +1567,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1591,7 +1591,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1615,7 +1615,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1639,7 +1639,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1663,7 +1663,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1687,7 +1687,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1711,7 +1711,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1735,7 +1735,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1759,7 +1759,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1783,7 +1783,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1807,7 +1807,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1831,7 +1831,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1855,7 +1855,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1879,7 +1879,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1903,7 +1903,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1927,7 +1927,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1951,7 +1951,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1975,7 +1975,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -1999,7 +1999,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -2023,7 +2023,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -2047,7 +2047,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -2071,7 +2071,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -2095,7 +2095,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -2119,7 +2119,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -2143,7 +2143,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -2167,7 +2167,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -2191,7 +2191,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -2215,7 +2215,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -2239,7 +2239,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -2263,7 +2263,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -2287,7 +2287,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -2311,7 +2311,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -2335,7 +2335,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -2359,7 +2359,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -2383,7 +2383,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -2407,7 +2407,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -2431,7 +2431,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -2455,7 +2455,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -2479,7 +2479,7 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
       ]
     },
     {
@@ -2503,7 +2503,55 @@
         }
       ],
       "registryDependencies": [
-        "theme"
+        "https://screen.solokit.run/r/theme.json"
+      ]
+    },
+    {
+      "name": "launch-site",
+      "type": "registry:block",
+      "title": "Product launch website",
+      "description": "A launch website with real CTA input, features and optional FAQ. No fake metrics, accounts or payment backend.",
+      "categories": [
+        "scenarios"
+      ],
+      "files": [
+        {
+          "path": "lib/scenarios/launch-site.tsx",
+          "type": "registry:file",
+          "target": "components/screen/launch-site.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ai-workbench",
+      "type": "registry:block",
+      "title": "AI task workbench",
+      "description": "Task input, pending, success, failure, retry and cancellation. Connect your own authenticated run function.",
+      "categories": [
+        "scenarios"
+      ],
+      "files": [
+        {
+          "path": "lib/scenarios/ai-workbench.tsx",
+          "type": "registry:file",
+          "target": "components/screen/ai-workbench.tsx"
+        }
+      ]
+    },
+    {
+      "name": "first-run",
+      "type": "registry:block",
+      "title": "First-use checklist",
+      "description": "User-confirmed onboarding checklist with asynchronous completion and failure recovery.",
+      "categories": [
+        "scenarios"
+      ],
+      "files": [
+        {
+          "path": "lib/scenarios/first-run.tsx",
+          "type": "registry:file",
+          "target": "components/screen/first-run.tsx"
+        }
       ]
     }
   ]

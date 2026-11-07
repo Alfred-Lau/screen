@@ -9,7 +9,7 @@
   ],
   "registryDependencies": [
     "https://screen.solokit.run/r/user-avatar.json",
-    "theme"
+    "https://screen.solokit.run/r/theme.json"
   ],
   "files": [
     {
