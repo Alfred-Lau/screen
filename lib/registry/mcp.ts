@@ -1,4 +1,3 @@
-import { scenarios, scenarioHandoff } from '../scenarios/catalog';
 import { findCatalogItem, listCatalog, readItemSource, renderLlmsTxt, searchCatalog } from "@/lib/registry/catalog";
 
 const PROTOCOL_VERSIONS = ["2025-03-26", "2024-11-05"] as const;
@@ -6,8 +5,6 @@ const SERVER_NAME = "solokit";
 const SERVER_VERSION = "0.1.0";
 
 const TOOLS = [
-  {name:"list_scenarios",description:"List complete UI scenarios with integration requirements and acceptance criteria.",inputSchema:{type:"object",properties:{},additionalProperties:false}},
-  {name:"get_scenario",description:"Get a scenario installation command, usage example, dependencies, limits and checks. UI packages do not include backend services.",inputSchema:{type:"object",properties:{name:{type:"string"}},required:["name"],additionalProperties:false}},
   {
     name: "list_components",
     description: "List every item in the free Screen registry, with its name, title and description.",
@@ -171,12 +168,6 @@ function callTool(name: string, args: unknown) {
   const record = isRecord(args) ? args : {};
   if (!isToolName(name)) return toolText(`Unknown tool: ${name}`, true);
   switch (name) {
-    case "list_scenarios": return toolText(JSON.stringify(scenarios));
-    case "get_scenario": {
-      const name = typeof record.name === "string" ? record.name : "";
-      const scenario = scenarioHandoff(name);
-      return scenario ? toolText(JSON.stringify(scenario)) : toolText("Unknown scenario", true);
-    }
     case "list_components":
       return listTool();
     case "search_components":

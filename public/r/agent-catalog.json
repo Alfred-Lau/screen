@@ -1,8 +1,8 @@
 {
   "$comment": "Agent-facing catalog for the Screen component library. Pick a component by description, then read props to call it. Each registryUrl resolves to the full source.",
   "site": "https://screen.solokit.run",
-  "generatedAt": "2026-11-07",
-  "count": 108,
+  "generatedAt": "2026-11-09",
+  "count": 105,
   "components": [
     {
       "name": "a2ui-surface",
@@ -221,48 +221,6 @@
         {
           "name": "emptyMessage",
           "type": "string",
-          "required": false,
-          "description": ""
-        }
-      ]
-    },
-    {
-      "name": "ai-workbench",
-      "title": "AI task workbench",
-      "description": "Task input, pending, success, failure, retry and cancellation. Connect your own authenticated run function.",
-      "component": "AiWorkbench",
-      "source": "lib/scenarios/ai-workbench.tsx",
-      "dependencies": [],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "lib/scenarios/ai-workbench.tsx",
-          "type": "registry:file",
-          "target": "components/screen/ai-workbench.tsx"
-        }
-      ],
-      "categories": [
-        "scenarios"
-      ],
-      "install": "npx shadcn@latest add https://screen.solokit.run/r/ai-workbench.json",
-      "registryUrl": "https://screen.solokit.run/r/ai-workbench.json",
-      "docs": "https://screen.solokit.run/en/components#ai-workbench",
-      "props": [
-        {
-          "name": "title",
-          "type": "string",
-          "required": true,
-          "description": ""
-        },
-        {
-          "name": "run",
-          "type": "(input:string,signal:AbortSignal)=>Promise<string>",
-          "required": true,
-          "description": ""
-        },
-        {
-          "name": "labels",
-          "type": "{input:string;submit:string;cancel:string;working:string;empty:string;failed:string}",
           "required": false,
           "description": ""
         }
@@ -2667,48 +2625,6 @@
       ]
     },
     {
-      "name": "first-run",
-      "title": "First-use checklist",
-      "description": "User-confirmed onboarding checklist with asynchronous completion and failure recovery.",
-      "component": "FirstRun",
-      "source": "lib/scenarios/first-run.tsx",
-      "dependencies": [],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "lib/scenarios/first-run.tsx",
-          "type": "registry:file",
-          "target": "components/screen/first-run.tsx"
-        }
-      ],
-      "categories": [
-        "scenarios"
-      ],
-      "install": "npx shadcn@latest add https://screen.solokit.run/r/first-run.json",
-      "registryUrl": "https://screen.solokit.run/r/first-run.json",
-      "docs": "https://screen.solokit.run/en/components#first-run",
-      "props": [
-        {
-          "name": "title",
-          "type": "string",
-          "required": true,
-          "description": ""
-        },
-        {
-          "name": "steps",
-          "type": "{id:string;title:string;description:string}[]",
-          "required": true,
-          "description": ""
-        },
-        {
-          "name": "onFinish",
-          "type": "()=>Promise<void>",
-          "required": true,
-          "description": ""
-        }
-      ]
-    },
-    {
       "name": "flip-card",
       "title": "Flip Card",
       "description": "3D flip card with front/back faces, supports hover or click trigger.",
@@ -3226,72 +3142,6 @@
           "type": "boolean",
           "required": false,
           "description": ""
-        }
-      ]
-    },
-    {
-      "name": "launch-site",
-      "title": "Product launch website",
-      "description": "A launch website with real CTA input, features and optional FAQ. No fake metrics, accounts or payment backend.",
-      "component": "LaunchSite",
-      "source": "lib/scenarios/launch-site.tsx",
-      "dependencies": [],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "lib/scenarios/launch-site.tsx",
-          "type": "registry:file",
-          "target": "components/screen/launch-site.tsx"
-        }
-      ],
-      "categories": [
-        "scenarios"
-      ],
-      "install": "npx shadcn@latest add https://screen.solokit.run/r/launch-site.json",
-      "registryUrl": "https://screen.solokit.run/r/launch-site.json",
-      "docs": "https://screen.solokit.run/en/components#launch-site",
-      "props": [
-        {
-          "name": "brand",
-          "type": "string",
-          "required": true,
-          "description": ""
-        },
-        {
-          "name": "headline",
-          "type": "string",
-          "required": true,
-          "description": ""
-        },
-        {
-          "name": "description",
-          "type": "string",
-          "required": true,
-          "description": ""
-        },
-        {
-          "name": "features",
-          "type": "{title:string;description:string}[]",
-          "required": true,
-          "description": ""
-        },
-        {
-          "name": "faqs",
-          "type": "{question:string;answer:string}[]",
-          "required": true,
-          "description": ""
-        },
-        {
-          "name": "action",
-          "type": "{label:string;href:string}",
-          "required": true,
-          "description": ""
-        },
-        {
-          "name": "evidence",
-          "type": "string",
-          "required": false,
-          "description": "Real evidence only. Leave absent until substantiated."
         }
       ]
     },

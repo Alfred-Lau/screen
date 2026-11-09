@@ -127,8 +127,8 @@
           "en": "Handoff to Screen & a coding agent"
         },
         "instruction": {
-          "zh": "将已有文案变成 Screen 产品发布站实施说明：页面结构、要使用的场景包、设计约束、内容映射、真实 CTA 地址、需要后端接入的部分、键盘与手机端验收。不要把 UI 示例写成已接入业务。",
-          "en": "Turn the copy into a Screen launch-site brief: structure, scenario package, design constraints, content mapping, real CTA URLs, backend integration points, keyboard and mobile acceptance checks. Distinguish UI examples from connected business features."
+          "zh": "将已有文案变成 Screen 产品发布站实施说明：页面结构、要使用的组件组合、设计约束、内容映射、真实 CTA 地址、需要后端接入的部分、键盘与手机端验收。不要把 UI 示例写成已接入业务。",
+          "en": "Turn the copy into a Screen launch-site brief: structure, component set, design constraints, content mapping, real CTA URLs, backend integration points, keyboard and mobile acceptance checks. Distinguish UI examples from connected business features."
         },
         "output": {
           "zh": "实施 Brief 与验收清单",
