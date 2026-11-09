@@ -95,11 +95,23 @@ export function MultiSelect({
   return (
     <div className={cn("relative", className)} ref={containerRef}>
       {/* Trigger */}
-      <button
+      <div
         id={id}
-        type="button"
-        disabled={disabled}
-        onClick={() => setOpen(!open)}
+        role="button"
+        tabIndex={disabled ? -1 : 0}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-disabled={disabled || undefined}
+        onClick={() => {
+          if (!disabled) setOpen(!open);
+        }}
+        onKeyDown={(e) => {
+          if (disabled) return;
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setOpen(!open);
+          }
+        }}
         className={cn(
           "flex items-center gap-2 w-full min-h-[42px] px-3 py-2 rounded-xl border border-input bg-background",
           "text-sm transition-colors focus:outline-none",
@@ -147,7 +159,7 @@ export function MultiSelect({
           )}
           <ChevronDown className={cn("size-4 text-muted-foreground transition-transform", open && "rotate-180")} />
         </div>
-      </button>
+      </div>
 
       {/* Dropdown */}
       {open && (

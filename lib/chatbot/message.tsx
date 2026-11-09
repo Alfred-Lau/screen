@@ -21,19 +21,25 @@ export function Message({
   ...props
 }: MessageProps) {
   const isUser = from === "user";
-  
+
+  // Timestamps depend on the viewer's time zone and locale, so render them only
+  // after mount. Otherwise the server HTML and the client HTML disagree and
+  // React throws a hydration mismatch.
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => setMounted(true), []);
+
   const formatTime = (time: string | Date | undefined) => {
     if (!time) return "";
     try {
       const date = typeof time === "string" ? new Date(time) : time;
-      return date.toLocaleTimeString([], {
+      return new Intl.DateTimeFormat("en-US", {
         day: "2-digit",
         month: "2-digit",
         year: "numeric",
         hour: "2-digit",
         minute: "2-digit",
         hour12: false,
-      });
+      }).format(date);
     } catch {
       return "";
     }
@@ -83,7 +89,7 @@ export function Message({
           isUser ? "items-end" : "items-start"
         )}
       >
-        {timestamp && (
+        {timestamp && mounted && (
           <span className="text-[10px] text-gray-500 dark:text-gray-400 mb-1 px-1">
             {formatTime(timestamp)}
           </span>
