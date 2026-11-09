@@ -102,17 +102,3 @@ export {
   type Citation,
   type InlineCitationProps,
 } from "./inline-citation";
-
-// Provider Icon Components
-export {
-  ProviderIcon,
-  ProviderBadge,
-  ProviderStack,
-  PROVIDERS,
-  type ProviderKind,
-  type ProviderSize,
-  type ProviderMeta,
-  type ProviderIconProps,
-  type ProviderBadgeProps,
-  type ProviderStackProps,
-} from "./provider-icon";
