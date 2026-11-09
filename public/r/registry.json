@@ -2505,6 +2505,29 @@
       "registryDependencies": [
         "https://screen.solokit.run/r/theme.json"
       ]
+    },
+    {
+      "name": "provider-icon",
+      "type": "registry:component",
+      "title": "Provider Icon",
+      "description": "Neutral marks for models, tools, and run states: letter blocks and geometric glyphs, no vendor logo artwork. Swap in your own asset with src.",
+      "categories": [
+        "chatbot"
+      ],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/chatbot/provider-icon.tsx",
+          "type": "registry:file",
+          "target": "lib/chatbot/provider-icon.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "https://screen.solokit.run/r/theme.json"
+      ]
     }
   ]
 }

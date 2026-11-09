@@ -2,7 +2,7 @@
 
 Production-ready React components for AI products — chat, agents, docs, dashboards and marketing.
 
-**104 components across 7 categories. One file each, one theme.** Copy a file into your project and you own it.
+**105 components across 7 categories. One file each, one theme.** Copy a file into your project and you own it.
 
 This repository holds the component source and the shadcn registry. The website at [screen.solokit.run](https://screen.solokit.run) is a separate private app.
 
