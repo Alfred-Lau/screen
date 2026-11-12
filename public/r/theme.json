@@ -11,6 +11,7 @@
       "target": "~/styles/screen.css"
     }
   ],
+  "docs": "**One required step after install.**\n\nThis component writes `styles/screen.css` but does **not** import it. Add the import to your global stylesheet, right after Tailwind:\n\n```css\n@import \"tailwindcss\";\n@import \"./styles/screen.css\";\n```\n\nIf you skip this, every `dark:` utility in the library silently stops working and the page will flash white in dark mode — `screen.css` is what redefines the `dark` variant to follow `<html class=\"dark\">` instead of the OS setting, and it declares the design tokens all components read from.",
   "categories": [
     "setup"
   ],
