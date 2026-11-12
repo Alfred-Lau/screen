@@ -1,7 +1,7 @@
 {
   "name": "solokit-screen",
   "version": "0.1.0",
-  "description": "Production-ready React components for AI products \u2014 chat, agents, docs, dashboards and marketing. One file each, one theme.",
+  "description": "Production-ready React components for AI products — chat, agents, docs, dashboards and marketing. One file each, one theme.",
   "license": "MIT",
   "homepage": "https://screen.solokit.run",
   "repository": {
