@@ -1,7 +1,7 @@
 {
   "$comment": "Agent-facing catalog for the Screen component library. Pick a component by description, then read props to call it. Each registryUrl resolves to the full source.",
   "site": "https://screen.solokit.run",
-  "generatedAt": "2026-11-09",
+  "generatedAt": "2026-11-12",
   "count": 105,
   "components": [
     {
