@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v5
 
       # Version comes from package.json "packageManager" — setting it here too is an error.
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
 
       - uses: actions/setup-node@v5
         with:
