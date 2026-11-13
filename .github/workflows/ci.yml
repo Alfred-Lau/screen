@@ -9,7 +9,7 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       # Version comes from package.json "packageManager" — setting it here too is an error.
       - uses: pnpm/action-setup@v4
