@@ -1,0 +1,29 @@
+name: Registry drift
+
+# The site is built from a separate private repository, so a component edited on
+# one side only will silently diverge. Compare the built registry here against
+# what screen.solokit.run serves, and keep one issue open while they disagree.
+on:
+  schedule:
+    - cron: "0 1 * * *" # 09:00 Asia/Shanghai
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Compare against the hosted registry
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REGISTRY_ORIGIN: https://screen.solokit.run
+        run: node scripts/check-registry-drift.mjs
