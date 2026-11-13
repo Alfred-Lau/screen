@@ -1,6 +1,6 @@
 # Security & privacy review
 
-**Subject:** `solokit-screen` (Screen component library)
+**Subject:** `screen` (Screen component library)
 **Scope:** all source under `lib/`, `components/ui/`, `registry.json`, `public/r/`, build scripts
 **Date:** 2026-11-05
 **Reviewer:** internal, pre-publication
@@ -210,7 +210,7 @@ repository was re-checked end to end.
 | Verification | `pnpm typecheck` 0 errors, `pnpm test` 72/72, `pnpm demo:build` succeeds, `pnpm registry:build` produces 105 items |
 
 Publication changes made in this pass: `package.json` now points at
-`Alfred-Lau/solokit-screen` and is marked `private` (the library is distributed as
+`Alfred-Lau/screen` and is marked `private` (the library is distributed as
 registry source, not as an npm package); community files (CONTRIBUTING,
 CODE_OF_CONDUCT, CHANGELOG, issue/PR templates, Dependabot) were added; the README
 documents self-hosting the registry and where the MCP handler lives.

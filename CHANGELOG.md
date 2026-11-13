@@ -36,5 +36,5 @@ First public release.
 - Three `dangerouslySetInnerHTML` uses inject static module-level CSS only.
 - `pnpm audit --prod` reports no known vulnerabilities.
 
-[Unreleased]: https://github.com/Alfred-Lau/solokit-screen/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/Alfred-Lau/solokit-screen/releases/tag/v0.1.0
+[Unreleased]: https://github.com/Alfred-Lau/screen/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/Alfred-Lau/screen/releases/tag/v0.1.0

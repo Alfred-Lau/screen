@@ -1,5 +1,5 @@
 {
-  "name": "solokit-screen",
+  "name": "screen",
   "version": "0.1.0",
   "private": true,
   "description": "Production-ready React components for AI products — chat, agents, docs, dashboards and marketing. One file each, one theme.",
@@ -8,10 +8,10 @@
   "homepage": "https://screen.solokit.run",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Alfred-Lau/solokit-screen.git"
+    "url": "git+https://github.com/Alfred-Lau/screen.git"
   },
   "bugs": {
-    "url": "https://github.com/Alfred-Lau/solokit-screen/issues"
+    "url": "https://github.com/Alfred-Lau/screen/issues"
   },
   "keywords": [
     "react",

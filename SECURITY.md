@@ -8,7 +8,7 @@ The `main` branch is the supported version. Components are distributed as source
 
 Please **do not** open a public issue for security problems.
 
-- Use GitHub's [private vulnerability reporting](https://github.com/Alfred-Lau/solokit-screen/security/advisories/new), or
+- Use GitHub's [private vulnerability reporting](https://github.com/Alfred-Lau/screen/security/advisories/new), or
 - Email the maintainer listed on the GitHub profile.
 
 Include the affected file, a minimal reproduction, and the impact you believe it has. We aim to acknowledge within 3 business days.
