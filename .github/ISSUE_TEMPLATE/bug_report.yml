@@ -1,0 +1,53 @@
+name: Bug report
+description: Something renders wrong, breaks, or behaves unexpectedly
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. For security issues, do **not** use this form —
+        see [SECURITY.md](https://github.com/Alfred-Lau/solokit-screen/blob/main/SECURITY.md).
+  - type: input
+    id: component
+    attributes:
+      label: Component
+      description: Registry name, e.g. `conversation`, `metric-card`, `pricing-section`
+      placeholder: conversation
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened
+      description: Include the exact error text or a screenshot if relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal reproduction
+      description: A code snippet, or a link to a repo / sandbox that shows the problem.
+      render: tsx
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: React, Tailwind, framework (Next.js / Vite), and how you installed the component (shadcn CLI / manual copy)
+      placeholder: React 19, Tailwind 4.1, Next.js 15, shadcn CLI
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I imported `styles/screen.css` (or copied it into my global stylesheet)
+        - label: I searched existing issues for the same problem

@@ -1,0 +1,44 @@
+name: Feature request
+description: Propose a new component or a change to an existing one
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What are you building, and what is missing or awkward today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed API
+      description: Props, states and behaviour you would expect. Rough is fine.
+      render: tsx
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - agent
+        - chatbot
+        - dashboard
+        - docs
+        - form
+        - marketing
+        - animation
+        - theme / primitives
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Existing components or third-party libraries you tried.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: This is not a security issue (those go through SECURITY.md)
+        - label: I searched existing issues and the registry for something similar

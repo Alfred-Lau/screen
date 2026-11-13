@@ -183,6 +183,34 @@ Reproduce the automated part of this review:
 pnpm install
 pnpm typecheck      # 0 errors
 pnpm test           # 72 tests, incl. the link-safety invariant
-pnpm registry:build # 104 items
+pnpm registry:build # 105 items
 pnpm audit --prod   # 0 vulnerabilities
 ```
+
+---
+
+## 7. Re-review before open sourcing — 2026-11-13
+
+The review above was written on 2026-11-05. Between then and publication the
+registry changed (the provider-icon component was removed, 105 items now), so the
+repository was re-checked end to end.
+
+| Check | Result |
+|---|---|
+| Secrets in tracked files | None. `.env.local` holds a Vercel OIDC token, is untracked and covered by `.env*` in `.gitignore` |
+| Secrets anywhere in git history | None — no `.env`, `.pem` or `.key` ever committed |
+| Internal hostnames / private endpoints in source or artifacts | None. Only the public origin `screen.solokit.run` and `ui.shadcn.com` appear |
+| Internal product or customer names | None found in `lib/`, `components/`, `demo/src/`, docs |
+| `dangerouslySetInnerHTML` | 3, all module-level constants (`lib/chatbot/loader.tsx` ×2, `lib/chatbot/reasoning.tsx`). No props or network data reach them |
+| Dynamic execution (`eval`, `new Function`, `document.write`) | None |
+| External links | All `target="_blank"` anchors set `rel="noopener noreferrer"`; asserted by `tests/chatbot-sources.test.tsx` |
+| Client-side storage | Theme preferences only (`solokit-theme-mode`, `solokit-active-theme-id`, `solokit-custom-themes`), every access wrapped in `try/catch` |
+| Runtime dependencies | `pnpm audit --prod` → 0 vulnerabilities; all licences MIT / Apache-2.0 / ISC / 0BSD |
+| Third-party code | No vendored source. The chat primitives follow the AI Elements API shape but are independent implementations (see Acknowledgements) |
+| Verification | `pnpm typecheck` 0 errors, `pnpm test` 72/72, `pnpm demo:build` succeeds, `pnpm registry:build` produces 105 items |
+
+Publication changes made in this pass: `package.json` now points at
+`Alfred-Lau/solokit-screen` and is marked `private` (the library is distributed as
+registry source, not as an npm package); community files (CONTRIBUTING,
+CODE_OF_CONDUCT, CHANGELOG, issue/PR templates, Dependabot) were added; the README
+documents self-hosting the registry and where the MCP handler lives.

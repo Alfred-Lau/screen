@@ -6,7 +6,7 @@ export const MCP_URL = `${REGISTRY_ORIGIN}/api/mcp`;
 export const LLMS_PATH = "/llms.txt";
 
 export function installCommand(name: string): string {
-  return `npx shadcn@latest add "${REGISTRY_ORIGIN}/r/${name}"`;
+  return `npx shadcn@latest add "${REGISTRY_ORIGIN}/r/${name}.json"`;
 }
 
 export const MCP_ADD_COMMAND = `claude mcp add --transport http solokit ${MCP_URL}`;

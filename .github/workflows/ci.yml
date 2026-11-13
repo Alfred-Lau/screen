@@ -30,6 +30,8 @@ jobs:
         run: pnpm test
 
       - name: Audit production dependencies
+        # Advisory only: a new upstream advisory should not turn a contributor's PR red.
+        continue-on-error: true
         run: pnpm audit --prod
 
       - name: Build registry

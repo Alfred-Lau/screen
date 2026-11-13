@@ -1,12 +1,17 @@
 {
   "name": "solokit-screen",
   "version": "0.1.0",
+  "private": true,
   "description": "Production-ready React components for AI products — chat, agents, docs, dashboards and marketing. One file each, one theme.",
   "license": "MIT",
+  "author": "SoloKit",
   "homepage": "https://screen.solokit.run",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Alfred-Lau/solokit-element.git"
+    "url": "git+https://github.com/Alfred-Lau/solokit-screen.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Alfred-Lau/solokit-screen/issues"
   },
   "keywords": [
     "react",
@@ -36,9 +41,10 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "demo": "vite --config demo/vite.config.ts",
-    "demo:build": "vite build --config demo/vite.config.ts",
-    "verify": "pnpm typecheck && pnpm test && pnpm registry:build"
+    "demo": "vite --config demo/vite.config.mts",
+    "demo:build": "vite build --config demo/vite.config.mts",
+    "verify": "pnpm typecheck && pnpm test && pnpm registry:build",
+    "registry:serve": "npx --yes serve public -l 4319"
   },
   "peerDependencies": {
     "react": ">=18",

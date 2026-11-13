@@ -4,17 +4,38 @@ Production-ready React components for AI products — chat, agents, docs, dashbo
 
 **105 components across 7 categories. One file each, one theme.** Copy a file into your project and you own it.
 
-This repository holds the component source and the shadcn registry. The website at [screen.solokit.run](https://screen.solokit.run) is a separate private app.
+This repository holds the component source, the shadcn registry and the demo. The
+browsable site at [screen.solokit.run](https://screen.solokit.run) is a separate
+app whose source is not part of this repository — the registry it serves is built
+from the files here.
+
+Issues and pull requests are welcome. See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## Install
 
 ### With the shadcn CLI
 
 ```bash
-npx shadcn@latest add "https://screen.solokit.run/r/conversation"
+npx shadcn@latest add "https://screen.solokit.run/r/conversation.json"
 ```
 
 The registry is free to copy. Swap the component name for anything in `registry.json`.
+Keep the `.json` suffix: `/r/<name>` answers with a 307 redirect and the CLI reports
+the item as not found.
+
+Prefer short names? Register the namespace once in `components.json`:
+
+```json
+{
+  "registries": {
+    "@solokit": "https://screen.solokit.run/r/{name}.json"
+  }
+}
+```
+
+```bash
+npx shadcn@latest add @solokit/metric-card
+```
 
 Every item declares the `theme` item as a dependency, so the CLI also drops
 `styles/screen.css` into your project. You still have to import it once — see
@@ -40,6 +61,22 @@ An agent can also read [`llms.txt`](https://screen.solokit.run/llms.txt) for the
 
 Every component is a single file under `lib/<category>/`. Copy it, fix the `@/lib/utils` import to your own path alias, install whatever the file imports, done. Grab `styles/screen.css` too — the components assume its tokens exist.
 
+### Run the registry yourself
+
+`public/r/` already contains the built registry, so you do not need the hosted
+site to install from this checkout:
+
+```bash
+npx serve public -l 4319        # or: pnpm registry:serve
+npx shadcn@latest add "http://localhost:4319/r/conversation.json"
+```
+
+Regenerate the artifacts after changing a component with `pnpm registry:build`.
+One caveat: `registryDependencies` are absolute URLs pointing at
+`screen.solokit.run`, so installing a component still resolves its shared
+dependencies (`theme`, `docs-base`, …) from the hosted registry. For a fully
+air-gapped setup, copy the files from `lib/` and `styles/screen.css` by hand.
+
 ## What's inside
 
 | Category | Items | Path |
@@ -60,6 +97,27 @@ Plus 13 composable blocks (`registry:block`) such as `dashboard-layout`, `stats-
 - Tailwind CSS 4
 - TypeScript recommended
 - `lib/docs/` additionally expects Next.js App Router and `next-intl`
+
+### Add to an existing project
+
+Two things have to be true before the CLI writes usable files:
+
+1. **`@/` resolves to your source root.** Next.js sets this up by default. In a Vite
+   project, add the alias to `vite.config.ts` *and* the matching paths to the
+   tsconfig that actually compiles your app — the Vite template splits configs, and
+   `tsc -b` reads `tsconfig.app.json`, not the root file:
+
+   ```json
+   { "compilerOptions": { "paths": { "@/*": ["./src/*"] } } }
+   ```
+
+   Note that TypeScript 6+ removed `baseUrl`; keep paths relative to the tsconfig
+   directory.
+
+2. **Tailwind 4 is installed** and your stylesheet starts with `@import "tailwindcss";`.
+
+Then import the theme layer once, as described in [Theming](#theming). That is all
+— components are plain files with no runtime package behind them.
 
 ## Theming
 
@@ -128,6 +186,7 @@ pnpm test             # vitest — 72 tests
 pnpm test:coverage    # coverage report
 pnpm demo             # live demo on http://localhost:4318
 pnpm registry:build   # rebuild public/r/*.json from registry.json
+pnpm registry:serve   # serve public/ on http://localhost:4319 for local installs
 pnpm verify           # typecheck + test + registry build
 ```
 
@@ -160,6 +219,12 @@ A pre-publication review covering code, data exposure and supply chain is in
 ## License
 
 [MIT](./LICENSE). Use it commercially, in unlimited client projects, white-label it, ship it. Attribution is appreciated but not required.
+
+## Contributing
+
+Bug reports and pull requests are welcome — read [CONTRIBUTING.md](./CONTRIBUTING.md)
+first. Security problems go through [SECURITY.md](./SECURITY.md), never a public
+issue. Changes are tracked in [CHANGELOG.md](./CHANGELOG.md).
 
 ## Acknowledgements
 
